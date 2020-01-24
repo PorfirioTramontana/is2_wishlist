@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 import {
   MatToolbarModule,
@@ -20,9 +22,16 @@ import {
   MatSelectModule
 } from '@angular/material';
 
-import { CustomMaterialModule } from './components/ui/custom-material/custom-material.module';
-import { ConfirmDialogComponent } from './components/ui/confirm-dialog/confirm-dialog.component';
+import { CustomMaterialModule } from './components/ui-custom-material/custom-material.module';
+import { ConfirmDialogComponent } from './components/ui-confirm-dialog/confirm-dialog.component';
 
+import {
+  MdcFabModule,
+  MdcIconModule,
+  MdcMenuModule,
+  MdcFormFieldModule,
+  MdcTextFieldModule
+} from '@angular-mdc/web';
 
 @NgModule({
   declarations: [
@@ -34,6 +43,7 @@ import { ConfirmDialogComponent } from './components/ui/confirm-dialog/confirm-d
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -45,7 +55,11 @@ import { ConfirmDialogComponent } from './components/ui/confirm-dialog/confirm-d
     MatButtonModule,
     MatProgressSpinnerModule,
     MatInputModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    MdcFabModule,
+    MdcIconModule,
+    MdcMenuModule,
+    MdcTextFieldModule
   ],
   providers: [],
   entryComponents: [ConfirmDialogComponent],
