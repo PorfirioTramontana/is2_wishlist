@@ -1,97 +1,97 @@
-<div style="padding: 13px;">
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <div class="sad_empty_list" *ngIf="items.length == 0">
-        <h2>😢</h2>
-        <h3>Please add something to your list.</h3>
+<div style="padding: 13px;" x-test-tpl-11>
+    <mat-spinner *ngIf="isLoading" x-test-hook-12></mat-spinner>
+    <div class="sad_empty_list" *ngIf="items.length == 0" x-test-hook-13>
+        <h2 x-test-hook-14>😢</h2>
+        <h3 x-test-hook-15>Please add something to your list.</h3>
     </div>
-    <mat-card *ngFor="let item of items" style="margin-top:10px;">
-        <mat-card-header>
-            <mat-card-title>{{item.title}}</mat-card-title>
+    <mat-card *ngFor="let item of items" style="margin-top:10px;" x-test-hook-16>
+        <mat-card-header x-test-hook-17>
+            <mat-card-title x-test-hook-18>{{item.title}}</mat-card-title>
             <!-- <mat-card-subtitle >{{ categories[item.category_id] }}</mat-card-subtitle> -->
         </mat-card-header>
-        <mat-card-content style="padding: 20px;">
+        <mat-card-content style="padding: 20px;" x-test-hook-19>
             
-            <img style="height:300px; width: auto" src="{{ item.image_url }}" />
-            <p>
+            <img style="height:300px; width: auto" src="{{ item.image_url }}" x-test-hook-20 />
+            <p x-test-hook-21>
                 {{item.description}}
             </p>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-button color="primary" *ngIf="item.shop_url && item.shop_url.length > 0"> Go shopping!</button>
-            <button style="float: right;" mat-button class="danger" (click)="confirmDialog(item.id)">Delete</button>
+        <mat-card-actions x-test-hook-22>
+            <button mat-button color="primary" *ngIf="item.shop_url && item.shop_url.length > 0" x-test-hook-23> Go shopping!</button>
+            <button style="float: right;" mat-button class="danger" (click)="confirmDialog(item.id)" x-test-hook-24>Delete</button>
         </mat-card-actions>
     </mat-card>
-    <mat-card style="margin-top:10px;">
-        <form [formGroup]="itemForm" (ngSubmit)="onFormSubmit(itemForm.value)">
+    <mat-card style="margin-top:10px;" x-test-hook-25>
+        <form [formGroup]="itemForm" (ngSubmit)="onFormSubmit(itemForm.value)" x-test-hook-26>
                 
-            <mat-card-header>
-                <mat-card-title>Add a new Item</mat-card-title>
+            <mat-card-header x-test-hook-27>
+                <mat-card-title x-test-hook-28>Add a new Item</mat-card-title>
             </mat-card-header>
-            <mat-card-content>
-                <div class="row">
-                    <mat-form-field class="example-full-width">
+            <mat-card-content x-test-hook-29>
+                <div class="row" x-test-hook-30>
+                    <mat-form-field class="example-full-width" x-test-hook-31>
                         <input matInput placeholder="Title" formControlName="title"
-                                [errorStateMatcher]="matcher">
-                        <mat-error>
-                            <span *ngIf="!itemForm.get('title').valid && itemForm.get('title').touched">Please enter Title</span>
+                                [errorStateMatcher]="matcher" x-test-hook-32>
+                        <mat-error x-test-hook-33>
+                            <span *ngIf="!itemForm.get('title').valid && itemForm.get('title').touched" x-test-hook-34>Please enter Title</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="row">
-                    <mat-form-field class="example-full-width">
+                <div class="row" x-test-hook-35>
+                    <mat-form-field class="example-full-width" x-test-hook-36>
                         <input matInput placeholder="Description" formControlName="description"
-                                [errorStateMatcher]="matcher">
-                        <mat-error>
-                            <span *ngIf="!itemForm.get('description').valid && itemForm.get('description').touched">Please enter description</span>
+                                [errorStateMatcher]="matcher" x-test-hook-37>
+                        <mat-error x-test-hook-38>
+                            <span *ngIf="!itemForm.get('description').valid && itemForm.get('description').touched" x-test-hook-39>Please enter description</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="row">
-                    <mat-form-field class="example-full-width">
+                <div class="row" x-test-hook-40>
+                    <mat-form-field class="example-full-width" x-test-hook-41>
                         <input type="url" matInput placeholder="URL of the image" formControlName="image_url"
-                                [errorStateMatcher]="matcher">
-                        <mat-error>
-                            <span *ngIf="!itemForm.get('image_url').valid && itemForm.get('image_url').touched">Please enter Image URL</span>
+                                [errorStateMatcher]="matcher" x-test-hook-42>
+                        <mat-error x-test-hook-43>
+                            <span *ngIf="!itemForm.get('image_url').valid && itemForm.get('image_url').touched" x-test-hook-44>Please enter Image URL</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="row">
-                    <mat-form-field class="example-full-width">
-                        <mat-select aria-placeholder="Pick one, please">
-                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                <div class="row" x-test-hook-45>
+                    <mat-form-field class="example-full-width" x-test-hook-46>
+                        <mat-select aria-placeholder="Pick one, please" x-test-hook-47>
+                            <mat-option *ngFor="let category of categories" [value]="category.id" x-test-hook-48>
                               {{category.value}}
                             </mat-option>
                         </mat-select>
 
                         <input type="url" matInput placeholder="Category" formControlName="category_id"
-                                [errorStateMatcher]="matcher">
-                        <mat-error>
-                            <span *ngIf="!itemForm.get('category_id').valid && itemForm.get('category_id').touched">Please choose a category</span>
+                                [errorStateMatcher]="matcher" x-test-hook-49>
+                        <mat-error x-test-hook-50>
+                            <span *ngIf="!itemForm.get('category_id').valid && itemForm.get('category_id').touched" x-test-hook-51>Please choose a category</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="row">
-                    <mat-form-field class="example-full-width">
+                <div class="row" x-test-hook-52>
+                    <mat-form-field class="example-full-width" x-test-hook-53>
                         <input type="url" matInput placeholder="URL of the ecommerce" formControlName="shop_url"
-                                [errorStateMatcher]="matcher">
-                        <mat-error>
-                            <span *ngIf="!itemForm.get('shop_url').valid && itemForm.get('shop_url').touched">Please enter Shop URL</span>
+                                [errorStateMatcher]="matcher" x-test-hook-54>
+                        <mat-error x-test-hook-55>
+                            <span *ngIf="!itemForm.get('shop_url').valid && itemForm.get('shop_url').touched" x-test-hook-56>Please enter Shop URL</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
             
                 
             </mat-card-content>
-            <mat-card-actions>
-                <button type="submit" [disabled]="!itemForm.valid" mat-flat-button color="primary">ADD to wishlist!</button>
+            <mat-card-actions x-test-hook-57>
+                <button type="submit" [disabled]="!itemForm.valid" mat-flat-button color="primary" x-test-hook-58>ADD to wishlist!</button>
             </mat-card-actions>
         </form>
     </mat-card>
 
 </div>
-<div *ngIf="items.length > 10">
-    <button (click) ="firstPage()" mat-button> First</button>
-    <button (click) ="previousPage()" mat-button> Previous</button>
-    <button (click) ="nextPage()" mat-button> Next</button>
-    <button (click) ="lastPage()" mat-button> Last</button>
+<div *ngIf="items.length > 10" x-test-tpl-59>
+    <button (click) ="firstPage()" mat-button x-test-hook-60> First</button>
+    <button (click) ="previousPage()" mat-button x-test-hook-61> Previous</button>
+    <button (click) ="nextPage()" mat-button x-test-hook-62> Next</button>
+    <button (click) ="lastPage()" mat-button x-test-hook-63> Last</button>
 </div>
