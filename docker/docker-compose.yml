@@ -1,0 +1,53 @@
+version: "3.3"
+services:
+  
+  client:
+    build:
+      context: ./node12
+      dockerfile: Dockerfile
+    container_name: is2-client
+    hostname: is2-client.local
+    #working_dir: /home/node/app
+    volumes:
+    #  - ../client:/home/node/app
+      - ../client:/workspace:cached
+      - ../server/mocks:/workspace/mock-server:cached
+      - ../test-hooks-latest/test-guard:/workspace/test-guard
+      - ../tests:/workspace/tests
+      - ../output-locators:/workspace/output-locators
+      
+    #  - ./node12/dummy.js:/home/node/app/dummy.js
+    ports:
+      - 4200:4200
+    networks: 
+      is2-network:
+        ipv4_address: 10.5.0.20
+    #command: ["node", "dummy.js"]
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    #command: ["npx", "nodemon"]
+    
+  mock-server:
+    build:
+      context: ./node12
+      dockerfile: Dockerfile
+    container_name: is2-mock-server
+    hostname: is2-mock-server.local
+    working_dir: /home/node/app
+    volumes:
+      - ../client/mocks:/home/node/app
+    command: ["bash", "run-mock-server.sh"]
+    ports:
+      - 3000:3000
+    networks: 
+      is2-network:
+        ipv4_address: 10.5.0.10
+
+        
+networks:
+  is2-network:
+    driver: bridge
+    ipam:
+     driver: default
+     config:
+       - subnet: 10.5.0.0/16
+

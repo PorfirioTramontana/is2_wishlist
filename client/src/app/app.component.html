@@ -1,0 +1,15 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    
+    <div class="mdl-layout__header-row">
+      <mat-toolbar color="primary">
+        <h1 class="mdl-layout__title">
+          <a [routerLink]="['/']">WISHLIST</a>
+        </h1>
+        <div class="mdl-layout-spacer"></div>
+        <button mat-button [routerLink]="['/about']">About</button> 
+      </mat-toolbar>
+    </div>
+  </header>
+</div>
+<router-outlet></router-outlet>
