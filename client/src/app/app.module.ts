@@ -19,7 +19,9 @@ import {
   MatButtonModule,
   MatProgressSpinnerModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDividerModule,
+  MatExpansionModule
 } from '@angular/material';
 
 import { CustomMaterialModule } from './components/ui-custom-material/custom-material.module';
@@ -59,7 +61,10 @@ import {
     MdcFabModule,
     MdcIconModule,
     MdcMenuModule,
-    MdcTextFieldModule
+    MdcTextFieldModule,
+    MatDividerModule,
+    MatSelectModule,
+    MatExpansionModule
   ],
   providers: [],
   entryComponents: [ConfirmDialogComponent],

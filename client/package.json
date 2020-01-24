@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "generate_mock_data": "node ./mocks/generate.js > ./mocks/database.json",
-    "mock-server": "json-server --watch ./mocks/database.json"
+    "mock-server": "json-server ./mocks/database.json"
   },
   "private": true,
   "dependencies": {

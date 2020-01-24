@@ -7,6 +7,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 
 import { ConfirmDialogModel, ConfirmDialogComponent } from '../ui-confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material';
+import { isNumber } from 'util';
 
 
 @Component({
@@ -20,7 +21,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   isLoading: boolean;
   itemForm: FormGroup;
-  
+  itemEditForm: FormGroup;
+  editingItem: boolean;
+
   categories = [
     {
       id: 1,
@@ -32,9 +35,35 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   ];
   
+  
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, public dialog: MatDialog) { 
     this.isLoading = false;
+    this.editingItem = false;
+  }
+
+  switchToEdit(item: any) {
+    console.log(item);
+    this.itemEditForm = this.formBuilder.group({
+      'id': item.id,
+      'title': item.title,
+      'description': item.description,
+      'image_url': item.image_url,
+      'category_id': item.category_id,
+      'shop_url': item.shop_url
+    });
+    this.editingItem = true;
+  }
+
+  switchToList() {
+    //this.itemEditForm = this.itemForm;
+    this.editingItem = false;
+  }
+
+  public getCategoryValueById(category_id) {
+    if( !isNumber(category_id)) return '';
+    let category = this.categories.filter(function (el) { return (el.id === category_id )});
+    return category[0].value;
   }
 
   public firstPage() {
@@ -81,6 +110,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       'shop_url': [null]
     });
 
+    this.itemEditForm = this.formBuilder.group({
+      'title': [null, Validators.required],
+      'description': [null, Validators.required],
+      'image_url': [null, Validators.required],
+      'category_id': [null],
+      'shop_url': [null]
+    });
+
     this.refreshData();
       
   }
@@ -111,6 +148,22 @@ export class HomeComponent implements OnInit, OnDestroy {
           console.log(err);
           this.isLoading = false;
         });
+  }
+
+  onEditFormSubmit(form:NgForm) {
+    this.isLoading = true;
+    this.apiService.editItemInWishlist(form)
+      .subscribe(res => {
+          //let id = res['id'];
+          this.isLoading = false;
+          this.editingItem = false;
+          this.refreshData();
+          //this.router.navigate(['/user-details', id]);
+        }, (err) => {
+          console.log(err);
+          this.isLoading = false;
+        });
+    
   }
 
   confirmDialog(itemId: number): void {
