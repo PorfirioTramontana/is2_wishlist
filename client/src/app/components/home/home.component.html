@@ -84,14 +84,20 @@
                     <p *ngIf="editingItemIndex != itemIndex" x-test-hook-21>
                       {{item.value.description}}
                     </p>
-                    <mdc-form-field *ngIf="editingItemIndex == itemIndex" fluid class="example-full-width">
-                        <mdc-textarea label="Description" formControlName="description"
+                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" fluid class="example-full-width">
+                        <mat-label>Description</mat-label>
+                        <input type="text" matInput placeholder="Description" autocomplete="off" formControlName="description"
+                        [errorStateMatcher]="matcher">
+                        <mat-error>
+                            <span *ngIf="!item.get('description').valid && item.get('description').touched">Please enter a description</span>
+                        </mat-error>
+                        <!-- <mdc-textarea label="Description" formControlName="description"
                         [errorStateMatcher]="matcher"
                             [helperText]="taCounterHelper" rows="3" cols="40"></mdc-textarea>
                         <mat-error style="margin-top: 10px;margin-bottom: 10px;">
                             <span *ngIf="!item.get('description').valid && item.get('description').touched">Please enter a description</span>
-                        </mat-error>
-                    </mdc-form-field>
+                        </mat-error> -->
+                    </mat-form-field>
                 </div>
                 
                 <div class="row">
