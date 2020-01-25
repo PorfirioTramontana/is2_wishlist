@@ -1,189 +1,107 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 <div style="padding: 13px;" x-test-tpl-11>
-    <mat-spinner *ngIf="isLoading" x-test-hook-12></mat-spinner>
-    <div class="sad_empty_list" *ngIf="items.length == 0" x-test-hook-13>
-        <h2 x-test-hook-14>😢</h2>
-        <h3 x-test-hook-15>Please add something to your list.</h3>
-    </div>
-    <mat-card *ngFor="let item of items" style="margin-top:10px;" x-test-hook-16>
-        <form [formGroup]="itemEditForm"  (ngSubmit)="onEditFormSubmit(itemEditForm.value)">
-            <mat-card-header x-test-hook-17>
-                <mat-card-title *ngIf="!editingItem" x-test-hook-18>{{item.title}}</mat-card-title>
-                
-                <mat-card-subtitle>{{ getCategoryValueById(item.category_id) }}</mat-card-subtitle>
-               
-                
+  <div class="sad_empty_list" *ngIf="displayedItems.length == 0" x-test-hook-13>
+      <h2 x-test-hook-14>😢</h2>
+      <h3 x-test-hook-15>Please add something to your list.</h3>
+  </div>
+  <form [formGroup]="productForm">
 
+    <div formArrayName="wishlist_items">
+      <div *ngFor="let item of wishlistItems.controls; let itemIndex=index; let last=last" [formGroupName]="itemIndex">
+          <!-- <label>
+          Item {{ item.value | json }}: <input formControlName="item" />
+          </label> -->
+          <mat-card style="margin-top:10px;">
+                  
+            <mat-card-header>
+                <mat-card-title *ngIf="editingItemIndex == itemIndex">Add a new Item</mat-card-title>
+                <mat-card-title *ngIf="editingItemIndex != itemIndex" x-test-hook-18>{{item.value.title}}</mat-card-title>
+                <mat-card-subtitle *ngIf="editingItemIndex != itemIndex">{{ getCategoryValueById(item.value.category_id) }}</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content style="padding: 20px;" x-test-hook-19>
+            <mat-card-content style="padding-left: 15px;">
                 
-                <div *ngIf="editingItem" class="row">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                        <mat-label>Title</mat-label>
-                        <input matInput value="{{item.title}}" formControlName="title" autocomplete="off"
-                                [errorStateMatcher]="matcher">
-                        <!-- <mat-error>
-                            <span *ngIf="!itemForm.get('title_edit').valid && itemForm.get('title_edit').touched">Please enter Title</span>
-                        </mat-error> -->
-                    </mat-form-field>
-                </div>
-
-                <div *ngIf="editingItem" class="row">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                        <mat-label >Category</mat-label>
-                        <mat-select formControlName="category_id">
-                            <mat-option *ngFor="let category of categories" [value]="category.id">
-                                {{category.value}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    
-                </div>
-
-                <img style="height:auto; width: 280px" src="{{ item.image_url }}" x-test-hook-20 />
-                <div *ngIf="editingItem" class="row" >
-                    <mat-form-field appearance="outline" class="example-full-width" >
-                        <mat-label>Image URL</mat-label>
-                        <input type="url" matInput formControlName="image_url" autocomplete="off">
-                       
-                    </mat-form-field>
-                </div>
-
-
-                
-                <div class="row" style=" margin-top: 20px;margin-bottom: 20px;">
-                    <p *ngIf="!editingItem" x-test-hook-21>
-                        {{item.description}}
-                    </p>
-                    <mdc-form-field *ngIf="editingItem" fluid class="example-full-width">
-                        <mdc-textarea formControlName="description" label="Description" rows="3" cols="40" value="{{item.description}}"></mdc-textarea>
-                    </mdc-form-field>
-                </div>
-
-                <div *ngIf="editingItem" class="row" >
-                    <mat-form-field appearance="outline" class="example-full-width" >
-                        <mat-label>Shop URL</mat-label>
-                        <input type="url" matInput formControlName="shop_url" autocomplete="off">
-                       
-                    </mat-form-field>
-                </div>
-
-            </mat-card-content>
-        <mat-card-actions x-test-hook-22>
-            <a mat-raised-button href="{{item.shop_url}}" target="_blank" color="primary" *ngIf="!editingItem && item.shop_url && item.shop_url.length > 0" x-test-hook-23>Go shopping!</a>
-            <button *ngIf="editingItem" mat-button color="secondary" (click)="switchToList()">Cancel</button>
-            <button *ngIf="editingItem" mat-raised-button color="primary" type="submit">Save</button>
-            <mat-divider [inset]="true" style="margin-top: 10px;" *ngIf="editingItem"></mat-divider>
-            <button *ngIf="editingItem" mat-button style="margin-top: 20px" color="warn" (click)="confirmDialog(item.id)" x-test-hook-24>Delete</button>
-            <!-- <mat-expansion-panel *ngIf="editingItem" >
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Danger zone
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>
-                </p>
-            </mat-expansion-panel> -->
-            
-            
-            <button *ngIf="!editingItem" mat-button (click)="switchToEdit(item)">Edit</button>
-           
-        </mat-card-actions>
-    </form>
-      
-    </mat-card>
-    
-    <mat-card *ngIf="!editingItem" style="margin-top:10px;" x-test-hook-25>
-        <form [formGroup]="itemForm" (ngSubmit)="onFormSubmit(itemForm.value)" x-test-hook-26>
-                
-            <mat-card-header x-test-hook-27>
-                <mat-card-title x-test-hook-28>Add a new Item</mat-card-title>
-            </mat-card-header>
-            <mat-card-content style="padding-left: 15px;" x-test-hook-29>
-                
-                <div class="row" x-test-hook-30>
-                    <mat-form-field appearance="outline" class="example-full-width" x-test-hook-31>
+                <div class="row">
+                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" class="example-full-width">
                         <mat-label>Title</mat-label>
                         <input matInput placeholder="Title" formControlName="title"  autocomplete="off"
-                                [errorStateMatcher]="matcher" x-test-hook-32>
-                        <mat-error x-test-hook-33>
-                            <span *ngIf="!itemForm.get('title').valid && itemForm.get('title').touched" x-test-hook-34>Please enter Title</span>
+                        [errorStateMatcher]="matcher">
+                        <mat-error>
+                            <span *ngIf="!item.get('title').valid && item.get('title').touched">Please enter Title</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 
-                <div class="row" x-test-hook-45>
-                    <mat-form-field appearance="outline" class="example-full-width" x-test-hook-46>
+                <div class="row">
+                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" class="example-full-width">
                         <mat-label>Category</mat-label>
-                        <mat-select formControlName="category_id" aria-placeholder="Pick one, please" x-test-hook-47>
-                            <mat-option *ngFor="let category of categories" [value]="category.id" x-test-hook-48>
+                        <mat-select formControlName="category_id" aria-placeholder="Pick one, please">
+                            <mat-option *ngFor="let category of categories" [value]="category.id">
                               {{category.value}}
                             </mat-option>
                         </mat-select>
 
-                        <!-- <input type="url" matInput placeholder="Category" formControlName="category_id"
-                                [errorStateMatcher]="matcher" x-test-hook-49> -->
-                        <mat-error x-test-hook-50>
-                            <span *ngIf="!itemForm.get('category_id').valid && itemForm.get('category_id').touched" x-test-hook-51>Please choose a category</span>
-                        </mat-error>
+                        <!-- <mat-error>
+                            <span *ngIf="!itemForm.get('category_id').valid && itemForm.get('category_id').touched">Please choose a category</span>
+                        </mat-error> -->
                     </mat-form-field>
                 </div>
 
-                <div class="row" x-test-hook-40>
-                    <mat-form-field appearance="outline" class="example-full-width" x-test-hook-41>
+                <div class="row">
+                    <img *ngIf="editingItemIndex != itemIndex" style="height:auto; width: 280px" src="{{ item.value.image_url }}" x-test-hook-20 />
+                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" class="example-full-width">
                         <mat-label>Image URL</mat-label>
                         <input type="url" matInput placeholder="URL of the image" autocomplete="off" formControlName="image_url"
-                                [errorStateMatcher]="matcher" x-test-hook-42>
-                        <mat-error x-test-hook-43>
-                            <span *ngIf="!itemForm.get('image_url').valid && itemForm.get('image_url').touched" x-test-hook-44>Please enter Image URL</span>
+                        [errorStateMatcher]="matcher">
+                        <mat-error>
+                            <span *ngIf="!item.get('image_url').valid && item.get('image_url').touched">Please enter Image URL</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 
                 <div class="row" style=" margin-top: 20px;">
-                    <mdc-form-field fluid class="example-full-width">
+                    <p *ngIf="editingItemIndex != itemIndex" x-test-hook-21>
+                      {{item.value.description}}
+                    </p>
+                    <mdc-form-field *ngIf="editingItemIndex == itemIndex" fluid class="example-full-width">
                         <mdc-textarea label="Description" formControlName="description"
-                        [errorStateMatcher]="matcher"  
+                        [errorStateMatcher]="matcher"
                             [helperText]="taCounterHelper" rows="3" cols="40"></mdc-textarea>
-                        <!-- <mdc-helper-text #taCounterHelper validation>Helper Text</mdc-helper-text> -->
                         <mat-error style="margin-top: 10px;margin-bottom: 10px;">
-                            <span *ngIf="!itemForm.get('description').valid && itemForm.get('description').touched">Please enter a description</span>
+                            <span *ngIf="!item.get('description').valid && item.get('description').touched">Please enter a description</span>
                         </mat-error>
                     </mdc-form-field>
-                      
-                    <!-- <mat-form-field class="example-full-width" x-test-hook-36>
-                        
-                        
-                        <input matInput placeholder="Description" formControlName="description"
-                                [errorStateMatcher]="matcher" x-test-hook-37>
-                        <mat-error x-test-hook-38>
-                            <span *ngIf="!itemForm.get('description').valid && itemForm.get('description').touched" x-test-hook-39>Please enter description</span>
-                        </mat-error>
-                    
-                    </mat-form-field> -->
                 </div>
                 
-                <div class="row" x-test-hook-52>
-                    <mat-form-field appearance="outline" class="example-full-width" x-test-hook-53>
+                <div class="row">
+                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" class="example-full-width">
                         <mat-label>Shop URL</mat-label>
                         <input type="url" matInput autocomplete="off" placeholder="URL of the ecommerce" formControlName="shop_url"
-                                [errorStateMatcher]="matcher" x-test-hook-54>
-                        <mat-error x-test-hook-55>
-                            <span *ngIf="!itemForm.get('shop_url').valid && itemForm.get('shop_url').touched" x-test-hook-56>Please enter Shop URL</span>
+                        [errorStateMatcher]="matcher">
+                        <mat-error>
+                            <span *ngIf="!item.get('shop_url').valid && item.get('shop_url').touched">Please enter Shop URL</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
               
             </mat-card-content>
-            <mat-card-actions style="padding-left: 22px;" x-test-hook-57>
-                <button type="submit" [disabled]="!itemForm.valid" mat-flat-button color="primary" x-test-hook-58>ADD to wishlist!</button>
+            <mat-card-actions style="padding-left: 22px;">
+              <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-23>Go shopping!</a>
+              <button *ngIf="editingItemIndex == itemIndex" [disabled]="!item.valid" type="button" (click)="saveOrUpdateItem(item.value)" mat-flat-button color="primary">{{ (itemIndex == (wishlistItems.controls.length-1)) ? 'ADD to wishlist!' : 'Save' }}</button>
+              <button *ngIf="editingItemIndex != itemIndex" mat-button (click)="switchToEdit(itemIndex)">Edit</button>
+              <button *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" mat-button color="secondary" (click)="cancelEdit()">Cancel</button>
+           
+              <mat-divider [inset]="true" style="margin-top: 10px;" *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)"></mat-divider>
+            <button *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" mat-button style="margin-top: 20px" color="warn" (click)="deleteItem(item.value)" x-test-hook-24>Delete</button>
+            
+             
             </mat-card-actions>
-        </form>
-    </mat-card>
+      
+          </mat-card>
 
-</div>
-<div *ngIf="items.length > 10" x-test-tpl-59>
-    <button (click) ="firstPage()" mat-button x-test-hook-60> First</button>
-    <button (click) ="previousPage()" mat-button x-test-hook-61> Previous</button>
-    <button (click) ="nextPage()" mat-button x-test-hook-62> Next</button>
-    <button (click) ="lastPage()" mat-button x-test-hook-63> Last</button>
+          
+          <!-- <button type="button" (click)="deleteSellingPoint(itemIndex)">Delete Item</button> -->
+      </div>
+      
+    </div>
+  </form>
 </div>
