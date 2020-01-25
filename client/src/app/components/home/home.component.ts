@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { HttpResponse } from '@angular/common/http';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, GroupedObservable } from 'rxjs';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, FormArray } from '@angular/forms';
 
 import { ConfirmDialogModel, ConfirmDialogComponent } from '../ui-confirm-dialog/confirm-dialog.component';
@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material';
 import { isNumber } from 'util';
 import { Item } from 'src/app/models/item';
 import { element } from 'protractor';
+import { supportsPassiveEventListeners } from '@angular/cdk/platform';
 
 
 
@@ -44,12 +45,57 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 2,
-      value: 'Clothes'
+      value: 'Clothing'
+    },
+    {
+      id: 3,
+      value: 'Shoes'
+    },
+    {
+      id: 4,
+      value: 'Books, movies, music and games'
+    },
+    {
+      id: 5,
+      value: 'Cosmetic & body Care'
+    },
+    {
+      id: 6,
+      value: 'Bags & accessories'
+    },
+    {
+      id: 7,
+      value: 'Food & drinks'
+    },
+    {
+      id: 8,
+      value: 'Household appliances'
+    },
+    {
+      id: 9,
+      value: 'Furniture & household goods'
+    },
+    {
+      id: 10,
+      value: 'Sports & outdoor'
+    },{
+      id: 11,
+      value: 'Toys & baby products'
+    },
+    {
+      id: 12,
+      value: 'Hobby supplies'
+    },{
+      id: 13,
+      value: 'Bricolage, DIY & gardening'
+    },
+    {
+      id: 14,
+      value: 'Pets'
     }
   ];
   
-  
-
+ 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, public dialog: MatDialog) { 
    
     this.editingItemIndex = -1;
