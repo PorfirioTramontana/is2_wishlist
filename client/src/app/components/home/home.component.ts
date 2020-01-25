@@ -292,7 +292,8 @@ export class HomeComponent implements OnInit {
       );
     });
     this.fillFormArrayWithArray(this.wishlistItems, _wishlistItemsArr);  
-    
+    this.editingItemIndex = this.wishlistItems.length - 1;
+
   }
 
   sortItemsBy(val: string) {
