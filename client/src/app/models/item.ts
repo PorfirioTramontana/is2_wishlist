@@ -6,6 +6,5 @@ export class Item {
     image_url: string;
     category_id?: number;
     shop_url?: string;
-    add_date?: string;
-    
+    add_date?: string;    
 }

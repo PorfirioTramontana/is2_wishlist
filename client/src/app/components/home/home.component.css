@@ -12,3 +12,15 @@ mat-card {
 .example-full-width {
     width: 100%;
 }
+
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+    font-size: small;
+  }
+  
+  .example-margin {
+    margin: 10px;
+  }

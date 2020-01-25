@@ -55,7 +55,7 @@ export class ApiService {
 
   editItemInWishlist(item): Observable<Item> {
     return this.httpClient.put<Item>(this.SERVER_URL+'/'+item.id, item, httpOptions).pipe(
-      tap((item: Item) => console.log(`added item w/ id=${item.id}`)),
+      tap((item: Item) => console.log(`edited item w/ id=${item.id}`)),
       catchError(this.handleError)
     );
   }

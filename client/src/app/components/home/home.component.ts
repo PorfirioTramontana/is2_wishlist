@@ -3,11 +3,15 @@ import { ApiService } from '../../services/api.service';
 import { HttpResponse } from '@angular/common/http';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, FormArray } from '@angular/forms';
 
 import { ConfirmDialogModel, ConfirmDialogComponent } from '../ui-confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material';
 import { isNumber } from 'util';
+import { Item } from 'src/app/models/item';
+import { element } from 'protractor';
+
+
 
 
 @Component({
@@ -15,14 +19,23 @@ import { isNumber } from 'util';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
 
+  productForm: FormGroup;
+  isLoading = false;
   items = [];
+  displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
-  isLoading: boolean;
-  itemForm: FormGroup;
-  itemEditForm: FormGroup;
-  editingItem: boolean;
+  editingItemIndex: Number;
+  
+  itemFormGroup = {
+    'title': [null, Validators.required],
+    'description': [null, Validators.required],
+    'image_url': [null, Validators.required],
+    'category_id': [null],
+    'shop_url': [null]
+  };
+
 
   categories = [
     {
@@ -38,136 +51,99 @@ export class HomeComponent implements OnInit, OnDestroy {
   
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, public dialog: MatDialog) { 
-    this.isLoading = false;
-    this.editingItem = false;
+   
+    this.editingItemIndex = -1;
   }
 
-  switchToEdit(item: any) {
-    console.log(item);
-    this.itemEditForm = this.formBuilder.group({
-      'id': item.id,
-      'title': item.title,
-      'description': item.description,
-      'image_url': item.image_url,
-      'category_id': item.category_id,
-      'shop_url': item.shop_url
-    });
-    this.editingItem = true;
+
+  get wishlistItems() {
+    return this.productForm.get('wishlist_items') as FormArray;
   }
 
-  switchToList() {
-    //this.itemEditForm = this.itemForm;
-    this.editingItem = false;
+  addItem() {
+    this.wishlistItems.push(this.formBuilder.group(this.itemFormGroup));
   }
 
-  public getCategoryValueById(category_id) {
+  saveOrUpdateItem(item: Item) {
+    this.isLoading = true;
+    if (item.id && item.id > 0) {
+      this.apiService.editItemInWishlist(item)
+      .subscribe(res => {
+          this.isLoading = false;
+          this.refreshData();
+        }, (err) => {
+          console.log(err);
+          this.isLoading = false;
+        });
+    }
+    else {
+      this.apiService.addItemToWishlist(item)
+      .subscribe(res => {
+        this.isLoading = false;
+          this.refreshData();          
+        }, (err) => {
+          console.log(err);
+          this.isLoading = false;
+        });
+    }
+  }
+
+  
+  deleteSellingPoint(index) {
+    this.wishlistItems.removeAt(index);
+  }
+
+  ngOnInit() {
+
+    this.productForm = this.formBuilder.group({
+      title: 'WISHLIST',
+      wishlist_items: this.formBuilder.array(this.items)
+      // wishlist_items: this.formBuilder.array([this.formBuilder.group(this.itemFormGroup)])
+    })
+
+    this.refreshData();
+    
+  }
+
+  refreshData() {
+    this.isLoading = true;
+    this.apiService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<Array<Item>>)=>{  
+      
+      this.items = res.body;
+      
+      while (this.wishlistItems.length !== 0) {
+        this.wishlistItems.removeAt(0)
+      }
+      this.items.forEach(element => {
+        this.wishlistItems.push(this.formBuilder.group(element));
+      });
+      this.addItem();
+      this.editingItemIndex = this.wishlistItems.length - 1;
+      // console.log(res.body);  
+      this.displayedItems = res.body;
+      this.isLoading = false;
+    })
+  }
+
+
+  getCategoryValueById(category_id) {
     if( !isNumber(category_id)) return '';
     let category = this.categories.filter(function (el) { return (el.id === category_id )});
     return category[0].value;
   }
 
-  public firstPage() {
-    this.items = [];
-    this.apiService.sendGetRequestToUrl(this.apiService.first).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-      console.log(res);
-      this.items = res.body;
-    })
-  }
-  public previousPage() {
+  switchToEdit(index: Number) {
 
-    if (this.apiService.prev !== undefined && this.apiService.prev !== '') {
-      this.items = [];
-      this.apiService.sendGetRequestToUrl(this.apiService.prev).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-        console.log(res);
-        this.items = res.body;
-      })
-    }
-
-  }
-  public nextPage() {
-    if (this.apiService.next !== undefined && this.apiService.next !== '') {
-      this.items = [];
-      this.apiService.sendGetRequestToUrl(this.apiService.next).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-        console.log(res);
-        this.items = res.body;
-      })
-    }
-  }
-  public lastPage() {
-    this.items = [];
-    this.apiService.sendGetRequestToUrl(this.apiService.last).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-      console.log(res);
-      this.items = res.body;
-    })
-  }
-
-  ngOnInit() {
-    this.itemForm = this.formBuilder.group({
-      'title': [null, Validators.required],
-      'description': [null, Validators.required],
-      'image_url': [null, Validators.required],
-      'category_id': [null],
-      'shop_url': [null]
-    });
-
-    this.itemEditForm = this.formBuilder.group({
-      'title': [null, Validators.required],
-      'description': [null, Validators.required],
-      'image_url': [null, Validators.required],
-      'category_id': [null],
-      'shop_url': [null]
-    });
-
-    this.refreshData();
-      
-  }
-
-  refreshData() {
-    this.isLoading = true;
-    this.apiService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>)=>{  
-      this.items = res.body;  
-      this.isLoading = false;
-    })
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    // Unsubscribe from the subject
-    this.destroy$.unsubscribe();
-  }
-
-  onFormSubmit(form:NgForm) {
-    this.isLoading = true;
-    this.apiService.addItemToWishlist(form)
-      .subscribe(res => {
-          //let id = res['id'];
-          this.isLoading = false;
-          this.refreshData();
-          //this.router.navigate(['/user-details', id]);
-        }, (err) => {
-          console.log(err);
-          this.isLoading = false;
-        });
-  }
-
-  onEditFormSubmit(form:NgForm) {
-    this.isLoading = true;
-    this.apiService.editItemInWishlist(form)
-      .subscribe(res => {
-          //let id = res['id'];
-          this.isLoading = false;
-          this.editingItem = false;
-          this.refreshData();
-          //this.router.navigate(['/user-details', id]);
-        }, (err) => {
-          console.log(err);
-          this.isLoading = false;
-        });
+    this.editingItemIndex = index;
     
   }
 
-  confirmDialog(itemId: number): void {
-    const message = `Are you sure you want to delete this item ?`;
+  cancelEdit() {
+    this.editingItemIndex = this.wishlistItems.length - 1;
+  }
+  
+  deleteItem(item: Item): void {
+    const message = 'Are you sure you want to delete the '+ item.title +' from your wishlist ?';
 
     const dialogData = new ConfirmDialogModel("Confirm Action", message);
 
@@ -177,9 +153,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      console.log(dialogResult);
       this.isLoading = true;
-      this.apiService.deleteItemById(itemId)
+      // FIXME (add check on result, otherwise I'll delete in each case :)
+      this.apiService.deleteItemById(item.id)
         .subscribe(res => {
             //let id = res['id'];
             this.isLoading = false;
@@ -193,4 +169,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
+  
+
+  
 }

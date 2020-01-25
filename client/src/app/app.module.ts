@@ -21,7 +21,9 @@ import {
   MatInputModule,
   MatSelectModule,
   MatDividerModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatRadioModule,
+  MatRippleModule
 } from '@angular/material';
 
 import { CustomMaterialModule } from './components/ui-custom-material/custom-material.module';
@@ -34,6 +36,8 @@ import {
   MdcFormFieldModule,
   MdcTextFieldModule
 } from '@angular-mdc/web';
+
+import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,9 @@ import {
     MdcTextFieldModule,
     MatDividerModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NgMatSearchBarModule,
+    MatRadioModule
   ],
   providers: [],
   entryComponents: [ConfirmDialogComponent],
