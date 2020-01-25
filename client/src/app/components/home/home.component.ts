@@ -49,6 +49,11 @@ export class HomeComponent implements OnInit {
 
   searchBar: FormControl;
   sortBy: FormControl;
+  previousSortCriteria: string;
+  sortAscending = true;
+
+  previousWishListItems: FormArray;
+
   
   itemFormGroup = {
     'title': [null, Validators.required],
@@ -122,7 +127,7 @@ export class HomeComponent implements OnInit {
     this.editingItemIndex = -1;
     this.searchBar = new FormControl('');
     this.sortBy = new FormControl('add_date');
-  
+    this.previousSortCriteria = this.sortBy.value;
   }
 
 
@@ -176,6 +181,8 @@ export class HomeComponent implements OnInit {
       sortBy: [null] 
     });
 
+    this.previousWishListItems = this.formBuilder.array([]);
+
     this.onSearchBarValueChanges();
     this.onSortByValueChanges();
     this.refreshData();
@@ -184,14 +191,24 @@ export class HomeComponent implements OnInit {
 
   onSearchBarValueChanges(): void {
     this.searchBar.valueChanges.subscribe(val => {
+      //if(this.previousWishListItems && this.previousWishListItems.length == 0) this.previousWishListItems = this.wishlistItems.value;
       this.filterItems(val);
     });
   }
 
   onSortByValueChanges(): void {
     this.sortBy.valueChanges.subscribe(val => {
+      
       this.sortItemsBy(val);
+            
     });
+  }
+
+  onSortByClick() {
+    
+    this.sortAscending = !this.sortAscending;
+    this.sortItemsBy(this.sortBy.value);
+    
   }
 
   refreshData() {
@@ -207,6 +224,9 @@ export class HomeComponent implements OnInit {
         this.wishlistItems.push(this.formBuilder.group(element));
       });
       this.addItem();
+
+      //this.previousWishListItems = this.wishlistItems;
+
       this.editingItemIndex = this.wishlistItems.length - 1;
       // console.log(res.body);  
       this.displayedItems = res.body;
@@ -265,13 +285,21 @@ export class HomeComponent implements OnInit {
     for (let i=0;i<itemsArray.length;i++) {
       this.wishlistItems.push(this.formBuilder.group(itemsArray[i]));
     }
+    // Add new item form group
+    this.wishlistItems.push(this.formBuilder.group(this.itemFormGroup));
   }
 
   filterItems(val: string) {
-    this.fillWishListFromItemsArray(this.items);
+    let _displayedItemes = [];
+    this.wishlistItems.value.forEach(element => {
+      if(element.id && element.id > 0) _displayedItemes.push(element);
+    });
+    
+
+    // this.fillWishListFromItemsArray(this.items);
+    //this.sortItemsBy(this.sortBy.value);
 //    console.log(this.wishlistItems);
-    let _wishlistItemsArr = this.items;
-    _wishlistItemsArr = _wishlistItemsArr.filter(item => {
+    let _wishlistItemsArr = _displayedItemes.filter(item => {
       return (
         item.title.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) !== -1 ||
         item.description.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) !== -1 
@@ -283,20 +311,29 @@ export class HomeComponent implements OnInit {
   }
 
   sortItemsBy(val: string) {
+    
+    let _displayedItemes = [];
+    this.wishlistItems.value.forEach(element => {
+      if(element.id && element.id > 0) _displayedItemes.push(element);
+    });
     if (val == 'name') {
-        this.displayedItems = this.displayedItems.sort(dynamicSort("title"));
+      _displayedItemes = _displayedItemes.sort(dynamicSort("title"));
     }
     else {
       //console.log(typeof this.displayedItems);
-      this.displayedItems = this.displayedItems.sort(function(a, b){
-        var keyA = new Date(a.date_add),
-            keyB = new Date(b.date_add);
+      _displayedItemes = _displayedItemes.sort(function(a, b){
+        let keyA = new Date(a.add_date),
+            keyB = new Date(b.add_date);
         // Compare the 2 dates
         if(keyA < keyB) return -1;
         if(keyA > keyB) return 1;
         return 0;
       });
     }
+    if(!this.sortAscending) _displayedItemes = _displayedItemes.reverse();
+    
+    this.fillWishListFromItemsArray(_displayedItemes);
+    this.previousSortCriteria = val;
   }
   
 
