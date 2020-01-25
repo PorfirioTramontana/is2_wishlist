@@ -191,7 +191,6 @@ export class HomeComponent implements OnInit {
 
   onSearchBarValueChanges(): void {
     this.searchBar.valueChanges.subscribe(val => {
-      //if(this.previousWishListItems && this.previousWishListItems.length == 0) this.previousWishListItems = this.wishlistItems.value;
       this.filterItems(val);
     });
   }
@@ -215,21 +214,11 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     this.apiService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<Array<Item>>)=>{  
       
-      this.items = res.body;
-      
-      while (this.wishlistItems.length !== 0) {
-        this.wishlistItems.removeAt(0)
-      }
-      this.items.forEach(element => {
-        this.wishlistItems.push(this.formBuilder.group(element));
-      });
-      this.addItem();
-
-      //this.previousWishListItems = this.wishlistItems;
-
+      this.fillFormArrayWithArray(this.wishlistItems, res.body);
       this.editingItemIndex = this.wishlistItems.length - 1;
-      // console.log(res.body);  
-      this.displayedItems = res.body;
+
+      this.fillFormArrayWithArray(this.previousWishListItems, res.body);
+      
       this.isLoading = false;
     })
   }
@@ -277,36 +266,32 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  fillWishListFromItemsArray(itemsArray: Item[]) {
-    while (this.wishlistItems.length !== 0) {
-      this.wishlistItems.removeAt(0)
-    }
+  fillFormArrayWithArray(formArray: FormArray, array: any[]): FormArray {
+    formArray.clear();
     
-    for (let i=0;i<itemsArray.length;i++) {
-      this.wishlistItems.push(this.formBuilder.group(itemsArray[i]));
+    for (let i=0;i<array.length;i++) {
+      formArray.push(this.formBuilder.group(array[i]));
     }
-    // Add new item form group
-    this.wishlistItems.push(this.formBuilder.group(this.itemFormGroup));
+    formArray.push(this.formBuilder.group(this.itemFormGroup));
+    return formArray;
   }
 
+  
+
   filterItems(val: string) {
+
     let _displayedItemes = [];
-    this.wishlistItems.value.forEach(element => {
+    this.previousWishListItems.value.forEach(element => {
       if(element.id && element.id > 0) _displayedItemes.push(element);
     });
     
-
-    // this.fillWishListFromItemsArray(this.items);
-    //this.sortItemsBy(this.sortBy.value);
-//    console.log(this.wishlistItems);
     let _wishlistItemsArr = _displayedItemes.filter(item => {
       return (
         item.title.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) !== -1 ||
         item.description.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) !== -1 
       );
     });
-    this.fillWishListFromItemsArray(_wishlistItemsArr);
-  
+    this.fillFormArrayWithArray(this.wishlistItems, _wishlistItemsArr);  
     
   }
 
@@ -332,7 +317,7 @@ export class HomeComponent implements OnInit {
     }
     if(!this.sortAscending) _displayedItemes = _displayedItemes.reverse();
     
-    this.fillWishListFromItemsArray(_displayedItemes);
+    this.fillFormArrayWithArray(this.wishlistItems, _displayedItemes);
     this.previousSortCriteria = val;
   }
   
