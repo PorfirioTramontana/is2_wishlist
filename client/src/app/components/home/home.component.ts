@@ -14,6 +14,22 @@ import { supportsPassiveEventListeners } from '@angular/cdk/platform';
 
 
 
+function dynamicSort(property) {
+  var sortOrder = 1;
+
+  if(property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+  }
+
+  return function (a,b) {
+      if(sortOrder == -1){
+          return b[property].localeCompare(a[property]);
+      }else{
+          return a[property].localeCompare(b[property]);
+      }        
+  }
+}
 
 @Component({
   selector: 'app-home',
@@ -28,6 +44,11 @@ export class HomeComponent implements OnInit {
   displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
   editingItemIndex: Number;
+
+  searchAndSortForm: FormGroup;
+
+  searchBar: FormControl;
+  sortBy: FormControl;
   
   itemFormGroup = {
     'title': [null, Validators.required],
@@ -99,6 +120,9 @@ export class HomeComponent implements OnInit {
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, public dialog: MatDialog) { 
    
     this.editingItemIndex = -1;
+    this.searchBar = new FormControl('');
+    this.sortBy = new FormControl('add_date');
+  
   }
 
 
@@ -147,8 +171,27 @@ export class HomeComponent implements OnInit {
       // wishlist_items: this.formBuilder.array([this.formBuilder.group(this.itemFormGroup)])
     })
 
+    this.searchAndSortForm = this.formBuilder.group({ 
+      searchBar: [null],
+      sortBy: [null] 
+    });
+
+    this.onSearchBarValueChanges();
+    this.onSortByValueChanges();
     this.refreshData();
     
+  }
+
+  onSearchBarValueChanges(): void {
+    this.searchBar.valueChanges.subscribe(val => {
+      this.filterItems(val);
+    });
+  }
+
+  onSortByValueChanges(): void {
+    this.sortBy.valueChanges.subscribe(val => {
+      this.sortItemsBy(val);
+    });
   }
 
   refreshData() {
@@ -199,8 +242,8 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == false) return;
       this.isLoading = true;
-      // FIXME (add check on result, otherwise I'll delete in each case :)
       this.apiService.deleteItemById(item.id)
         .subscribe(res => {
             //let id = res['id'];
@@ -210,11 +253,51 @@ export class HomeComponent implements OnInit {
           }, (err) => {
             console.log(err);
             this.isLoading = false;
-          });
-          
+          });         
     });
   }
 
+  fillWishListFromItemsArray(itemsArray: Item[]) {
+    while (this.wishlistItems.length !== 0) {
+      this.wishlistItems.removeAt(0)
+    }
+    
+    for (let i=0;i<itemsArray.length;i++) {
+      this.wishlistItems.push(this.formBuilder.group(itemsArray[i]));
+    }
+  }
+
+  filterItems(val: string) {
+    this.fillWishListFromItemsArray(this.items);
+//    console.log(this.wishlistItems);
+    let _wishlistItemsArr = this.items;
+    _wishlistItemsArr = _wishlistItemsArr.filter(item => {
+      return (
+        item.title.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) !== -1 ||
+        item.description.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) !== -1 
+      );
+    });
+    this.fillWishListFromItemsArray(_wishlistItemsArr);
+  
+    
+  }
+
+  sortItemsBy(val: string) {
+    if (val == 'name') {
+        this.displayedItems = this.displayedItems.sort(dynamicSort("title"));
+    }
+    else {
+      //console.log(typeof this.displayedItems);
+      this.displayedItems = this.displayedItems.sort(function(a, b){
+        var keyA = new Date(a.date_add),
+            keyB = new Date(b.date_add);
+        // Compare the 2 dates
+        if(keyA < keyB) return -1;
+        if(keyA > keyB) return 1;
+        return 0;
+      });
+    }
+  }
   
 
   

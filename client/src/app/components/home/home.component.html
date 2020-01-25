@@ -1,3 +1,25 @@
+<form [formGroup]="searchAndSortForm">
+    <mat-toolbar>
+       <section class="example-section">
+            <label class="example-margin">Sort by:</label>
+            <mat-radio-group [formControl]="sortBy">
+            <mat-radio-button class="example-margin" value="add_date">
+                Add date
+            </mat-radio-button>
+            <mat-radio-button class="example-margin" value="name">
+                Name
+            </mat-radio-button>
+            <!-- <mat-radio-button class="example-margin" value="priority">
+                Priority
+            </mat-radio-button> -->
+            </mat-radio-group>
+      </section>
+    <div class="mdl-layout-spacer"></div>
+    
+        <mat-search-bar aria-hidden="false" [formControl]="searchBar" autocomplete="off"></mat-search-bar>
+        
+</mat-toolbar>
+</form>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <div style="padding: 13px;" x-test-tpl-11>
   <div class="sad_empty_list" *ngIf="displayedItems.length == 0" x-test-hook-13>
