@@ -47,6 +47,7 @@ export class ApiService {
 
 
   addItemToWishlist(item): Observable<Item> {
+    item['add_date'] = new Date();
     return this.httpClient.post<Item>(this.SERVER_URL, item, httpOptions).pipe(
       tap((item: Item) => console.log(`added item w/ id=${item.id}`)),
       catchError(this.handleError)

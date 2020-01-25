@@ -1,8 +1,8 @@
 <form [formGroup]="searchAndSortForm">
     <mat-toolbar>
        <section class="example-section">
-            <label class="example-margin">Sort by:</label>
-            <mat-radio-group [formControl]="sortBy">
+            <label class="example-margin">Sort {{ sortAscending ? 'ascending' : 'descending'}} by:</label>
+            <mat-radio-group (click)="onSortByClick()" [formControl]="sortBy">
             <mat-radio-button class="example-margin" value="add_date">
                 Add date
             </mat-radio-button>
@@ -16,13 +16,13 @@
       </section>
     <div class="mdl-layout-spacer"></div>
     
-        <mat-search-bar aria-hidden="false" [formControl]="searchBar" autocomplete="off"></mat-search-bar>
+        <mat-search-bar aria-hidden="false" [formControl]="searchBar" aria-autocomplete="false" autocomplete="off"></mat-search-bar>
         
 </mat-toolbar>
 </form>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <div style="padding: 13px;" x-test-tpl-11>
-  <div class="sad_empty_list" *ngIf="displayedItems.length == 0" x-test-hook-13>
+  <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-13>
       <h2 x-test-hook-14>😢</h2>
       <h3 x-test-hook-15>Please add something to your list.</h3>
   </div>
