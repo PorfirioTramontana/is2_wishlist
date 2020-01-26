@@ -1,0 +1,21 @@
+/* .mat-bottom-sheet-container-large {
+    min-width: 48vw;
+}
+
+.mat-bottom-sheet-container {
+    max-height: 87vh;
+} */
+
+
+.cancel_newitem_button {
+    position: fixed !important;
+    right: 15px; /* Add this and change value to set the margin you want */
+    top: 15px;
+}
+
+.add_to_wishlist_btn {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 45px;
+    text-align: center;
+}

@@ -23,7 +23,10 @@ import {
   MatDividerModule,
   MatExpansionModule,
   MatRadioModule,
-  MatRippleModule
+  MatRippleModule,
+  MatGridListModule,
+  MatBottomSheetModule,
+  MatBottomSheetRef
 } from '@angular/material';
 
 import { CustomMaterialModule } from './components/ui-custom-material/custom-material.module';
@@ -38,13 +41,15 @@ import {
 } from '@angular-mdc/web';
 
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
+import { AddNewItemBottomSheet } from './components/ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddNewItemBottomSheet
   ],
   imports: [
     BrowserModule,
@@ -70,10 +75,12 @@ import { NgMatSearchBarModule } from 'ng-mat-search-bar';
     MatSelectModule,
     MatExpansionModule,
     NgMatSearchBarModule,
-    MatRadioModule
+    MatRadioModule,
+    MatGridListModule,
+    MatBottomSheetModule
   ],
   providers: [],
-  entryComponents: [ConfirmDialogComponent],
+  entryComponents: [ConfirmDialogComponent, AddNewItemBottomSheet],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

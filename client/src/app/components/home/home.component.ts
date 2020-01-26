@@ -11,6 +11,8 @@ import { isNumber } from 'util';
 import { Item } from 'src/app/models/item';
 import { element } from 'protractor';
 import { supportsPassiveEventListeners } from '@angular/cdk/platform';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { AddNewItemBottomSheet } from '../ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
 
 
 
@@ -44,6 +46,7 @@ export class HomeComponent implements OnInit {
   displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
   editingItemIndex: Number;
+  _addnewitemBottomSheetRef: MatBottomSheetRef;
 
   searchAndSortForm: FormGroup;
 
@@ -122,12 +125,22 @@ export class HomeComponent implements OnInit {
   ];
   
  
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, public dialog: MatDialog) { 
+  constructor(
+    private apiService: ApiService, 
+    private formBuilder: FormBuilder, 
+    public dialog: MatDialog,
+    private _bottomSheet: MatBottomSheet
+    ) { 
    
     this.editingItemIndex = -1;
     this.searchBar = new FormControl('');
     this.sortBy = new FormControl('add_date');
     this.previousSortCriteria = this.sortBy.value;
+
+    // this._addNewItemBottomSheetRef.afterDismissed().subscribe(() => {
+    //   console.log('Bottom sheet has been dismissed.');
+    // });
+
   }
 
 
@@ -139,28 +152,16 @@ export class HomeComponent implements OnInit {
     this.wishlistItems.push(this.formBuilder.group(this.itemFormGroup));
   }
 
-  saveOrUpdateItem(item: Item) {
+  updateItem(item: Item) {
     this.isLoading = true;
-    if (item.id && item.id > 0) {
-      this.apiService.editItemInWishlist(item)
-      .subscribe(res => {
-          this.isLoading = false;
-          this.refreshData();
-        }, (err) => {
-          console.log(err);
-          this.isLoading = false;
-        });
-    }
-    else {
-      this.apiService.addItemToWishlist(item)
-      .subscribe(res => {
+    this.apiService.editItemInWishlist(item)
+    .subscribe(res => {
         this.isLoading = false;
-          this.refreshData();          
-        }, (err) => {
-          console.log(err);
-          this.isLoading = false;
-        });
-    }
+        this.refreshData();
+      }, (err) => {
+        console.log(err);
+        this.isLoading = false;
+      });  
   }
 
   
@@ -215,7 +216,7 @@ export class HomeComponent implements OnInit {
     this.apiService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<Array<Item>>)=>{  
       
       this.fillFormArrayWithArray(this.wishlistItems, res.body);
-      this.editingItemIndex = this.wishlistItems.length - 1;
+      //this.editingItemIndex = this.wishlistItems.length - 1;
 
       this.fillFormArrayWithArray(this.previousWishListItems, res.body);
       
@@ -237,7 +238,7 @@ export class HomeComponent implements OnInit {
   }
 
   cancelEdit() {
-    this.editingItemIndex = this.wishlistItems.length - 1;
+    this.editingItemIndex = - 1;
   }
   
   deleteItem(item: Item): void {
@@ -272,7 +273,7 @@ export class HomeComponent implements OnInit {
     for (let i=0;i<array.length;i++) {
       formArray.push(this.formBuilder.group(array[i]));
     }
-    formArray.push(this.formBuilder.group(this.itemFormGroup));
+    // formArray.push(this.formBuilder.group(this.itemFormGroup));
     return formArray;
   }
 
@@ -292,7 +293,7 @@ export class HomeComponent implements OnInit {
       );
     });
     this.fillFormArrayWithArray(this.wishlistItems, _wishlistItemsArr);  
-    this.editingItemIndex = this.wishlistItems.length - 1;
+    // this.editingItemIndex = this.wishlistItems.length - 1;
 
   }
 
@@ -321,6 +322,21 @@ export class HomeComponent implements OnInit {
     this.fillFormArrayWithArray(this.wishlistItems, _displayedItemes);
     this.previousSortCriteria = val;
   }
+  
+  openBottomSheet(): void {
+
+    this._addnewitemBottomSheetRef = this._bottomSheet.open(AddNewItemBottomSheet, {
+      ariaLabel: 'Share on social media'
+    });
+
+    this._addnewitemBottomSheetRef.afterDismissed().subscribe(() => {
+      
+      this.refreshData();
+  
+    });
+
+  }
+
   
 
   

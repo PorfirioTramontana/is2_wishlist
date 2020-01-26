@@ -4,7 +4,8 @@
 }
 
 mat-card {
-    width: 300px;
+    width: 20%;
+    min-width: 280px;
     float: left;    
     margin-right: 30px;
 }
@@ -23,4 +24,27 @@ mat-card {
   
   .example-margin {
     margin: 10px;
+  }
+
+  .item_image {
+      width: 90%;
+      height: auto;
+  }
+
+  mat-card-title {
+      width: 100%;
+  }
+
+  .right_pane {
+    width: 50%;
+    height: auto;
+    float: left;
+    background-color: aliceblue;
+  }
+
+  .add_new_item_fab {
+    position: fixed !important;
+    z-index: 99999;
+    right: 15px; /* Add this and change value to set the margin you want */
+    bottom: 20px;
   }
