@@ -13,6 +13,8 @@ import { element } from 'protractor';
 import { supportsPassiveEventListeners } from '@angular/cdk/platform';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { AddNewItemBottomSheet } from '../ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
+import { FbService } from 'src/app/services/fb.service';
+import { Router } from '@angular/router';
 //import { categories } from 'src/app/data/categories';
 
 
@@ -73,6 +75,8 @@ export class HomeComponent implements OnInit {
  
   constructor(
     private apiService: ApiService, 
+    private fbService: FbService,
+    private router: Router,
     private formBuilder: FormBuilder, 
     public dialog: MatDialog,
     private _bottomSheet: MatBottomSheet,
@@ -286,6 +290,13 @@ export class HomeComponent implements OnInit {
     });
 
   }
+
+  // logout() {
+  //   // const router = this.router;
+  //   this.fbService.logout(); // pipe the router navigation
+  //   this.router.navigateByUrl('/');
+
+  // }
 
   
 

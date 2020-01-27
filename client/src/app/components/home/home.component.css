@@ -50,7 +50,9 @@ mat-card {
   }
 
   .right_pane {
-    width: 50%;
+    width: 48%;
     float: left;
+    background: url('/assets/striped_bg.jpg') 0 0 repeat;
+    padding-left: 15px;
     /* background-color: aliceblue; */
   }
