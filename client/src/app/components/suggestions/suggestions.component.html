@@ -1,0 +1,23 @@
+<h2>Some suggestions for your wishlist 😉</h2>
+<mat-spinner *ngIf="isLoadingSuggestions"></mat-spinner>
+          <div class="suggestion_card" *ngFor="let item of items; let itemIndex=index; let last=last">
+            <mat-card style="margin-top:10px;">
+                    <mat-card-title class="suggestion_card_title">{{item.title}}</mat-card-title>
+                    <mat-card-subtitle>{{ item.category_id | categorynamebyid }}</mat-card-subtitle>
+                    <img class="suggestion_item_image" src="{{ item.image_url }}" />                        
+        
+                    <div class="row" style=" margin-top: 20px;">
+                        <p class="suggestion_card_description">
+                            {{item.description}}
+                        </p>
+                    </div>
+                    <mat-card-actions style="padding-left: 22px;">
+                       
+                    <button type="button" (click)="addToWishList(item)" mat-stroked-button color="accent">ADD to wishlist!</button>
+                </mat-card-actions>
+
+              </mat-card>
+    
+              
+          </div>
+    

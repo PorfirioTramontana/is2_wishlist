@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular
 import { throwError, Observable } from 'rxjs';
 import { retry, catchError, tap } from 'rxjs/operators';
 import { Item } from '../models/item';
+import { SERVER_URL } from 'src/environments/environment'; // CHECK ho to switch env
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -14,7 +15,7 @@ const httpOptions = {
 })
 export class ApiService {
 
-  private SERVER_URL = "http://127.0.0.1:3000/items";
+  private default_endpoint = "/items";
   public first: string = "";  
   public prev: string = "";  
   public next: string = "";  
@@ -22,10 +23,11 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public sendGetRequest() {
+  public sendGetRequest(endpoint?: string) {
+    let _url = (endpoint && endpoint.length > 5) ? SERVER_URL+endpoint : SERVER_URL+this.default_endpoint;
     // Added suppprt to safe, URL encoded _page and _limit parameters 
     return this.httpClient
-      .get(this.SERVER_URL, 
+      .get(_url, 
       {  params: new HttpParams(
           { fromString: "_page=1&_limit=20" }
         ), observe: "response"
@@ -48,21 +50,21 @@ export class ApiService {
 
   addItemToWishlist(item): Observable<Item> {
     item['add_date'] = new Date();
-    return this.httpClient.post<Item>(this.SERVER_URL, item, httpOptions).pipe(
+    return this.httpClient.post<Item>(SERVER_URL+this.default_endpoint, item, httpOptions).pipe(
       tap((item: Item) => console.log(`added item w/ id=${item.id}`)),
       catchError(this.handleError)
     );
   }
 
   editItemInWishlist(item): Observable<Item> {
-    return this.httpClient.put<Item>(this.SERVER_URL+'/'+item.id, item, httpOptions).pipe(
+    return this.httpClient.put<Item>(SERVER_URL+this.default_endpoint+'/'+item.id, item, httpOptions).pipe(
       tap((item: Item) => console.log(`edited item w/ id=${item.id}`)),
       catchError(this.handleError)
     );
   }
 
   deleteItemById(item): Observable<Item> {
-    return this.httpClient.delete<Item>(this.SERVER_URL+'/'+item, httpOptions).pipe(
+    return this.httpClient.delete<Item>(SERVER_URL+this.default_endpoint+'/'+item, httpOptions).pipe(
       tap((item: Item) => console.log(`deleted item w/ id=${item.id}`)),
       catchError(this.handleError)
     );

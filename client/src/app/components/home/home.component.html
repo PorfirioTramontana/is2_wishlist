@@ -25,7 +25,7 @@
 </mat-toolbar>
 </form>
 
-<div style="width: 100%;float: left;">
+<div class="left_pane">
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <div style="padding: 13px;" x-test-tpl-11>
       <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-13>
@@ -42,7 +42,7 @@
               <mat-card style="margin-top:10px;">
                 <div *ngIf="editingItemIndex != itemIndex">
                                  <mat-card-title x-test-hook-18>{{item.value.title}}</mat-card-title>
-                                    <mat-card-subtitle>{{ getCategoryValueById(item.value.category_id) }}</mat-card-subtitle>
+                                    <mat-card-subtitle>{{ item.value.category_id | categorynamebyid }}</mat-card-subtitle>
                                     <img class="item_image" src="{{ item.value.image_url }}" x-test-hook-20 />                        
                        
                                     <div class="row" style=" margin-top: 20px;">
@@ -149,6 +149,6 @@
     </div>
     
 </div>
-<!-- <div class="right_pane">
-
-</div> -->
+<div class="right_pane">
+    <app-suggestions></app-suggestions>
+</div>
