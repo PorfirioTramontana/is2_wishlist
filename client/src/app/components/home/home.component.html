@@ -1,6 +1,28 @@
+<form [formGroup]="searchAndSortForm" x-test-tpl-61>
+    <mat-toolbar x-test-hook-62>
+       <section class="example-section" x-test-hook-63>
+            <label class="example-margin" x-test-hook-64><a mat-stroked-button (click)="onSortByClick()" x-test-hook-65>Sort {{ sortAscending ? 'ascending' : 'descending'}} by</a></label>
+            <mat-radio-group [formControl]="sortBy" x-test-hook-66>
+            <mat-radio-button class="example-margin" value="add_date" x-test-hook-67>
+                Add date
+            </mat-radio-button>
+            <mat-radio-button class="example-margin" value="name" x-test-hook-68>
+                Name
+            </mat-radio-button>
+            <!-- <mat-radio-button class="example-margin" value="priority">
+                Priority
+            </mat-radio-button> -->
+            </mat-radio-group>
+      </section>
+    <div class="mdl-layout-spacer" x-test-hook-69></div>
+    
+        <mat-search-bar aria-hidden="false" [formControl]="searchBar" aria-autocomplete="false" autocomplete="off" x-test-hook-70></mat-search-bar>
+        
+</mat-toolbar>
+</form>
 <mat-spinner *ngIf="isLoading" x-test-tpl-2></mat-spinner>
 <div style="padding: 13px;" x-test-tpl-3>
-  <div class="sad_empty_list" *ngIf="displayedItems.length == 0" x-test-hook-4>
+  <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-4>
       <h2 x-test-hook-5>😢</h2>
       <h3 x-test-hook-6>Please add something to your list.</h3>
   </div>
@@ -93,11 +115,11 @@
             <mat-card-actions style="padding-left: 22px;" x-test-hook-47>
               <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-48>Go shopping!</a>
               <button *ngIf="editingItemIndex == itemIndex" [disabled]="!item.valid" type="button" (click)="saveOrUpdateItem(item.value)" mat-flat-button color="primary" x-test-hook-49>{{ (itemIndex == (wishlistItems.controls.length-1)) ? 'ADD to wishlist!' : 'Save' }}</button>
-              <button *ngIf="editingItemIndex != itemIndex" mat-button (click)="switchToEdit(itemIndex)" x-test-hook-50>Edit</button>
-              <button *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" mat-button color="secondary" (click)="cancelEdit()" x-test-hook-51>Cancel</button>
+              <button *ngIf="editingItemIndex != itemIndex" mat-stroked-button (click)="switchToEdit(itemIndex)" x-test-hook-50>Edit</button>
+              <button *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" mat-stroked-button color="secondary" (click)="cancelEdit()" x-test-hook-51>Cancel</button>
            
               <mat-divider [inset]="true" style="margin-top: 10px;" *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" x-test-hook-52></mat-divider>
-            <button *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" mat-button style="margin-top: 20px" color="warn" (click)="deleteItem(item.value)" x-test-hook-53>Delete</button>
+            <button *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" mat-stroked-button style="margin-top: 20px" color="warn" (click)="deleteItem(item.value)" x-test-hook-53>Delete</button>
             
              
             </mat-card-actions>
