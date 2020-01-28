@@ -5,7 +5,7 @@
 
 mat-card {
     width: 20%;
-    min-width: 280px;
+    min-width: 270px;
     float: left;    
     margin-right: 30px;
 }
@@ -35,12 +35,7 @@ mat-card {
       width: 100%;
   }
 
-  .right_pane {
-    width: 50%;
-    height: auto;
-    float: left;
-    background-color: aliceblue;
-  }
+ 
 
   .add_new_item_fab {
     position: fixed !important;
@@ -48,3 +43,18 @@ mat-card {
     right: 15px; /* Add this and change value to set the margin you want */
     bottom: 20px;
   }
+
+  .left_pane {
+    width: 50%;
+    float: left;
+  }
+
+  .right_pane {
+    width: 48%;
+    float: left;
+    background: url('/assets/striped_bg.jpg') 0 0 repeat;
+    padding-left: 15px;
+    /* background-color: aliceblue; */
+  }
+
+ 

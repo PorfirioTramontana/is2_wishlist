@@ -6,14 +6,16 @@ import { Subject, GroupedObservable } from 'rxjs';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, FormArray } from '@angular/forms';
 
 import { ConfirmDialogModel, ConfirmDialogComponent } from '../ui-confirm-dialog/confirm-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { isNumber } from 'util';
 import { Item } from 'src/app/models/item';
 import { element } from 'protractor';
 import { supportsPassiveEventListeners } from '@angular/cdk/platform';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { AddNewItemBottomSheet } from '../ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
-
+import { FbService } from 'src/app/services/fb.service';
+import { Router } from '@angular/router';
+//import { categories } from 'src/app/data/categories';
 
 
 function dynamicSort(property) {
@@ -41,8 +43,10 @@ function dynamicSort(property) {
 export class HomeComponent implements OnInit {
 
   productForm: FormGroup;
+  
   isLoading = false;
   items = [];
+
   displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
   editingItemIndex: Number;
@@ -56,7 +60,7 @@ export class HomeComponent implements OnInit {
   sortAscending = true;
 
   previousWishListItems: FormArray;
-
+  
   
   itemFormGroup = {
     'title': [null, Validators.required],
@@ -67,79 +71,27 @@ export class HomeComponent implements OnInit {
   };
 
 
-  categories = [
-    {
-      id: 1,
-      value: 'Electronics'
-    },
-    {
-      id: 2,
-      value: 'Clothing'
-    },
-    {
-      id: 3,
-      value: 'Shoes'
-    },
-    {
-      id: 4,
-      value: 'Books, movies, music and games'
-    },
-    {
-      id: 5,
-      value: 'Cosmetic & body Care'
-    },
-    {
-      id: 6,
-      value: 'Bags & accessories'
-    },
-    {
-      id: 7,
-      value: 'Food & drinks'
-    },
-    {
-      id: 8,
-      value: 'Household appliances'
-    },
-    {
-      id: 9,
-      value: 'Furniture & household goods'
-    },
-    {
-      id: 10,
-      value: 'Sports & outdoor'
-    },{
-      id: 11,
-      value: 'Toys & baby products'
-    },
-    {
-      id: 12,
-      value: 'Hobby supplies'
-    },{
-      id: 13,
-      value: 'Bricolage, DIY & gardening'
-    },
-    {
-      id: 14,
-      value: 'Pets'
-    }
-  ];
-  
+ 
  
   constructor(
     private apiService: ApiService, 
+    private fbService: FbService,
+    private router: Router,
     private formBuilder: FormBuilder, 
     public dialog: MatDialog,
-    private _bottomSheet: MatBottomSheet
+    private _bottomSheet: MatBottomSheet,
+    private _matSnackBar: MatSnackBar
     ) { 
    
-    this.editingItemIndex = -1;
-    this.searchBar = new FormControl('');
-    this.sortBy = new FormControl('add_date');
-    this.previousSortCriteria = this.sortBy.value;
+      
+      this.editingItemIndex = -1;
+      this.searchBar = new FormControl('');
+      this.sortBy = new FormControl('add_date');
+      this.previousSortCriteria = this.sortBy.value;
 
-    // this._addNewItemBottomSheetRef.afterDismissed().subscribe(() => {
-    //   console.log('Bottom sheet has been dismissed.');
-    // });
+      // this._addNewItemBottomSheetRef.afterDismissed().subscribe(() => {
+      //   console.log('Bottom sheet has been dismissed.');
+      // });
 
   }
 
@@ -148,6 +100,7 @@ export class HomeComponent implements OnInit {
     return this.productForm.get('wishlist_items') as FormArray;
   }
 
+  
   addItem() {
     this.wishlistItems.push(this.formBuilder.group(this.itemFormGroup));
   }
@@ -183,6 +136,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.previousWishListItems = this.formBuilder.array([]);
+    
 
     this.onSearchBarValueChanges();
     this.onSortByValueChanges();
@@ -216,20 +170,15 @@ export class HomeComponent implements OnInit {
     this.apiService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<Array<Item>>)=>{  
       
       this.fillFormArrayWithArray(this.wishlistItems, res.body);
-      //this.editingItemIndex = this.wishlistItems.length - 1;
-
       this.fillFormArrayWithArray(this.previousWishListItems, res.body);
       
       this.isLoading = false;
     })
   }
 
+  
 
-  getCategoryValueById(category_id) {
-    if( !isNumber(category_id)) return '';
-    let category = this.categories.filter(function (el) { return (el.id === category_id )});
-    return category[0].value;
-  }
+ 
 
   switchToEdit(index: Number) {
 
@@ -326,16 +275,28 @@ export class HomeComponent implements OnInit {
   openBottomSheet(): void {
 
     this._addnewitemBottomSheetRef = this._bottomSheet.open(AddNewItemBottomSheet, {
-      ariaLabel: 'Share on social media'
+      ariaLabel: 'Add new Item'
     });
 
-    this._addnewitemBottomSheetRef.afterDismissed().subscribe(() => {
+    this._addnewitemBottomSheetRef.afterDismissed().subscribe((result) => {
       
+      console.log(result);
       this.refreshData();
-  
+      
+      // this._matSnackBar.open('New item added! 🎉', 'hooray!', {
+      //     duration: 2000,
+      // });
+
     });
 
   }
+
+  // logout() {
+  //   // const router = this.router;
+  //   this.fbService.logout(); // pipe the router navigation
+  //   this.router.navigateByUrl('/');
+
+  // }
 
   
 
