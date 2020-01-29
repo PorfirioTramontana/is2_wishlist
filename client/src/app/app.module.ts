@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireLite } from 'angularfire-lite';
+
 
 
 import {
@@ -26,7 +28,8 @@ import {
   MatRippleModule,
   MatGridListModule,
   MatBottomSheetModule,
-  MatBottomSheetRef
+  MatBottomSheetRef,
+  MatSnackBarModule
 } from '@angular/material';
 
 import { CustomMaterialModule } from './components/ui-custom-material/custom-material.module';
@@ -42,6 +45,12 @@ import {
 
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { AddNewItemBottomSheet } from './components/ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
+import { SuggestionsComponent } from './components/suggestions/suggestions.component';
+import { CategorynamebyidPipe } from './pipes/categorynamebyid.pipe';
+import { environment } from 'src/environments/environment';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { UiErrorComponent } from './components/ui-error/ui-error.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +58,15 @@ import { AddNewItemBottomSheet } from './components/ui-addnewitem-bottom-sheet/a
     HomeComponent,
     AboutComponent,
     ConfirmDialogComponent,
-    AddNewItemBottomSheet
+    AddNewItemBottomSheet,
+    SuggestionsComponent,
+    CategorynamebyidPipe,
+    LoginComponent,
+    SignupComponent,
+    UiErrorComponent
   ],
   imports: [
+    AngularFireLite.forRoot(environment.config),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -77,7 +92,8 @@ import { AddNewItemBottomSheet } from './components/ui-addnewitem-bottom-sheet/a
     NgMatSearchBarModule,
     MatRadioModule,
     MatGridListModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatSnackBarModule
   ],
   providers: [],
   entryComponents: [ConfirmDialogComponent, AddNewItemBottomSheet],

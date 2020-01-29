@@ -1,7 +1,7 @@
-<button mat-mini-fab class="cancel_newitem_button" color="secondary" (click)="dismiss()" x-test-tpl-82>x</button>
-<div x-test-tpl-83>
+<button mat-button class="cancel_newitem_button" color="secondary" (click)="dismiss()" x-test-tpl-82><mat-icon>close</mat-icon></button>
+<div>
     <form [formGroup]="addNewItemForm" x-test-hook-84>
-    <h2 x-test-hook-85>Add a new Item</h2>
+    <h2>Add a new Item</h2>
         
         <div class="row" x-test-hook-86>
             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-87>
@@ -40,9 +40,9 @@
             </mat-form-field>
         </div>
         
-        <div class="row" style=" margin-top: 20px;" x-test-hook-99>
+        <div class="row" x-test-hook-99>
             <mat-form-field appearance="outline" fluid class="example-full-width" x-test-hook-100>
-                <mat-label x-test-hook-101>Description</mat-label>
+                <mat-label x-test-hook-101>Description</mat-label x-test-hook-101>
                 <input type="text" matInput placeholder="Description" autocomplete="off" formControlName="description"
                 [errorStateMatcher]="matcher" x-test-hook-102>
                 <!-- <mat-error>
