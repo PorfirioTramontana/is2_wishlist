@@ -1,4 +1,4 @@
-<button class="add_new_item_fab" mat-fab (click)="openBottomSheet()">
+<button class="add_new_item_fab" mat-fab (click)="openBottomSheet()" x-test-tpl-72>
     <!-- <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon> -->
     ADD
 </button>
@@ -25,7 +25,7 @@
 </mat-toolbar>
 </form>
 
-<div style="width: 100%;float: left;">
+<div style="width: 100%;float: left;" x-test-tpl-73>
     <mat-spinner *ngIf="isLoading" x-test-tpl-2></mat-spinner>
     <div style="padding: 13px;" x-test-tpl-3>
       <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-4>
@@ -40,12 +40,12 @@
               Item {{ item.value | json }}: <input formControlName="item" />
               </label> -->
               <mat-card style="margin-top:10px;" x-test-hook-10>
-                <div *ngIf="editingItemIndex != itemIndex">
+                <div *ngIf="editingItemIndex != itemIndex" x-test-hook-74>
                                  <mat-card-title x-test-hook-13>{{item.value.title}}</mat-card-title>
-                                    <mat-card-subtitle> x-test-hook-14{{ getCategoryValueById(item.value.category_id) }}</mat-card-subtitle>
+                                    <mat-card-subtitle x-test-hook-14>{{ getCategoryValueById(item.value.category_id) }}</mat-card-subtitle>
                                     <img class="item_image" src="{{ item.value.image_url }}" x-test-hook-28 />                        
                        
-                                    <div class="row" style=" margin-top: 20px;">
+                                    <div class="row" style=" margin-top: 20px;" x-test-hook-75>
                                         <p x-test-hook-35>
                                           {{item.value.description}}
                                         </p>
@@ -54,16 +54,16 @@
                                     
                                     <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-23>Go shopping!</a>
                                     <!-- <button *ngIf="editingItemIndex == itemIndex" [disabled]="!item.valid" type="button" (click)="saveOrUpdateItem(item.value)" mat-flat-button color="primary">{{ (itemIndex == (wishlistItems.controls.length-1)) ? 'ADD to wishlist!' : 'Save' }}</button> -->
-                                    <button style="float: right;" mat-stroked-button (click)="switchToEdit(itemIndex)">Edit</button>
+                                    <button style="float: right;" mat-stroked-button (click)="switchToEdit(itemIndex)" x-test-hook-76>Edit</button>
                                     
                                    
                                   <!-- <button *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" mat-stroked-button style="margin-top: 20px" color="warn" (click)="deleteItem(item.value)" x-test-hook-24>Delete</button> -->
                 </div>
-                <div *ngIf="editingItemIndex == itemIndex">
-                    <mat-card-header>
-                        <mat-card-title>Edit Item</mat-card-title>
+                <div *ngIf="editingItemIndex == itemIndex" x-test-hook-77>
+                    <mat-card-header x-test-hook-78>
+                        <mat-card-title x-test-hook-79>Edit Item</mat-card-title>
                     </mat-card-header>
-                    <mat-card-content style="padding-left: 15px;">
+                    <mat-card-content style="padding-left: 15px;" x-test-hook-80>
                         
                         <div class="row" x-test-hook-16>
                             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-17>
@@ -131,7 +131,7 @@
                       <!-- <button *ngIf="editingItemIndex != itemIndex" mat-stroked-button (click)="switchToEdit(itemIndex)" x-test-hook-50>Edit</button> -->
                       <button style="float: right;" mat-stroked-button color="secondary" (click)="cancelEdit()" x-test-hook-51>Cancel</button>
                    
-                      <mat-divider [inset]="true" style="margin-top: 10px;" *ngIf="editingItemIndex == itemIndex"></mat-divider>
+                      <mat-divider [inset]="true" style="margin-top: 10px;" *ngIf="editingItemIndex == itemIndex" x-test-hook-81></mat-divider>
                     <button mat-stroked-button style="margin-top: 20px" color="warn" (click)="deleteItem(item.value)" x-test-hook-53>Delete</button>
                     
                      

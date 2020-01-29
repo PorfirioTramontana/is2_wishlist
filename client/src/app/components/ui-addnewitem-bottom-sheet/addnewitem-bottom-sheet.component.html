@@ -1,24 +1,24 @@
-<button mat-mini-fab class="cancel_newitem_button" color="secondary" (click)="dismiss()">x</button>
-<div>
-    <form [formGroup]="addNewItemForm">
-    <h2>Add a new Item</h2>
+<button mat-mini-fab class="cancel_newitem_button" color="secondary" (click)="dismiss()" x-test-tpl-82>x</button>
+<div x-test-tpl-83>
+    <form [formGroup]="addNewItemForm" x-test-hook-84>
+    <h2 x-test-hook-85>Add a new Item</h2>
         
-        <div class="row">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Title</mat-label>
+        <div class="row" x-test-hook-86>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-87>
+                <mat-label x-test-hook-88>Title</mat-label>
                 <input matInput placeholder="Title" formControlName="title"  autocomplete="off"
-                [errorStateMatcher]="matcher">
+                [errorStateMatcher]="matcher" x-test-hook-89>
                 <!-- <mat-error>
                     <span *ngIf="!title.valid && title.touched">Please enter Title</span>
                 </mat-error> -->
             </mat-form-field>
         </div>
         
-        <div class="row">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Category</mat-label>
-                <mat-select formControlName="category_id" aria-placeholder="Pick one, please">
-                    <mat-option *ngFor="let category of categories" [value]="category.id">
+        <div class="row" x-test-hook-90>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-91>
+                <mat-label x-test-hook-92>Category</mat-label>
+                <mat-select formControlName="category_id" aria-placeholder="Pick one, please" x-test-hook-93>
+                    <mat-option *ngFor="let category of categories" [value]="category.id" x-test-hook-94>
                       {{category.value}}
                     </mat-option>
                 </mat-select>
@@ -29,43 +29,43 @@
             </mat-form-field>
         </div>
 
-        <div class="row">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Image URL</mat-label>
+        <div class="row" x-test-hook-95>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-96>
+                <mat-label x-test-hook-97>Image URL</mat-label>
                 <input type="url" matInput placeholder="URL of the image" autocomplete="off" formControlName="image_url"
-                [errorStateMatcher]="matcher">
+                [errorStateMatcher]="matcher" x-test-hook-98>
                 <!-- <mat-error>
                     <span *ngIf="!addNewItemForm.get('image_url').valid && addNewItemForm.get('image_url').touched">Please enter Image URL</span>
                 </mat-error> -->
             </mat-form-field>
         </div>
         
-        <div class="row" style=" margin-top: 20px;">
-            <mat-form-field appearance="outline" fluid class="example-full-width">
-                <mat-label>Description</mat-label>
+        <div class="row" style=" margin-top: 20px;" x-test-hook-99>
+            <mat-form-field appearance="outline" fluid class="example-full-width" x-test-hook-100>
+                <mat-label x-test-hook-101>Description</mat-label>
                 <input type="text" matInput placeholder="Description" autocomplete="off" formControlName="description"
-                [errorStateMatcher]="matcher">
+                [errorStateMatcher]="matcher" x-test-hook-102>
                 <!-- <mat-error>
                     <span *ngIf="!addNewItemForm.get('description').valid && addNewItemForm.get('description').touched">Please enter a description</span>
                 </mat-error> -->
             </mat-form-field>
         </div>
         
-        <div class="row">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Shop URL</mat-label>
+        <div class="row" x-test-hook-103>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-104>
+                <mat-label x-test-hook-105>Shop URL</mat-label>
                 <input type="url" matInput autocomplete="off" placeholder="URL of the ecommerce" formControlName="shop_url"
-                [errorStateMatcher]="matcher">
+                [errorStateMatcher]="matcher" x-test-hook-106>
                 <!-- <mat-error>
                     <span *ngIf="!addNewItemForm.get('shop_url').valid && addNewItemForm.get('shop_url').touched">Please enter Shop URL</span>
                 </mat-error> -->
             </mat-form-field>
         </div>
       
-        <mat-divider style="margin-top: 10px;margin-bottom: 20px;" ></mat-divider>
+        <mat-divider style="margin-top: 10px;margin-bottom: 20px;"  x-test-hook-107></mat-divider>
                    
         <!-- <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-23>Go shopping!</a> -->
-      <button class="add_to_wishlist_btn" [disabled]="!addNewItemForm.valid" type="button" (click)="saveNewItem(addNewItemForm.value)" mat-flat-button color="primary">{{ isLoading ? 'Adding to wishlit...' : 'ADD to wishlist!' }}</button>
+      <button class="add_to_wishlist_btn" [disabled]="!addNewItemForm.valid" type="button" (click)="saveNewItem(addNewItemForm.value)" mat-flat-button color="primary" x-test-hook-108>{{ isLoading ? 'Adding to wishlit...' : 'ADD to wishlist!' }}</button>
       <!-- <button *ngIf="editingItemIndex != itemIndex" mat-stroked-button (click)="switchToEdit(itemIndex)">Edit</button> -->
      
    
