@@ -17,11 +17,16 @@
         <div class="row" x-test-hook-90>
             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-91>
                 <mat-label x-test-hook-92>Category</mat-label>
-                <mat-select formControlName="category_id" aria-placeholder="Pick one, please" x-test-hook-93>
+                <select matNativeControl formControlName="category_id" required x-test-hook-93>
+                    <option *ngFor="let category of categories" [value]="category.id" x-test-hook-94>
+                        {{category.value}}
+                      </option>
+                </select>
+                <!-- <mat-select formControlName="category_id" aria-placeholder="Pick one, please" x-test-hook-93>
                     <mat-option *ngFor="let category of categories" [value]="category.id" x-test-hook-94>
                       {{category.value}}
                     </mat-option>
-                </mat-select>
+                </mat-select> -->
 
                 <!-- <mat-error>
                     <span *ngIf="!itemForm.get('category_id').valid && itemForm.get('category_id').touched">Please choose a category</span>

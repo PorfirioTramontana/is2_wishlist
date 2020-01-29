@@ -15,7 +15,7 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-shee
 import { AddNewItemBottomSheet } from '../ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
 import { FbService } from 'src/app/services/fb.service';
 import { Router } from '@angular/router';
-//import { categories } from 'src/app/data/categories';
+import { items_categories } from '../../../environments/environment'; // CHECK ho to switch env
 
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../services/message.service';
@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   
   isLoading = false;
   items = [];
+  categories = [];
 
   displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -90,7 +91,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private messageService: MessageService
     ) { 
    
-      
+      this.categories = items_categories;
       this.editingItemIndex = -1;
       this.searchBar = new FormControl('');
       this.sortBy = new FormControl('add_date');
@@ -112,8 +113,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.wishlistItems.push(this.formBuilder.group(this.itemFormGroup));
   }
 
-  updateItem(item: Item) {
+  updateItem(item: any) {
     this.isLoading = true;
+    item['category_id'] = parseInt(item['category_id']);
     this.apiService.editItemInWishlist(item)
     .subscribe(res => {
         this.isLoading = false;
