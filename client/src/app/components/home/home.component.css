@@ -52,7 +52,7 @@ mat-card {
   .right_pane {
     width: 48%;
     float: left;
-    background: url('/assets/striped_bg.jpg') 0 0 repeat;
+    background-color: antiquewhite;
     padding-left: 15px;
     /* background-color: aliceblue; */
   }

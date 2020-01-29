@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http';
 import { takeUntil } from 'rxjs/operators';
 import { Item } from 'src/app/models/item';
 import { Subject } from 'rxjs';
+import { MessageService } from '../../services/message.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class SuggestionsComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private messageService: MessageService) { }
 
   ngOnInit() {
 
@@ -39,10 +40,16 @@ export class SuggestionsComponent implements OnInit {
   addToWishList(item) {
     this.apiService.addItemToWishlist(item)
     .subscribe(res => {
-        // this.refreshData();          
+        this.messageService.sendMessage('item_added');  // notify homecomponent via messageservice       
       }, (err) => {
         console.log(err);
       });
+  }
+
+
+  clearMessages(): void {
+      // clear messages
+      this.messageService.clearMessages();
   }
   
 

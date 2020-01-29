@@ -17,6 +17,9 @@ import { FbService } from 'src/app/services/fb.service';
 import { Router } from '@angular/router';
 //import { categories } from 'src/app/data/categories';
 
+import { Subscription } from 'rxjs';
+import { MessageService } from '../../services/message.service';
+
 
 function dynamicSort(property) {
   var sortOrder = 1;
@@ -40,7 +43,7 @@ function dynamicSort(property) {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   productForm: FormGroup;
   
@@ -70,6 +73,9 @@ export class HomeComponent implements OnInit {
     'shop_url': [null]
   };
 
+  subscription: Subscription;
+
+
 
  
  
@@ -80,7 +86,8 @@ export class HomeComponent implements OnInit {
     private formBuilder: FormBuilder, 
     public dialog: MatDialog,
     private _bottomSheet: MatBottomSheet,
-    private _matSnackBar: MatSnackBar
+    private _matSnackBar: MatSnackBar,
+    private messageService: MessageService
     ) { 
    
       
@@ -141,6 +148,14 @@ export class HomeComponent implements OnInit {
     this.onSearchBarValueChanges();
     this.onSortByValueChanges();
     this.refreshData();
+
+    this.subscription = this.messageService.getMessage().subscribe(message => {
+      if (message && message.text && message.text.indexOf('item_added') === 0) {
+        this.refreshData();
+      }
+      
+    });
+   
     
   }
 
@@ -171,7 +186,7 @@ export class HomeComponent implements OnInit {
       
       this.fillFormArrayWithArray(this.wishlistItems, res.body);
       this.fillFormArrayWithArray(this.previousWishListItems, res.body);
-      
+      this.editingItemIndex = -1;
       this.isLoading = false;
     })
   }
@@ -298,7 +313,10 @@ export class HomeComponent implements OnInit {
 
   // }
 
-  
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
 
   
 }
