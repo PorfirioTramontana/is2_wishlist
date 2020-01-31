@@ -73,13 +73,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.itemForm = this.formBuilder.group({
-      'title': [null, Validators.required],
-      'description': [null, Validators.required],
-      'image_url': [null, Validators.required],
-      'category_id': [null],
-      'shop_url': [null]
-    });
+    
 
     this.refreshData();
       
@@ -89,6 +83,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.apiService.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>)=>{  
       this.items = res.body;  
+      this.itemForm = this.formBuilder.group({
+        'title': [null],
+        'description': [null],
+        'image_url': [null],
+        'category_id': [null],
+        'shop_url': [null]
+      });
       this.isLoading = false;
     })
   }
