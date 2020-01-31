@@ -17,7 +17,8 @@
         <div class="row" x-test-hook-90>
             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-91>
                 <mat-label x-test-hook-92>Category</mat-label>
-                <select matNativeControl formControlName="category_id" required x-test-hook-93>
+                <select matNativeControl formControlName="category_id" x-test-hook-93>
+           <!-- <select matNativeControl formControlName="category_id" required x-test-hook-93></select> -->
                     <option *ngFor="let category of categories" [value]="category.id" x-test-hook-94>
                         {{category.value}}
                       </option>
