@@ -6,7 +6,7 @@ ${BROWSER}   chrome
 ${SELSPEED}  0.0s
 
 *** Test Cases ***
-Delete Item
+Delete Abort
     [Setup]  Run Keywords  Open Browser  http://localhost:4200/home  ${BROWSER}
     ...              AND   Set Selenium Speed  ${SELSPEED}
     # open    http://localhost:4200/home
@@ -22,7 +22,9 @@ Delete Item
     type    xpath=//*[@x-test-tpl-70]//*[@x-test-hook-80]//*[@x-test-tpl-11]//*[@x-test-hook-54]    apple.it
     click    xpath=//mat-card-actions/button/span
     click    xpath=//button[2]/span
-    click    xpath=//mat-dialog-container[@id='mat-dialog-0']/app-confirm-dialog/div[2]/button[2]/span
+    click    xpath=//mat-dialog-container[@id='mat-dialog-0']/app-confirm-dialog/div[2]/button/span
+    click    xpath=//button[2]/span
+    click    xpath=//mat-dialog-container[@id='mat-dialog-1']/app-confirm-dialog/div[2]/button[2]/span
     [Teardown]  Close Browser
 
 *** Keywords ***

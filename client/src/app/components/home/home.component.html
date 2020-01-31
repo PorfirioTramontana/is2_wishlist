@@ -40,39 +40,39 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" x-test-hook-45>
-                    <mat-form-field class="example-full-width" x-test-hook-46>
-                        <mat-label>Category</mat-label>
-                        <mat-select aria-placeholder="Pick one, please" x-test-hook-47>
-                            <mat-option *ngFor="let category of categories" [value]="category.id" x-test-hook-48>
+                <div class="row" x-test-hook-35>
+                    <mat-form-field class="example-full-width" x-test-hook-36>
+                        <mat-label x-test-hook-37>Category</mat-label>
+                        <mat-select aria-placeholder="Pick one, please" x-test-hook-38>
+                            <mat-option *ngFor="let category of categories" [value]="category.id" x-test-hook-39>
                               {{category.value}}
                             </mat-option>
                         </mat-select>
 
                         <!-- <input type="url" matInput placeholder="Category" formControlName="category_id"
                                 [errorStateMatcher]="matcher" x-test-hook-49> -->
-                        <mat-error x-test-hook-50>
-                            <span *ngIf="!itemForm.get('category_id').valid && itemForm.get('category_id').touched" x-test-hook-51>Please choose a category</span>
+                        <mat-error x-test-hook-40>
+                            <span *ngIf="!itemForm.get('category_id').valid && itemForm.get('category_id').touched" x-test-hook-41>Please choose a category</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
 
-                <div class="row" x-test-hook-40>
-                    <mat-form-field class="example-full-width" x-test-hook-41>
+                <div class="row" x-test-hook-42>
+                    <mat-form-field class="example-full-width" x-test-hook-43>
                         <input type="url" matInput placeholder="URL of the image" autocomplete="off" formControlName="image_url"
-                                [errorStateMatcher]="matcher" x-test-hook-42>
-                        <mat-error x-test-hook-43>
-                            <span *ngIf="!itemForm.get('image_url').valid && itemForm.get('image_url').touched" x-test-hook-44>Please enter Image URL</span>
+                                [errorStateMatcher]="matcher" x-test-hook-44>
+                        <mat-error x-test-hook-45>
+                            <span *ngIf="!itemForm.get('image_url').valid && itemForm.get('image_url').touched" x-test-hook-46>Please enter Image URL</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 
-                <div class="row">
-                    <mat-form-field class="example-full-width" x-test-hook-36>
+                <div class="row" x-test-hook-47>
+                    <mat-form-field class="example-full-width" x-test-hook-48>
                         <input matInput placeholder="Description" formControlName="description"
-                                [errorStateMatcher]="matcher" x-test-hook-37>
-                        <mat-error x-test-hook-38>
-                            <span *ngIf="!itemForm.get('description').valid && itemForm.get('description').touched" x-test-hook-39>Please enter description</span>
+                                [errorStateMatcher]="matcher" x-test-hook-49>
+                        <mat-error x-test-hook-50>
+                            <span *ngIf="!itemForm.get('description').valid && itemForm.get('description').touched" x-test-hook-51>Please enter description</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
