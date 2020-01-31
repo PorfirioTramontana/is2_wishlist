@@ -67,27 +67,14 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style=" margin-top: 20px;">
-                    <mdc-form-field fluid class="example-full-width">
-                        <mdc-textarea label="Description" formControlName="description"
-                        [errorStateMatcher]="matcher"  
-                            [helperText]="taCounterHelper" rows="3" cols="40"></mdc-textarea>
-                        <!-- <mdc-helper-text #taCounterHelper validation>Helper Text</mdc-helper-text> -->
-                        <mat-error style="margin-top: 10px;margin-bottom: 10px;">
-                            <span *ngIf="!itemForm.get('description').valid && itemForm.get('description').touched">Please enter a description</span>
-                        </mat-error>
-                    </mdc-form-field>
-                      
-                    <!-- <mat-form-field class="example-full-width" x-test-hook-36>
-                        
-                        
+                <div class="row">
+                    <mat-form-field class="example-full-width" x-test-hook-36>
                         <input matInput placeholder="Description" formControlName="description"
                                 [errorStateMatcher]="matcher" x-test-hook-37>
                         <mat-error x-test-hook-38>
                             <span *ngIf="!itemForm.get('description').valid && itemForm.get('description').touched" x-test-hook-39>Please enter description</span>
                         </mat-error>
-                    
-                    </mat-form-field> -->
+                    </mat-form-field>
                 </div>
                 
                 <div class="row" x-test-hook-52>

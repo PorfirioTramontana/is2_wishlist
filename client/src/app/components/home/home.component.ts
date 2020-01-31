@@ -124,7 +124,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      console.log(dialogResult);
+      if (dialogResult == false) return;
       this.isLoading = true;
       this.apiService.deleteItemById(itemId)
         .subscribe(res => {
