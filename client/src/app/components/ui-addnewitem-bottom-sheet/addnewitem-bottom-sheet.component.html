@@ -1,5 +1,5 @@
-<button mat-mini-fab class="cancel_newitem_button" color="secondary" (click)="dismiss()" x-test-tpl-82>x</button>
 <div x-test-tpl-83>
+    <button mat-mini-fab class="cancel_newitem_button" color="secondary" (click)="dismiss()" x-test-tpl-82>x</button>
     <form [formGroup]="addNewItemForm">
     <h2>Add a new Item</h2>
         
@@ -73,10 +73,6 @@
         <!-- <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-23>Go shopping!</a> -->
       <button class="add_to_wishlist_btn" [disabled]="!addNewItemForm.valid" type="button" (click)="saveNewItem(addNewItemForm.value)" mat-flat-button color="primary" x-test-hook-108>{{ isLoading ? 'Adding to wishlit...' : 'ADD to wishlist!' }}</button>
       <!-- <button *ngIf="editingItemIndex != itemIndex" mat-stroked-button (click)="switchToEdit(itemIndex)">Edit</button> -->
-     
-   
-    
-     
     
 </form>
 </div>
