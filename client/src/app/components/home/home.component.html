@@ -30,20 +30,20 @@
       <h2 x-test-hook-14>😢</h2>
       <h3 x-test-hook-15>Please add something to your list.</h3>
     </div>
-    <form [formGroup]="productForm">
+    <form [formGroup]="productForm" x-test-hook-120>
     
-        <div formArrayName="wishlist_items">
+        <div formArrayName="wishlist_items" x-test-hook-121>
           <div *ngFor="let item of wishlistItems.controls; let itemIndex=index; let last=last" [formGroupName]="itemIndex" x-test-hook-9>
               <!-- <label>
               Item {{ item.value | json }}: <input formControlName="item" />
               </label> -->
-              <mat-card style="margin-top:10px;">
-                <div *ngIf="editingItemIndex != itemIndex">
+              <mat-card style="margin-top:10px;" x-test-hook-122>
+                <div *ngIf="editingItemIndex != itemIndex" x-test-hook-123>
                                  <mat-card-title x-test-hook-93>{{item.value.title}}</mat-card-title>
                                     <mat-card-subtitle x-test-hook-37>{{ getCategoryValueById(item.value.category_id) }}</mat-card-subtitle>
                                     <img class="item_image" src="{{ item.value.image_url }}" x-test-hook-97 />                        
                        
-                                    <div class="row" style=" margin-top: 20px;">
+                                    <div class="row" style=" margin-top: 20px;" x-test-hook-124>
                                         <p x-test-hook-101>
                                           {{item.value.description}}
                                         </p>
@@ -56,28 +56,28 @@
                                     
                                    
                 </div>
-                <div *ngIf="editingItemIndex == itemIndex">
-                    <mat-card-header>
+                <div *ngIf="editingItemIndex == itemIndex" x-test-hook-125>
+                    <mat-card-header x-test-hook-126>
                         <mat-card-title x-test-hook-79>Edit Item</mat-card-title>
                     </mat-card-header>
                     <mat-card-content style="padding-left: 15px;" x-test-hook-80>
                         
-                        <div class="row">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Title</mat-label>
+                        <div class="row" x-test-hook-127>
+                            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-128>
+                                <mat-label x-test-hook-129>Title</mat-label>
                                 <input matInput placeholder="Title" formControlName="title"  autocomplete="off"
                                 [errorStateMatcher]="matcher" x-test-hook-19>
-                                <mat-error>
-                                    <span *ngIf="!item.get('title').valid && item.get('title').touched">Please enter Title</span>
+                                <mat-error x-test-hook-130>
+                                    <span *ngIf="!item.get('title').valid && item.get('title').touched" x-test-hook-131>Please enter Title</span>
                                 </mat-error>
                             </mat-form-field>
                         </div>
                         
-                        <div class="row">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Category</mat-label>
-                                <mat-select formControlName="category_id" aria-placeholder="Pick one, please">
-                                    <mat-option *ngFor="let category of categories" [value]="category.id">
+                        <div class="row" x-test-hook-132>
+                            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-133>
+                                <mat-label x-test-hook-134>Category</mat-label>
+                                <mat-select formControlName="category_id" aria-placeholder="Pick one, please" x-test-hook-135>
+                                    <mat-option *ngFor="let category of categories" [value]="category.id" x-test-hook-136>
                                       {{category.value}}
                                     </mat-option>
                                 </mat-select>
@@ -88,48 +88,48 @@
                             </mat-form-field>
                         </div>
         
-                        <div class="row">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Image URL</mat-label>
+                        <div class="row" x-test-hook-137>
+                            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-138>
+                                <mat-label x-test-hook-139>Image URL</mat-label>
                                 <input type="url" matInput placeholder="URL of the image" autocomplete="off" formControlName="image_url"
                                 [errorStateMatcher]="matcher" x-test-hook-31>
                                 <mat-error x-test-hook-32>
-                                    <span *ngIf="!item.get('image_url').valid && item.get('image_url').touched">Please enter Image URL</span>
+                                    <span *ngIf="!item.get('image_url').valid && item.get('image_url').touched" x-test-hook-140>Please enter Image URL</span>
                                 </mat-error>
                             </mat-form-field>
                         </div>
                         
-                        <div class="row" style=" margin-top: 20px;">
-                            <mat-form-field appearance="outline" fluid class="example-full-width">
+                        <div class="row" style=" margin-top: 20px;" x-test-hook-141>
+                            <mat-form-field appearance="outline" fluid class="example-full-width" x-test-hook-142>
                                 <mat-label x-test-hook-37>Description</mat-label>
                                 <input type="text" matInput placeholder="Description" autocomplete="off" formControlName="description"
                                 [errorStateMatcher]="matcher" x-test-hook-38>
-                                <mat-error>
-                                    <span *ngIf="!item.get('description').valid && item.get('description').touched">Please enter a description</span>
+                                <mat-error x-test-hook-143>
+                                    <span *ngIf="!item.get('description').valid && item.get('description').touched" x-test-hook-144>Please enter a description</span>
                                 </mat-error>
                             </mat-form-field>
                         </div>
                         
-                        <div class="row">
+                        <div class="row" x-test-hook-145>
                             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-42>
-                                <mat-label>Shop URL</mat-label>
+                                <mat-label x-test-hook-146>Shop URL</mat-label>
                                 <input type="url" matInput autocomplete="off" placeholder="URL of the ecommerce" formControlName="shop_url"
                                 [errorStateMatcher]="matcher" x-test-hook-44>
-                                <mat-error>
-                                    <span *ngIf="!item.get('shop_url').valid && item.get('shop_url').touched">Please enter Shop URL</span>
+                                <mat-error x-test-hook-147>
+                                    <span *ngIf="!item.get('shop_url').valid && item.get('shop_url').touched" x-test-hook-148>Please enter Shop URL</span>
                                 </mat-error>
                             </mat-form-field>
                         </div>
                       
                     </mat-card-content>
-                    <mat-card-actions style="padding-left: 22px;">
+                    <mat-card-actions style="padding-left: 22px;" x-test-hook-149>
                       <!-- <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-48>Go shopping!</a> -->
-                      <button [disabled]="!item.valid" type="button" (click)="updateItem(item.value)" mat-flat-button color="primary">Save</button>
+                      <button [disabled]="!item.valid" type="button" (click)="updateItem(item.value)" mat-flat-button color="primary" x-test-hook-150>Save</button>
                       <!-- <button *ngIf="editingItemIndex != itemIndex" mat-stroked-button (click)="switchToEdit(itemIndex)" x-test-hook-50>Edit</button> -->
-                      <button style="float: right;" mat-stroked-button color="secondary" (click)="cancelEdit()">Cancel</button>
+                      <button style="float: right;" mat-stroked-button color="secondary" (click)="cancelEdit()" x-test-hook-151>Cancel</button>
                    
-                      <mat-divider [inset]="true" style="margin-top: 10px;" *ngIf="editingItemIndex == itemIndex"></mat-divider>
-                    <button mat-stroked-button style="margin-top: 20px" color="warn" (click)="deleteItem(item.value)">Delete</button>
+                      <mat-divider [inset]="true" style="margin-top: 10px;" *ngIf="editingItemIndex == itemIndex" x-test-hook-152></mat-divider>
+                    <button mat-stroked-button style="margin-top: 20px" color="warn" (click)="deleteItem(item.value)" x-test-hook-153>Delete</button>
                     
                      
                     </mat-card-actions>

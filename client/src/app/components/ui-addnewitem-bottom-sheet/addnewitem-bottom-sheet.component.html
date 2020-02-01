@@ -1,11 +1,11 @@
 <div x-test-tpl-83>
     <button mat-mini-fab class="cancel_newitem_button" color="secondary" (click)="dismiss()" x-test-tpl-82>x</button>
-    <form [formGroup]="addNewItemForm">
-    <h2>Add a new Item</h2>
+    <form [formGroup]="addNewItemForm" x-test-hook-154>
+    <h2 x-test-hook-155>Add a new Item</h2>
         
-        <div class="row">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Title</mat-label>
+        <div class="row" x-test-hook-156>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-157>
+                <mat-label x-test-hook-158>Title</mat-label>
                 <input matInput placeholder="Title" formControlName="title"  autocomplete="off"
                 [errorStateMatcher]="matcher" x-test-hook-89>
                 <!-- <mat-error>
@@ -14,12 +14,12 @@
             </mat-form-field>
         </div>
         
-        <div class="row">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Category</mat-label>
+        <div class="row" x-test-hook-159>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-160>
+                <mat-label x-test-hook-161>Category</mat-label>
                 <select matNativeControl formControlName="category_id" x-test-hook-93>
            <!-- <select matNativeControl formControlName="category_id" required x-test-hook-93></select> -->
-                    <option *ngFor="let category of categories" [value]="category.id">
+                    <option *ngFor="let category of categories" [value]="category.id" x-test-hook-162>
                         {{category.value}}
                       </option>
                 </select>
@@ -35,9 +35,9 @@
             </mat-form-field>
         </div>
 
-        <div class="row">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Image URL</mat-label>
+        <div class="row" x-test-hook-163>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-164>
+                <mat-label x-test-hook-165>Image URL</mat-label>
                 <input type="url" matInput placeholder="URL of the image" autocomplete="off" formControlName="image_url"
                 [errorStateMatcher]="matcher" x-test-hook-98>
                 <!-- <mat-error>
@@ -46,9 +46,9 @@
             </mat-form-field>
         </div>
         
-        <div class="row" style=" margin-top: 20px;">
-            <mat-form-field appearance="outline" fluid class="example-full-width">
-                <mat-label>Description</mat-label>
+        <div class="row" style=" margin-top: 20px;" x-test-hook-166>
+            <mat-form-field appearance="outline" fluid class="example-full-width" x-test-hook-167>
+                <mat-label x-test-hook-168>Description</mat-label>
                 <input type="text" matInput placeholder="Description" autocomplete="off" formControlName="description"
                 [errorStateMatcher]="matcher" x-test-hook-102>
                 <!-- <mat-error>
@@ -57,9 +57,9 @@
             </mat-form-field>
         </div>
         
-        <div class="row">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Shop URL</mat-label>
+        <div class="row" x-test-hook-169>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-170>
+                <mat-label x-test-hook-171>Shop URL</mat-label>
                 <input type="url" matInput autocomplete="off" placeholder="URL of the ecommerce" formControlName="shop_url"
                 [errorStateMatcher]="matcher" x-test-hook-106>
                 <!-- <mat-error>
@@ -68,7 +68,7 @@
             </mat-form-field>
         </div>
       
-        <mat-divider style="margin-top: 10px;margin-bottom: 20px;" ></mat-divider>
+        <mat-divider style="margin-top: 10px;margin-bottom: 20px;"  x-test-hook-172></mat-divider>
                    
         <!-- <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-23>Go shopping!</a> -->
       <button class="add_to_wishlist_btn" [disabled]="!addNewItemForm.valid" type="button" (click)="saveNewItem(addNewItemForm.value)" mat-flat-button color="primary" x-test-hook-108>{{ isLoading ? 'Adding to wishlit...' : 'ADD to wishlist!' }}</button>
