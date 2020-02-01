@@ -1,8 +1,8 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
-<div style="padding: 13px;">
-  <div class="sad_empty_list" *ngIf="displayedItems.length == 0">
-      <h2>😢</h2>
-      <h3>Please add something to your list.</h3>
+<mat-spinner *ngIf="isLoading" x-test-hook-12></mat-spinner>
+<div style="padding: 13px;" x-test-tpl-11>
+  <div class="sad_empty_list" *ngIf="displayedItems.length == 0" x-test-hook-13>
+      <h2 x-test-hook-14>😢</h2>
+      <h3 x-test-hook-15>Please add something to your list.</h3>
   </div>
   <form [formGroup]="productForm">
 
@@ -91,7 +91,7 @@
               
             </mat-card-content>
             <mat-card-actions style="padding-left: 22px;">
-              <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0">Go shopping!</a>
+              <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-23>Go shopping!</a>
               <button *ngIf="editingItemIndex == itemIndex" [disabled]="!item.valid" type="button" (click)="saveOrUpdateItem(item.value)" mat-flat-button color="primary">{{ (itemIndex == (wishlistItems.controls.length-1)) ? 'ADD to wishlist!' : 'Save' }}</button>
               <button *ngIf="editingItemIndex != itemIndex" mat-button (click)="switchToEdit(itemIndex)">Edit</button>
               <button *ngIf="editingItemIndex == itemIndex && itemIndex != (wishlistItems.controls.length-1)" mat-button color="secondary" (click)="cancelEdit()">Cancel</button>
