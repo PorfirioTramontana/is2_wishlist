@@ -124,7 +124,7 @@
                     </mat-card-content>
                     <mat-card-actions style="padding-left: 22px;">
                       <!-- <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-48>Go shopping!</a> -->
-                      <button [disabled]="!item.valid" type="button" (click)="updateItem(item.value)" mat-flat-button color="primary">{{ (itemIndex == (wishlistItems.controls.length-1)) ? 'ADD to wishlist!' : 'Save' }}</button>
+                      <button [disabled]="!item.valid" type="button" (click)="updateItem(item.value)" mat-flat-button color="primary">Save</button>
                       <!-- <button *ngIf="editingItemIndex != itemIndex" mat-stroked-button (click)="switchToEdit(itemIndex)" x-test-hook-50>Edit</button> -->
                       <button style="float: right;" mat-stroked-button color="secondary" (click)="cancelEdit()">Cancel</button>
                    

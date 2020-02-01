@@ -214,7 +214,8 @@ export class HomeComponent implements OnInit {
       //this.editingItemIndex = this.wishlistItems.length - 1;
 
       this.fillFormArrayWithArray(this.previousWishListItems, res.body);
-      
+      this.editingItemIndex = -1;
+    
       this.isLoading = false;
     })
   }
