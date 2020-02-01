@@ -27,8 +27,8 @@
     </mat-toolbar>
     </form>
 
-    <div class="left_pane" style="padding: 13px;">
-        <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div class="left_pane" style="padding: 13px;" x-test-hook-188>
+        <mat-spinner *ngIf="isLoading" x-test-hook-189></mat-spinner>
         <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-13>
             <h2 x-test-hook-14>😢</h2>
             <h3 x-test-hook-15>Please add something to your list.</h3>
@@ -53,7 +53,7 @@
                                        
                                     </div>
                                     
-                                    <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0">Go shopping!</a>
+                                    <a mat-raised-button href="{{item.value.shop_url}}" target="_blank" color="primary" *ngIf="editingItemIndex != itemIndex && item.value.shop_url && item.value.shop_url.length > 0" x-test-hook-190>Go shopping!</a>
                                     <!-- <button *ngIf="editingItemIndex == itemIndex" [disabled]="!item.valid" type="button" (click)="saveOrUpdateItem(item.value)" mat-flat-button color="primary">{{ (itemIndex == (wishlistItems.controls.length-1)) ? 'ADD to wishlist!' : 'Save' }}</button> -->
                                     <button style="float: right;" mat-stroked-button (click)="switchToEdit(itemIndex)" x-test-hook-110>Edit</button>
                                     
@@ -152,7 +152,7 @@
         </div>
     </form>
     </div>
-    <div class="right_pane">
-        <app-suggestions></app-suggestions>
+    <div class="right_pane" x-test-hook-191>
+        <app-suggestions x-test-hook-192></app-suggestions>
     </div>
 </div>

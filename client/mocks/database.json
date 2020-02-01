@@ -27,12 +27,12 @@
       "id": 5
     },
     {
-      "title": "Sleek Fresh Mouse",
-      "description": "Omnis dolores consequuntur ex ad esse eaque eligendi eveniet sit. Ut soluta quisquam est voluptatem sit sit aut sit.",
+      "title": "Air Pods",
+      "description": "Air Pods by Apple",
       "price": "676.00",
       "image_url": "https://source.unsplash.com/800x600/?product",
       "category_id": 6,
-      "shop_url": "http://test.com/1191",
+      "shop_url": "apple.it",
       "add_date": "2020-01-27T09:52:42.577Z",
       "id": 6
     }
