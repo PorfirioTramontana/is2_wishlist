@@ -26,7 +26,8 @@ import {
   MatRippleModule,
   MatGridListModule,
   MatBottomSheetModule,
-  MatBottomSheetRef
+  MatBottomSheetRef,
+  MatSnackBarModule
 } from '@angular/material';
 
 import { CustomMaterialModule } from './components/ui-custom-material/custom-material.module';
@@ -42,6 +43,8 @@ import {
 
 import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { AddNewItemBottomSheet } from './components/ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
+import { SuggestionsComponent } from './components/suggestions/suggestions.component';
+import { CategorynamebyidPipe } from './pipes/categorynamebyid.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { AddNewItemBottomSheet } from './components/ui-addnewitem-bottom-sheet/a
     HomeComponent,
     AboutComponent,
     ConfirmDialogComponent,
-    AddNewItemBottomSheet
+    AddNewItemBottomSheet,
+    SuggestionsComponent,
+    CategorynamebyidPipe
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,8 @@ import { AddNewItemBottomSheet } from './components/ui-addnewitem-bottom-sheet/a
     NgMatSearchBarModule,
     MatRadioModule,
     MatGridListModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatSnackBarModule
   ],
   providers: [],
   entryComponents: [ConfirmDialogComponent, AddNewItemBottomSheet],
