@@ -1,28 +1,28 @@
-<form [formGroup]="searchAndSortForm" x-test-tpl-61>
-    <mat-toolbar x-test-hook-62>
-       <section class="example-section" x-test-hook-63>
-            <label class="example-margin" x-test-hook-64><a mat-stroked-button (click)="onSortByClick()" x-test-hook-65>Sort {{ sortAscending ? 'ascending' : 'descending'}} by</a></label>
-            <mat-radio-group [formControl]="sortBy" x-test-hook-66>
-            <mat-radio-button class="example-margin" value="add_date" x-test-hook-67>
-                Add date
-            </mat-radio-button>
-            <mat-radio-button class="example-margin" value="name" x-test-hook-68>
-                Name
-            </mat-radio-button>
-            <!-- <mat-radio-button class="example-margin" value="priority">
-                Priority
-            </mat-radio-button> -->
-            </mat-radio-group>
-      </section>
-    <div class="mdl-layout-spacer" x-test-hook-69></div>
-    
-        <mat-search-bar aria-hidden="false" [formControl]="searchBar" aria-autocomplete="false" autocomplete="off" x-test-hook-70></mat-search-bar>
-        
-</mat-toolbar>
-</form>
 <mat-spinner *ngIf="isLoading" x-test-hook-12></mat-spinner>
 <div style="padding: 13px;" x-test-tpl-11>
-  <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-13>
+    <form [formGroup]="searchAndSortForm" x-test-tpl-61>
+        <mat-toolbar x-test-hook-62>
+           <section class="example-section" x-test-hook-63>
+                <label class="example-margin" x-test-hook-64><a mat-stroked-button (click)="onSortByClick()" x-test-hook-65>Sort {{ sortAscending ? 'ascending' : 'descending'}} by</a></label>
+                <mat-radio-group [formControl]="sortBy" x-test-hook-66>
+                <mat-radio-button class="example-margin" value="add_date" x-test-hook-67>
+                    Add date
+                </mat-radio-button>
+                <mat-radio-button class="example-margin" value="name" x-test-hook-68>
+                    Name
+                </mat-radio-button>
+                <!-- <mat-radio-button class="example-margin" value="priority">
+                    Priority
+                </mat-radio-button> -->
+                </mat-radio-group>
+          </section>
+        <div class="mdl-layout-spacer" x-test-hook-69></div>
+        
+            <mat-search-bar aria-hidden="false" [formControl]="searchBar" aria-autocomplete="false" autocomplete="off" x-test-hook-70></mat-search-bar>
+            
+    </mat-toolbar>
+    </form>
+    <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-13>
       <h2 x-test-hook-14>😢</h2>
       <h3 x-test-hook-15>Please add something to your list.</h3>
   </div>
