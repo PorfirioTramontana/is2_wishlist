@@ -29,8 +29,8 @@
     <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-13>
       <h2 x-test-hook-14>😢</h2>
       <h3 x-test-hook-15>Please add something to your list.</h3>
-  </div>
-  <form [formGroup]="productForm">
+    </div>
+    <form [formGroup]="productForm">
     
         <div formArrayName="wishlist_items">
           <div *ngFor="let item of wishlistItems.controls; let itemIndex=index; let last=last" [formGroupName]="itemIndex" x-test-hook-9>
@@ -40,7 +40,7 @@
               <mat-card style="margin-top:10px;">
                 <div *ngIf="editingItemIndex != itemIndex">
                                  <mat-card-title x-test-hook-93>{{item.value.title}}</mat-card-title>
-                                    <mat-card-subtitle x-test-hook-37>{{ getCategoryValueById(item.value.category_id) }}</mat-card-subtitle x-test-hook-37>
+                                    <mat-card-subtitle x-test-hook-37>{{ getCategoryValueById(item.value.category_id) }}</mat-card-subtitle>
                                     <img class="item_image" src="{{ item.value.image_url }}" x-test-hook-97 />                        
                        
                                     <div class="row" style=" margin-top: 20px;">
@@ -142,9 +142,7 @@
           </div>
           
         </div>
-      </form>
-    </div>
-    
+    </form>
 </div>
 <!-- <div class="right_pane">
 

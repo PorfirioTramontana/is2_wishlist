@@ -136,6 +136,11 @@ export class HomeComponent implements OnInit {
     this.searchBar = new FormControl('');
     this.sortBy = new FormControl('add_date');
     this.previousSortCriteria = this.sortBy.value;
+
+    // this._addNewItemBottomSheetRef.afterDismissed().subscribe(() => {
+    //   console.log('Bottom sheet has been dismissed.');
+    // });
+
   }
 
 
