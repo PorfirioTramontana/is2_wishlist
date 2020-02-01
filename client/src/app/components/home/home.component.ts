@@ -199,8 +199,8 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == false) return;
       this.isLoading = true;
-      // FIXME (add check on result, otherwise I'll delete in each case :)
       this.apiService.deleteItemById(item.id)
         .subscribe(res => {
             //let id = res['id'];

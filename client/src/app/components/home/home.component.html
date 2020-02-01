@@ -31,11 +31,11 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row">
-                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" class="example-full-width">
-                        <mat-label>Category</mat-label>
-                        <mat-select formControlName="category_id" aria-placeholder="Pick one, please">
-                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                <div class="row" x-test-hook-35>
+                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" class="example-full-width" x-test-hook-36>
+                        <mat-label x-test-hook-37>Category</mat-label>
+                        <mat-select formControlName="category_id" aria-placeholder="Pick one, please" x-test-hook-38>
+                            <mat-option *ngFor="let category of categories" [value]="category.id" x-test-hook-39>
                               {{category.value}}
                             </mat-option>
                         </mat-select>
@@ -51,22 +51,22 @@
                     <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" class="example-full-width">
                         <mat-label>Image URL</mat-label>
                         <input type="url" matInput placeholder="URL of the image" autocomplete="off" formControlName="image_url"
-                        [errorStateMatcher]="matcher">
-                        <mat-error>
-                            <span *ngIf="!item.get('image_url').valid && item.get('image_url').touched">Please enter Image URL</span>
+                        [errorStateMatcher]="matcher" x-test-hook-44>
+                        <mat-error x-test-hook-45>
+                            <span *ngIf="!item.get('image_url').valid && item.get('image_url').touched" x-test-hook-46>Please enter Image URL</span>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style=" margin-top: 20px;">
+                <div class="row" style=" margin-top: 20px;" x-test-hook-47>
                     <p *ngIf="editingItemIndex != itemIndex">
                       {{item.value.description}}
                     </p>
-                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" fluid class="example-full-width">
+                    <mat-form-field *ngIf="editingItemIndex == itemIndex" appearance="outline" fluid class="example-full-width" x-test-hook-48>
                         <mat-label>Description</mat-label>
                         <input type="text" matInput placeholder="Description" autocomplete="off" formControlName="description"
-                        [errorStateMatcher]="matcher">
-                        <mat-error>
+                        [errorStateMatcher]="matcher" x-test-hook-49>
+                        <mat-error x-test-hook-50>
                             <span *ngIf="!item.get('description').valid && item.get('description').touched">Please enter a description</span>
                         </mat-error>
                         <!-- <mdc-textarea label="Description" formControlName="description"
