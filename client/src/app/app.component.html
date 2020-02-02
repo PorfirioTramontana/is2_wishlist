@@ -1,12 +1,12 @@
-<div class="mdl-layout--fixed-header" x-test-tpl-1>
-  <header class="mdl-layout__header" x-test-hook-2>
+<div class="mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
     
-    <div class="mdl-layout__header-row" x-test-hook-61>
-      <mat-toolbar color="primary" x-test-hook-62>
-        <h1 class="mdl-layout__title" x-test-hook-63>
-          <a class="logo" [routerLink]="['/']" x-test-hook-64>WISHLIST</a>
+    <div class="mdl-layout__header-row">
+      <mat-toolbar color="primary">
+        <h1 class="mdl-layout__title">
+          <a class="logo" [routerLink]="['/']">WISHLIST</a>
         </h1>
-        <div class="mdl-layout-spacer" x-test-hook-7></div>
+        <div class="mdl-layout-spacer"></div>
         <button mat-button (click)="logout()" aria-label="Logout" title="Logout"><mat-icon>exit_to_app</mat-icon></button> 
         
       </mat-toolbar>
@@ -14,4 +14,4 @@
   </header>
 </div>
 <div class="top_spacer"></div>  
-<router-outlet x-test-tpl-9></router-outlet>
+<router-outlet></router-outlet>
