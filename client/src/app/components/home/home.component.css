@@ -45,7 +45,7 @@ mat-card {
   }
 
   .left_pane {
-    width: 50%;
+    width: 48%;
     float: left;
   }
 
@@ -55,6 +55,10 @@ mat-card {
     background-color: antiquewhite;
     padding-left: 15px;
     /* background-color: aliceblue; */
+  }
+
+  .content_from_toolbar {
+    margin-top: 65px;
   }
 
  
