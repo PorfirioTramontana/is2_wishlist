@@ -28,12 +28,12 @@
       "id": 5
     },
     {
-      "title": "New item",
-      "description": "A descirption",
-      "image_url": "http://www.google.com",
-      "category_id": 10,
-      "shop_url": "http://www.amazon.it",
-      "add_date": "2020-02-02T11:39:32.162Z",
+      "title": "Macchina per il pane",
+      "description": "Una macchina per il pane",
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/41uJJ6ivY9L._AC_SY480_.jpg",
+      "category_id": 8,
+      "shop_url": "https://www.amazon.it/Moulinex-OW210130-Macchina-Programmi-Automatici/dp/B01CHVXNXA?smid=A11IL2PNWYJU7H&pf_rd_p=34030c08-4fc7-42ca-8b10-bc178969977c&pf_rd_r=JN7MQ7FHKAFXYS4WEW1M",
+      "add_date": "2020-02-02T19:11:13.503Z",
       "id": 6
     }
   ],

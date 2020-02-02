@@ -50,6 +50,7 @@ export class ApiService {
 
   addItemToWishlist(item): Observable<Item> {
     item['add_date'] = new Date();
+    if (item['category_id'] && typeof item['category_id'] === 'string') item['category_id'] = parseInt(item['category_id']);
     return this.httpClient.post<Item>(SERVER_URL+this.default_endpoint, item, httpOptions).pipe(
       tap((item: Item) => console.log(`added item w/ id=${item.id}`)),
       catchError(this.handleError)
@@ -57,6 +58,7 @@ export class ApiService {
   }
 
   editItemInWishlist(item): Observable<Item> {
+    if (item['category_id'] && typeof item['category_id'] === 'string') item['category_id'] = parseInt(item['category_id']);
     return this.httpClient.put<Item>(SERVER_URL+this.default_endpoint+'/'+item.id, item, httpOptions).pipe(
       tap((item: Item) => console.log(`edited item w/ id=${item.id}`)),
       catchError(this.handleError)

@@ -5,19 +5,29 @@ describe('Basic Add test', () => {
 
   it('Aggiunta nuovo item', async () => {
 		await browser.get('http://localhost:4200/home');
-		await element(by.xpath("//div/button/span")).click();
+
+		await element(by.xpath("//button[@id='add_new_item_btn']/span")).click();
 		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).click();
-		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).sendKeys('New item');
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).sendKeys('An item');
 		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-93]")).click();
-		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-93]")).element(by.cssContainingText('option', 'Sports & outdoor')).click();
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-93]")).element(by.cssContainingText('option', 'Household appliances')).click();
 		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-98]")).click();
-		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-98]")).click();
-		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-98]")).sendKeys('http://www.google.com');
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-98]")).sendKeys('https://images-na.ssl-images-amazon.com/images/I/41uJJ6ivY9L._AC_SY480_.jpg');
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).click();
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).click();
+		await browser.actions().doubleClick(element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]"))).perform();
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).click();
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).click();
+		await browser.actions().doubleClick(element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]"))).perform();
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).click();
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-89]")).sendKeys('Macchina per il pane');
+		await element(by.xpath("//div[@id='cdk-overlay-0']/mat-bottom-sheet-container/addnewitem-bottom-sheet/div/form/div[5]/mat-form-field/div/div/div[3]")).click();
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-106]")).sendKeys('https://www.amazon.it/Moulinex-OW210130-Macchina-Programmi-Automatici/dp/B01CHVXNXA?smid=A11IL2PNWYJU7H&pf_rd_p=34030c08-4fc7-42ca-8b10-bc178969977c&pf_rd_r=JN7MQ7FHKAFXYS4WEW1M');
 		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-102]")).click();
-		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-102]")).sendKeys('A descirption');
-		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-106]")).click();
-		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-106]")).sendKeys('http://www.amazon.it');
+		await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-83]//*[@x-test-hook-102]")).sendKeys('Una macchina per il pane');
 		await element(by.xpath("//div[@id='cdk-overlay-0']/mat-bottom-sheet-container/addnewitem-bottom-sheet/div/form/button/span")).click();
+	
+
 	});
 
 

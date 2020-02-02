@@ -271,7 +271,6 @@ export class HomeComponent implements OnInit {
 
     this._addnewitemBottomSheetRef.afterDismissed().subscribe((result) => {
       
-      console.log(result);
       this.refreshData();
       
       // this._matSnackBar.open('New item added! 🎉', 'hooray!', {
