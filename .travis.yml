@@ -25,7 +25,6 @@ jobs:
         - npm start mock-server &
         
       script: 
-        - cd client
         - npm run e2e
 
 
