@@ -27,7 +27,7 @@ jobs:
         - json-server ./mocks/database.json &
         
       script: 
-        - ng e2e --no-webdriver-update
+        - ng e2e
 
 
 # # dist: trusty
