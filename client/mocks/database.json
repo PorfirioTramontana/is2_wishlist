@@ -27,14 +27,49 @@
       "id": 5
     },
     {
-      "title": "Sleek Fresh Mouse",
-      "description": "Omnis dolores consequuntur ex ad esse eaque eligendi eveniet sit. Ut soluta quisquam est voluptatem sit sit aut sit.",
-      "price": "676.00",
-      "image_url": "https://source.unsplash.com/800x600/?product",
-      "category_id": 6,
-      "shop_url": "http://test.com/1191",
-      "add_date": "2020-01-27T09:52:42.577Z",
+      "title": "New item",
+      "description": "Test",
+      "image_url": "https://source.unsplash.com/800x600/?product&2",
+      "category_id": 9,
+      "shop_url": "http://www.antoniopicone.it",
+      "add_date": "2020-02-02T08:56:43.403Z",
       "id": 6
+    },
+    {
+      "title": "New item",
+      "description": "A descirption",
+      "image_url": "http://www.google.com",
+      "category_id": "10",
+      "shop_url": "http://www.amazon.it",
+      "add_date": "2020-02-02T10:52:15.165Z",
+      "id": 7
+    },
+    {
+      "title": "New item",
+      "description": "A descirption",
+      "image_url": "http://www.google.com",
+      "category_id": "10",
+      "shop_url": "http://www.amazon.it",
+      "add_date": "2020-02-02T10:53:17.946Z",
+      "id": 8
+    },
+    {
+      "title": "New item",
+      "description": "A descirption",
+      "image_url": "http://www.google.com",
+      "category_id": "10",
+      "shop_url": "http://www.amazon.it",
+      "add_date": "2020-02-02T10:57:26.368Z",
+      "id": 9
+    },
+    {
+      "title": "New item",
+      "description": "A descirption",
+      "image_url": "http://www.google.com",
+      "category_id": "10",
+      "shop_url": "http://www.amazon.it",
+      "add_date": "2020-02-02T11:00:49.998Z",
+      "id": 10
     }
   ],
   "suggestions": [
