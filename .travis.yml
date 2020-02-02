@@ -22,7 +22,8 @@ jobs:
       before_script:
         - cd client
         - npm i
-        - webdriver-manager update
+        - webdriver-manager update --versions.chrome 79
+        - webdriver-manager start --versions.chrome 79
         - json-server ./mocks/database.json &
         
       script: 
