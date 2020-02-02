@@ -22,10 +22,11 @@ jobs:
       before_script:
         - cd client
         - npm i
+        - webdriver-manager update
         - json-server ./mocks/database.json &
         
       script: 
-        - npm run e2e
+        - ng e2e
 
 
 # # dist: trusty
