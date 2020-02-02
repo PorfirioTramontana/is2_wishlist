@@ -1,0 +1,43 @@
+language: node_js
+node_js:
+  - "12"
+
+# addons:
+#   artifacts:
+#     # if would like to download artifacts ,travis-ci recommend to upload the remote location like aws s3
+#     # set enviroment variable in travis-ci
+#     # ARTIFACTS_KEY=(AWS access key id)
+#     # ARTIFACTS_SECRET=(AWS secret access key)
+#     # ARTIFACTS_BUCKET=(S3 bucket name)
+#     # For more information configuration for this ,please refer https://docs.travis-ci.com/user/uploading-artifacts/
+#     # this example is store to local hard disk travis-ci
+#     target_paths: report/*
+#     debug: true
+
+jobs:  
+  include:
+    - stage: "Test"
+      name: "Run e2e test"
+
+      before_script:
+        - cd client
+        - npm i
+        - npm start mock-server &
+        
+      script: 
+        - cd client
+        - npm run e2e
+
+
+# # dist: trusty
+# # addons:
+# #   chrome: stable
+# before_script:
+#   - "export DISPLAY=:99.0"
+#   - "sh -e /etc/init.d/xvfb start"
+#   - sleep 3 # give xvfb some time to start
+#   - rackup  # start a Web server
+#   - sleep 3 # give Web server some time to bind to sockets, etc
+# before_install:
+#   - # start your web application and listen on `localhost`
+#   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
