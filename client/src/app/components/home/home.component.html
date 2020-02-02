@@ -2,7 +2,7 @@
     <mat-spinner *ngIf="isLoading" x-test-hook-12></mat-spinner>
     <button class="add_new_item_fab" mat-fab (click)="openBottomSheet()" x-test-tpl-72>
         <!-- <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon> -->
-        <mat-icon>add</mat-icon>
+        <mat-icon x-test-hook-207>add</mat-icon>
     </button>
     <form [formGroup]="searchAndSortForm" x-test-tpl-61>
         <mat-toolbar x-test-hook-62>
@@ -63,7 +63,7 @@
                     <mat-card-header x-test-hook-126>
                         <mat-card-title x-test-hook-79>Edit Item</mat-card-title>
                     </mat-card-header>
-                    <mat-card-content style="padding-left: 15px;">
+                    <mat-card-content style="padding-left: 15px;" x-test-hook-208>
                         
                         <div class="row" x-test-hook-127>
                             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-128>
