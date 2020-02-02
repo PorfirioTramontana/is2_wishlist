@@ -13,7 +13,12 @@ import { element } from 'protractor';
 import { supportsPassiveEventListeners } from '@angular/cdk/platform';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { AddNewItemBottomSheet } from '../ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
-//import { categories } from 'src/app/data/categories';
+import { FbService } from 'src/app/services/fb.service';
+import { Router } from '@angular/router';
+import { items_categories } from '../../../environments/environment'; // CHECK ho to switch env
+
+import { Subscription } from 'rxjs';
+import { MessageService } from '../../services/message.service';
 
 
 function dynamicSort(property) {
@@ -38,12 +43,13 @@ function dynamicSort(property) {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   productForm: FormGroup;
   
   isLoading = false;
   items = [];
+  categories = [];
 
   displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -68,21 +74,33 @@ export class HomeComponent implements OnInit {
     'shop_url': [null]
   };
 
+  subscription: Subscription;
+
+
 
  
  
   constructor(
     private apiService: ApiService, 
+    private fbService: FbService,
+    private router: Router,
     private formBuilder: FormBuilder, 
     public dialog: MatDialog,
     private _bottomSheet: MatBottomSheet,
-    private _matSnackBar: MatSnackBar
+    private _matSnackBar: MatSnackBar,
+    private messageService: MessageService
     ) { 
    
-    this.editingItemIndex = -1;
-    this.searchBar = new FormControl('');
-    this.sortBy = new FormControl('add_date');
-    this.previousSortCriteria = this.sortBy.value;
+      this.categories = items_categories;
+      this.editingItemIndex = -1;
+      this.searchBar = new FormControl('');
+      this.sortBy = new FormControl('add_date');
+      this.previousSortCriteria = this.sortBy.value;
+
+      // this._addNewItemBottomSheetRef.afterDismissed().subscribe(() => {
+      //   console.log('Bottom sheet has been dismissed.');
+      // });
+
   }
 
 
@@ -95,8 +113,9 @@ export class HomeComponent implements OnInit {
     this.wishlistItems.push(this.formBuilder.group(this.itemFormGroup));
   }
 
-  updateItem(item: Item) {
+  updateItem(item: any) {
     this.isLoading = true;
+    item['category_id'] = parseInt(item['category_id']);
     this.apiService.editItemInWishlist(item)
     .subscribe(res => {
         this.isLoading = false;
@@ -131,6 +150,14 @@ export class HomeComponent implements OnInit {
     this.onSearchBarValueChanges();
     this.onSortByValueChanges();
     this.refreshData();
+
+    this.subscription = this.messageService.getMessage().subscribe(message => {
+      if (message && message.text && message.text.indexOf('item_added') === 0) {
+        this.refreshData();
+      }
+      
+    });
+   
     
   }
 
@@ -162,7 +189,6 @@ export class HomeComponent implements OnInit {
       this.fillFormArrayWithArray(this.wishlistItems, res.body);
       this.fillFormArrayWithArray(this.previousWishListItems, res.body);
       this.editingItemIndex = -1;
-    
       this.isLoading = false;
     })
   }
@@ -282,7 +308,17 @@ export class HomeComponent implements OnInit {
 
   }
 
-  
+  // logout() {
+  //   // const router = this.router;
+  //   this.fbService.logout(); // pipe the router navigation
+  //   this.router.navigateByUrl('/');
+
+  // }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
 
   
 }

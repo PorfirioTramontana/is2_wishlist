@@ -6,6 +6,9 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import { Item } from 'src/app/models/item';
 import { ApiService } from 'src/app/services/api.service';
 
+import { items_categories } from '../../../environments/environment'; // CHECK ho to switch env
+
+
 
 @Component({
     selector: 'addnewitem-bottom-sheet',
@@ -16,6 +19,7 @@ import { ApiService } from 'src/app/services/api.service';
 
     addNewItemForm: FormGroup;
     isLoading = false;
+    categories = [];
 
   itemFormGroup = {
     'title': [null, Validators.required],
@@ -26,67 +30,11 @@ import { ApiService } from 'src/app/services/api.service';
   };
 
 
-  categories = [
-    {
-      id: 1,
-      value: 'Electronics'
-    },
-    {
-      id: 2,
-      value: 'Clothing'
-    },
-    {
-      id: 3,
-      value: 'Shoes'
-    },
-    {
-      id: 4,
-      value: 'Books, movies, music and games'
-    },
-    {
-      id: 5,
-      value: 'Cosmetic & body Care'
-    },
-    {
-      id: 6,
-      value: 'Bags & accessories'
-    },
-    {
-      id: 7,
-      value: 'Food & drinks'
-    },
-    {
-      id: 8,
-      value: 'Household appliances'
-    },
-    {
-      id: 9,
-      value: 'Furniture & household goods'
-    },
-    {
-      id: 10,
-      value: 'Sports & outdoor'
-    },{
-      id: 11,
-      value: 'Toys & baby products'
-    },
-    {
-      id: 12,
-      value: 'Hobby supplies'
-    },{
-      id: 13,
-      value: 'Bricolage, DIY & gardening'
-    },
-    {
-      id: 14,
-      value: 'Pets'
-    }
-  ];
-    
   
     constructor(private apiService: ApiService, private formBuilder: FormBuilder, private _bottomSheetRef: MatBottomSheetRef<AddNewItemBottomSheet>) {
          
         this.addNewItemForm = this.formBuilder.group(this.itemFormGroup);
+        this.categories = items_categories;
     }
   
     openLink(event: MouseEvent): void {
@@ -99,9 +47,9 @@ import { ApiService } from 'src/app/services/api.service';
         
     }
     
-    saveNewItem(item: Item) {
+    saveNewItem(item: any) {
         console.log(item);
-
+        item['category_id'] = parseInt(item['category_id']);
         this.isLoading = true;
           this.apiService.addItemToWishlist(item)
           .subscribe(res => {

@@ -1,4 +1,4 @@
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" x-test-tpl-112>
+<div class="mdl-layout--fixed-header" x-test-tpl-112>
   <header class="mdl-layout__header" x-test-hook-113>
     
     <div class="mdl-layout__header-row" x-test-hook-114>
@@ -7,7 +7,7 @@
           <a class="logo" [routerLink]="['/']" x-test-hook-117>WISHLIST</a>
         </h1>
         <div class="mdl-layout-spacer" x-test-hook-118></div>
-        <button mat-button [routerLink]="['/about']" x-test-hook-119>About</button> 
+        <button mat-button (click)="logout()" aria-label="Logout" title="Logout"><mat-icon>exit_to_app</mat-icon></button> 
         
       </mat-toolbar>
     </div>

@@ -52,5 +52,9 @@ mat-card {
   .right_pane {
     width: 48%;
     float: left;
+    background-color: antiquewhite;
+    padding-left: 15px;
     /* background-color: aliceblue; */
   }
+
+ 

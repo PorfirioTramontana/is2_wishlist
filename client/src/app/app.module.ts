@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireLite } from 'angularfire-lite';
+
 
 
 import {
@@ -45,6 +47,10 @@ import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 import { AddNewItemBottomSheet } from './components/ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
 import { SuggestionsComponent } from './components/suggestions/suggestions.component';
 import { CategorynamebyidPipe } from './pipes/categorynamebyid.pipe';
+import { environment } from 'src/environments/environment';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { UiErrorComponent } from './components/ui-error/ui-error.component';
 
 @NgModule({
   declarations: [
@@ -54,9 +60,13 @@ import { CategorynamebyidPipe } from './pipes/categorynamebyid.pipe';
     ConfirmDialogComponent,
     AddNewItemBottomSheet,
     SuggestionsComponent,
-    CategorynamebyidPipe
+    CategorynamebyidPipe,
+    LoginComponent,
+    SignupComponent,
+    UiErrorComponent
   ],
   imports: [
+    AngularFireLite.forRoot(environment.config),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

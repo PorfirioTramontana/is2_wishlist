@@ -19,3 +19,7 @@
     height: 45px;
     text-align: center;
 }
+
+.mat-form-field {
+    width: 100%;
+}
