@@ -1,44 +1,44 @@
-<div class="main__container">
-    <div class="signup-card">
+<div class="main__container" x-test-tpl-229>
+    <div class="signup-card" x-test-hook-230>
   
-      <main class="signup-content">
-        <span class="signup-header">Signup</span>
+      <main class="signup-content" x-test-hook-231>
+        <span class="signup-header" x-test-hook-232>Signup</span>
         <!-- signup form -->
   
-        <form class="signup-form" (ngSubmit)="signup($event)" #authform="ngForm">
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>email</mat-label>
+        <form class="signup-form" (ngSubmit)="signup($event)" #authform="ngForm" x-test-hook-233>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-234>
+                <mat-label x-test-hook-235>email</mat-label>
                 <input type="email" matInput placeholder="email" autocomplete="off" 
-                [errorStateMatcher]="matcher" name="email" required>
+                [errorStateMatcher]="matcher" name="email" required x-test-hook-236>
                 <!-- <mat-error>
                     <span *ngIf="!item.get('email').valid">Please enter Image URL</span>
                 </mat-error> -->
             </mat-form-field>
-            <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>password</mat-label>
+            <mat-form-field appearance="outline" class="example-full-width" x-test-hook-237>
+                <mat-label x-test-hook-238>password</mat-label>
                 <input type="password" matInput placeholder="password" autocomplete="off" 
-                [errorStateMatcher]="matcher" name="password" minlength="6" required>
+                [errorStateMatcher]="matcher" name="password" minlength="6" required x-test-hook-239>
                 <!-- <mat-error>
                     <span *ngIf="!item.get('password').valid">Please enter Image URL</span>
                 </mat-error> -->
             </mat-form-field>
             <button mat-raised-button color="accent" type="submit" name="submit" value="Signup"  [class.btn-disabled]="!authform.form.valid"
-                 [disabled]="!authform.form.valid">Signup</button>
+                 [disabled]="!authform.form.valid" x-test-hook-240>Signup</button>
         </form>
-        <div class="login-link-wrapper">
-          <span class="login-notice">Already Have an account?</span>
-          <a class="login-link" routerLink="/login">login</a>
+        <div class="login-link-wrapper" x-test-hook-241>
+          <span class="login-notice" x-test-hook-242>Already Have an account?</span>
+          <a class="login-link" routerLink="/login" x-test-hook-243>login</a>
         </div>
   
       </main>
   
       <!-- linking to signup -->
-      <aside class="signup-aside">
-        <div class="signup-aside-overlay"></div>
-        <h1 class="signup-welcome-text">Join WISHLIST Today!</h1>
-        <hr class="signup-aside-hr">
+      <aside class="signup-aside" x-test-hook-244>
+        <div class="signup-aside-overlay" x-test-hook-245></div>
+        <h1 class="signup-welcome-text" x-test-hook-246>Join WISHLIST Today!</h1>
+        <hr class="signup-aside-hr" x-test-hook-247>
       </aside>
     </div>
   </div>
   
-  <app-error [message]="errorMessage"></app-error>
+  <app-error [message]="errorMessage" x-test-tpl-248></app-error>

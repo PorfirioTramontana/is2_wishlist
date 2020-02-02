@@ -1,24 +1,23 @@
-<h2>Some suggestions for your wishlist 😉</h2>
-<mat-spinner *ngIf="isLoadingSuggestions"></mat-spinner>
-<div class="container">
-    <div class="suggestion_card item" *ngFor="let item of items; let itemIndex=index; let last=last">
-        <mat-card style="margin-top:10px;">
-                <mat-card-title class="suggestion_card_title">{{item.title}}</mat-card-title>
-                <mat-card-subtitle>{{ item.category_id | categorynamebyid }}</mat-card-subtitle>
-                <img class="suggestion_item_image" src="{{ item.image_url }}" />                        
+<h2 x-test-tpl-193>Some suggestions for your wishlist 😉</h2>
+<mat-spinner *ngIf="isLoadingSuggestions" x-test-tpl-194></mat-spinner>
+<div class="container" x-test-tpl-249>
+    <div class="suggestion_card" *ngFor="let item of items; let itemIndex=index; let last=last" x-test-tpl-195>
+        <mat-card style="margin-top:10px;" x-test-hook-196>
+                <mat-card-title class="suggestion_card_title" x-test-hook-197>{{item.title}}</mat-card-title>
+                <mat-card-subtitle x-test-hook-198>{{ item.category_id | categorynamebyid }}</mat-card-subtitle>
+                <img class="suggestion_item_image" src="{{ item.image_url }}" x-test-hook-199 />                        
     
-                <div class="row" style=" margin-top: 20px;">
-                    <p class="suggestion_card_description">
+                <div class="row" style=" margin-top: 20px;" x-test-hook-200>
+                    <p class="suggestion_card_description" x-test-hook-201>
                         {{item.description}}
                     </p>
                 </div>
-                <mat-card-actions style="padding-left: 22px;">
-                   
-                <button type="button" (click)="addToWishList(item)" mat-stroked-button color="accent">ADD to wishlist!</button>
+                <mat-card-actions style="padding-left: 22px;" x-test-hook-202>
+                    
+                <button type="button" (click)="addToWishList(item)" mat-stroked-button color="accent" x-test-hook-203>ADD to wishlist!</button>
             </mat-card-actions>
 
-          </mat-card>
-
+            </mat-card>
           
       </div>
 

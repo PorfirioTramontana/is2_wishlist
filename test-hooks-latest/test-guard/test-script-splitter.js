@@ -42,7 +42,7 @@ const args = yargs
 let numLocator=parseInt(args.num);
 let n=0;
 while(n<numLocator){
-jsdomProcessFiles(args.suites, splitTest,n+2).catch(console.error);
+jsdomProcessFiles(args.suites, splitTest,n+1).catch(console.error);
 n++;
 }
 
@@ -85,7 +85,7 @@ async function splitTest(node,filename,num) {
 async function jsdomProcessFile(fileName, processor,num) {
     const content = await utils.readFile(fileName, "utf8");
     const destFolder = path.resolve(args.dest);
-	let numId=num-2;
+	let numId=num-1;
     mkDirByPathSync(destFolder.concat(numId));
 
     if (content.indexOf('</html>') > 0) {
