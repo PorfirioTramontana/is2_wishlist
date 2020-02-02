@@ -22,7 +22,7 @@ jobs:
       before_script:
         - cd client
         - npm i
-        - npm start mock-server &
+        - json-server ./mocks/database.json &
         
       script: 
         - npm run e2e
