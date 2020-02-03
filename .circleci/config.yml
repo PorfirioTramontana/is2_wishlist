@@ -57,7 +57,7 @@ jobs:
 
             - run:
                 name: Verifiy previously injected hooks
-                command: cd ~/workspace/client/test-hooks-latest/test-guard && npm i && node main.js verify-hooks '../../src/**/*.html' --grammar angularjs --suites '../../tests/1.3/test-cases'
+                command: cd ~/workspace/test-hooks-latest/test-guard && npm i && node main.js verify-hooks '../../src/**/*.html' --grammar angularjs --suites '../../tests/1.3/test-cases'
 
             - run:
                 name: Start mock server in background # Race condition
