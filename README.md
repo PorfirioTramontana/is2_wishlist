@@ -2,8 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/antoniopicone/is2_wishlist.svg?style=svg&circle-token=1ccd8f54691c51063304ecb4d2c1e0ee9adc65e2)](https://circleci.com/gh/antoniopicone/is2_wishlist)
 
-
-
 Angular based project for Ingengeria del Software 2 exam, focused on capture&amp;replay testing.
 This project is written in TypeScript on Angular 8 framework.
 
@@ -27,15 +25,25 @@ Once VSCode has started, choose to Reopen in Container the project: VSCode will 
 
 2. From the terminal inside the client container, run `npm start` (or click on the action in VSCode): this will start angular development server on port 4200 (automatically forwarded to your host machine).
 
+3. Starting from 2.0 tag version, you have to signup with your email to access to the application: once the application is up & running, a login/signup form will appear. Your email registration/login will be handled with Firebase Email Auth service provider. 
+
 ## Debugging Angular app
 
 As this projects installs Chrome/Firefox remote debugging, **having angular development server running**, switch on Debug section of VSCode and run _Debug in Chrome_.
 
 ## Continuous Integration
 
-This project has been configured with CircleCI to check build status. In addiction, you can see the build status with badge on top of this document.
+This project has been configured with CircleCI to:
 
-## Running robot-framework tests
+- check build status
+- verify previously injected hooks
+- run regression tests (with Protractor)
+- build for production
+- deploy a __function__ (the mock server) and a __site__ (the Angular app) to Firebase 
+
+In addiction, you can see the build status with badge on top of this document.
+
+## Running end-to-end tests with Robotframework
 
 All test suites should be in subfolders of `/tests` folder: a test suite is composed by `/test-cases` and `/reports`.
 In each test suite subfolder should be available a `run-test.sh` bash script running (a dockerized) robot-framework (copy the one available in _example_ test suite subfolder).
@@ -76,4 +84,3 @@ cd /workspace/test-guard
 node test-script-splitter.js --suites '../tests/1.0/test-cases' --dest '../output-locators' --num 3
 ```
 
-NB: In test-guard folder there is another version of test-script-splitter, edited by the Professor (`test-script-splitter_vPorfirio.js`).
