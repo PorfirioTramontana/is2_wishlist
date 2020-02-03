@@ -5,6 +5,9 @@
 Angular based project for Ingengeria del Software 2 exam, focused on capture&amp;replay testing.
 This project is written in TypeScript on Angular 8 framework.
 
+**This app is automatically deployed on: 
+https://is2-wishlist-project.web.app/home**
+
 ## How to
 
 To get started, you need:
