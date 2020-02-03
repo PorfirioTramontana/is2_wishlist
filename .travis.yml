@@ -30,15 +30,15 @@ jobs:
     - stage: "Install modules"
 
       script: 
-        - cd ~/client
+        - cd /home/travis/build/antoniopicone/is2_wishlist/client
         - npm i
-        - cd ~/test-hooks-latest/test-guard
+        - cd /home/travis/build/antoniopicone/is2_wishlist/test-hooks-latest/test-guard
         - npm i
 
     - stage: "Build"
       
       before_script:
-        - cd ~/client
+        - cd /home/travis/build/antoniopicone/is2_wishlist/client
         
       script: 
         - npm run build
@@ -46,14 +46,14 @@ jobs:
     - stage: "Verify Hooks"
       
       before_script:
-        - cd ~/test-hooks-latest/test-guard
+        - cd /home/travis/build/antoniopicone/is2_wishlist/test-hooks-latest/test-guard
         
       script: 
-        - node main.js verify-hooks '../../src/**/*.html' --grammar angularjs --suites '../../tests/1.0/test-cases'
+        - node main.js verify-hooks '/home/travis/build/antoniopicone/is2_wishlist/client/src/**/*.html' --grammar angularjs --suites '/home/travis/build/antoniopicone/is2_wishlist/tests/1.2/test-cases'
 
     - stage: "Regression Tests"
       before_script:
-        - cd ~/client
+        - cd /home/travis/build/antoniopicone/is2_wishlist/client
         - npm i
         # - webdriver-manager update --versions.chrome 79
         # - webdriver-manager start --versions.chrome 79 &
