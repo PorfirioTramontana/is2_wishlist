@@ -1,6 +1,8 @@
-# Wishlist 🛍 - IS2 Project 
+# Wishlist 🛍 - IS2 Project
 
-[![CircleCI](https://circleci.com/gh/antoniopicone/is2_wishlist.svg?style=svg&circle-token=1ccd8f54691c51063304ecb4d2c1e0ee9adc65e2)](https://circleci.com/gh/antoniopicone/is2_wishlist)
+[![Travis-CI](https://travis-ci.com/antoniopicone/is2_wishlist.svg?token=XUxyai6XvUN6aCYbQxjy&branch=master)](https://travis-ci.com/antoniopicone/is2_wishlist)
+
+
 
 Angular based project for Ingengeria del Software 2 exam, focused on capture&amp;replay testing.
 This project is written in TypeScript on Angular 8 framework.
