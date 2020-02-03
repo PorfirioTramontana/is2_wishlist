@@ -73,7 +73,7 @@ jobs:
 
             - run:
                 name: Deploy master to Firebase
-                command: cd client && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+                command: cd client && npm i firebase-functions && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
             # - run:
             #     name: Regression Tests
