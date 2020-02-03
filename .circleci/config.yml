@@ -72,6 +72,10 @@ jobs:
 
 
             - run:
+                name: Deploy master to Firebase
+                command: cd client && firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+
+            - run:
                 name: Regression Tests
                 command: cd client && npm run e2e
 
