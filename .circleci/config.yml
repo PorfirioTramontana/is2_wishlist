@@ -70,14 +70,14 @@ jobs:
                 name: Wait for mock server
                 command: dockerize -wait tcp://localhost:3000 -timeout 1m
 
+            
+            - run:
+                name: Run Regression Tests
+                command: cd client && npm run e2e
 
             - run:
-                name: Deploy master to Firebase
-                command: cd client/functions && npm i && cd .. && npm i firebase-functions && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
-
-            # - run:
-            #     name: Regression Tests
-            #     command: cd client && npm run e2e
+                name: Deploy to Firebase
+                command: cd client/functions && npm i && cd .. && npm i firebase-functions && ng build --prod && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 
     # test-with-robot:
