@@ -69,7 +69,7 @@
                             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-128>
                                 <mat-label x-test-hook-129>Title</mat-label>
                                 <input matInput placeholder="Title" formControlName="title"  autocomplete="off"
-                                [errorStateMatcher]="matcher" x-test-hook-19>
+                                 x-test-hook-19>
                                 <mat-error x-test-hook-130>
                                     <span *ngIf="!item.get('title').valid && item.get('title').touched" x-test-hook-131>Please enter Title</span>
                                 </mat-error>
@@ -100,7 +100,7 @@
                             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-138>
                                 <mat-label x-test-hook-139>Image URL</mat-label>
                                 <input type="url" matInput placeholder="URL of the image" autocomplete="off" formControlName="image_url"
-                                [errorStateMatcher]="matcher" x-test-hook-31>
+                                 x-test-hook-31>
                                 <mat-error x-test-hook-32>
                                     <span *ngIf="!item.get('image_url').valid && item.get('image_url').touched" x-test-hook-140>Please enter Image URL</span>
                                 </mat-error>
@@ -111,7 +111,7 @@
                             <mat-form-field appearance="outline" fluid class="example-full-width" x-test-hook-142>
                                 <mat-label x-test-hook-37>Description</mat-label>
                                 <input type="text" matInput placeholder="Description" autocomplete="off" formControlName="description"
-                                [errorStateMatcher]="matcher" x-test-hook-38>
+                                 x-test-hook-38>
                                 <mat-error x-test-hook-143>
                                     <span *ngIf="!item.get('description').valid && item.get('description').touched" x-test-hook-144>Please enter a description</span>
                                 </mat-error>
@@ -122,7 +122,7 @@
                             <mat-form-field appearance="outline" class="example-full-width" x-test-hook-42>
                                 <mat-label x-test-hook-146>Shop URL</mat-label>
                                 <input type="url" matInput autocomplete="off" placeholder="URL of the ecommerce" formControlName="shop_url"
-                                [errorStateMatcher]="matcher" x-test-hook-44>
+                                 x-test-hook-44>
                                 <mat-error x-test-hook-147>
                                     <span *ngIf="!item.get('shop_url').valid && item.get('shop_url').touched" x-test-hook-148>Please enter Shop URL</span>
                                 </mat-error>

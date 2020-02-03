@@ -13,7 +13,7 @@ import { element } from 'protractor';
 import { supportsPassiveEventListeners } from '@angular/cdk/platform';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { AddNewItemBottomSheet } from '../ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
-//import { categories } from 'src/app/data/categories';
+import { categories } from 'src/app/data/categories';
 
 
 function dynamicSort(property) {
@@ -44,6 +44,8 @@ export class HomeComponent implements OnInit {
   
   isLoading = false;
   items = [];
+
+  categories = [];
 
   displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -79,10 +81,11 @@ export class HomeComponent implements OnInit {
     private _matSnackBar: MatSnackBar
     ) { 
    
-    this.editingItemIndex = -1;
-    this.searchBar = new FormControl('');
-    this.sortBy = new FormControl('add_date');
-    this.previousSortCriteria = this.sortBy.value;
+      this.categories = categories;
+      this.editingItemIndex = -1;
+      this.searchBar = new FormControl('');
+      this.sortBy = new FormControl('add_date');
+      this.previousSortCriteria = this.sortBy.value;
   }
 
 

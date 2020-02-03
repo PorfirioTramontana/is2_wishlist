@@ -56,7 +56,7 @@ jobs:
                     - dist
 
             - run:
-                name: Start mock server in background
+                name: Start mock server in background # Race condition
                 command: cd client && npm run mock-server
                 background: true
 
