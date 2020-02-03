@@ -27,18 +27,12 @@ addons:
 
 jobs:  
   include:
-    - stage: "Install modules"
-
-      script: 
-        - cd /home/travis/build/antoniopicone/is2_wishlist/client
-        - npm i
-        - cd /home/travis/build/antoniopicone/is2_wishlist/test-hooks-latest/test-guard
-        - npm i
-
+        
     - stage: "Build"
       
       before_script:
         - cd /home/travis/build/antoniopicone/is2_wishlist/client
+        - npm i
         
       script: 
         - npm run build
@@ -47,16 +41,15 @@ jobs:
       
       before_script:
         - cd /home/travis/build/antoniopicone/is2_wishlist/test-hooks-latest/test-guard
+        - npm i
         
       script: 
+        - cd /home/travis/build/antoniopicone/is2_wishlist/test-hooks-latest/test-guard
         - node main.js verify-hooks '/home/travis/build/antoniopicone/is2_wishlist/client/src/**/*.html' --grammar angularjs --suites '/home/travis/build/antoniopicone/is2_wishlist/tests/1.2/test-cases'
 
-    - stage: "Regression Tests"
+    - stage: "Run Regression Tests"
       before_script:
         - cd /home/travis/build/antoniopicone/is2_wishlist/client
-        - npm i
-        # - webdriver-manager update --versions.chrome 79
-        # - webdriver-manager start --versions.chrome 79 &
         - json-server ./mocks/database.json &
         
       script: 
