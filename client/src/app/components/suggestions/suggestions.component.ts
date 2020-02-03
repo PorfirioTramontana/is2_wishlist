@@ -15,7 +15,7 @@ import { MessageService } from '../../services/message.service';
 export class SuggestionsComponent implements OnInit {
 
   items = [];
-  isLoading = false;
+  isLoadingSuggestions = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
   
 
@@ -28,12 +28,12 @@ export class SuggestionsComponent implements OnInit {
   }
 
   refreshData() {
-    this.isLoading = true;
+    this.isLoadingSuggestions = true;
     this.apiService.sendGetRequest('/suggestions').pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<Array<Item>>)=>{  
       
       this.items = res.body;
       
-      this.isLoading = false;
+      this.isLoadingSuggestions = false;
     })
   }
 

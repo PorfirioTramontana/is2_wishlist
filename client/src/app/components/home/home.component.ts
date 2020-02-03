@@ -19,6 +19,7 @@ import { items_categories } from '../../../environments/environment'; // CHECK h
 
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../services/message.service';
+import { categories } from 'src/app/data/categories';
 
 
 function dynamicSort(property) {
@@ -51,6 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   items = [];
   categories = [];
 
+  
   displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
   editingItemIndex: Number;
@@ -297,7 +299,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this._addnewitemBottomSheetRef.afterDismissed().subscribe((result) => {
       
-      console.log(result);
       this.refreshData();
       
       // this._matSnackBar.open('New item added! 🎉', 'hooray!', {

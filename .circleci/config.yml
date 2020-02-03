@@ -55,19 +55,35 @@ jobs:
                 paths:
                     - dist
 
-    # test-with-robot:
-    #     docker:
-    #         - image: circleci/python:3.6.2-stretch-browsers
-    #     steps:
-    #         - checkout
-    #         - restore_cache:
-    #             key: deps2-{{ .Branch }}-{{ checksum "requirements/robotframework.txt" }}
-    #         - run: pip install -r requirements/robotframework.txt
-    #         - save_cache:
-    #             key: deps2-{{ .Branch }}-{{ checksum "requirements/robotframework.txt" }}
-    #             paths:
-    #                 - requirements
-        
+            - run:
+                name: Verifiy previously injected hooks
+                command: cd ~/workspace/test-hooks-latest/test-guard && npm i && node main.js verify-hooks '../../client/src/**/*.html' --grammar angularjs --suites '../../tests/1.3/test-cases'
+
+            - run:
+                name: Start mock server in background # Race condition
+                command: cd client && npm run mock-server
+                background: true
+
+
+            - run:
+                name: Install dockerize for Mock Server execution
+                command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+                environment:
+                    DOCKERIZE_VERSION: v0.3.0
+            
+            - run:
+                name: Wait for mock server
+                command: dockerize -wait tcp://localhost:3000 -timeout 1m
+
+            
+            - run:
+                name: Run Regression Tests
+                command: cd client && npm run e2e
+
+            - run:
+                name: Deploy to Firebase
+                command: cd client/functions && npm i && cd .. && npm i firebase-functions && npm run build -- --prod && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+
 
         
     
@@ -136,40 +152,3 @@ workflows:
     #                         - staging
     #                         - master
                             
-# # Javascript Node CircleCI 2.0 configuration file
-# #
-# # Check https://circleci.com/docs/2.0/language-javascript/ for more details
-# #
-# version: 2
-# jobs:
-#   build:
-#     docker:
-#       # specify the version you desire here
-#       - image: circleci/node:7.10
-
-#       # Specify service dependencies here if necessary
-#       # CircleCI maintains a library of pre-built images
-#       # documented at https://circleci.com/docs/2.0/circleci-images/
-#       # - image: circleci/mongo:3.4.4
-
-#     working_directory: ~/repo
-
-#     steps:
-#       - checkout
-
-#       # Download and cache dependencies
-#       - restore_cache:
-#           keys:
-#             - v1-dependencies-{{ checksum "package.json" }}
-#             # fallback to using the latest cache if no exact match is found
-#             - v1-dependencies-
-
-#       - run: yarn install
-
-#       - save_cache:
-#           paths:
-#             - node_modules
-#           key: v1-dependencies-{{ checksum "package.json" }}
-
-#       # run tests!
-#       - run: yarn test
