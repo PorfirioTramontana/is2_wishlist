@@ -39,9 +39,16 @@ mat-card {
 
   .add_new_item_fab {
     position: fixed !important;
-    z-index: 99999;
+    z-index: 1;
     right: 15px; /* Add this and change value to set the margin you want */
     bottom: 20px;
+  }
+
+  .show_suggestions_fab {
+    position: fixed !important;
+    z-index: 1;
+    right: 15px; /* Add this and change value to set the margin you want */
+    bottom: 90px;
   }
 
   .left_pane {
@@ -54,7 +61,14 @@ mat-card {
     float: left;
     background-color: antiquewhite;
     padding-left: 15px;
+    
     /* background-color: aliceblue; */
+    
+  }
+
+  .full_width {
+    width: 98%;
+    
   }
 
   .content_from_toolbar {

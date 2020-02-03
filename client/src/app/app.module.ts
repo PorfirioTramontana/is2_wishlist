@@ -29,7 +29,8 @@ import {
   MatGridListModule,
   MatBottomSheetModule,
   MatBottomSheetRef,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTooltipModule
 } from '@angular/material';
 
 import { CustomMaterialModule } from './components/ui-custom-material/custom-material.module';
@@ -93,7 +94,8 @@ import { UiErrorComponent } from './components/ui-error/ui-error.component';
     MatRadioModule,
     MatGridListModule,
     MatBottomSheetModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   providers: [],
   entryComponents: [ConfirmDialogComponent, AddNewItemBottomSheet],

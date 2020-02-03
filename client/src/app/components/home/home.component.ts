@@ -51,6 +51,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   items = [];
   categories = [];
 
+  showSuggestions = false;
+
   
   displayedItems = [];
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -306,6 +308,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     });
 
+  }
+
+  openSuggestionPanel() {
+    this.showSuggestions = !this.showSuggestions;
   }
 
   // logout() {

@@ -1,8 +1,11 @@
 <div class="content_from_toolbar" x-test-tpl-11>
     <mat-spinner *ngIf="isLoading" x-test-hook-12></mat-spinner>
-    <button id="add_new_item_btn" class="add_new_item_fab" mat-fab (click)="openBottomSheet()" x-test-tpl-72>
+    <button id="add_new_item_btn" class="add_new_item_fab" mat-fab mat-fab matTooltip="Add a new Item!" (click)="openBottomSheet()" x-test-tpl-72>
         <!-- <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon> -->
         <mat-icon x-test-hook-207>add</mat-icon>
+    </button>
+    <button color="primary" id="show_suggestions" class="show_suggestions_fab" mat-fab matTooltip="Show me suggestions!" (click)="openSuggestionPanel()">
+        <mat-icon>local_offer</mat-icon>
     </button>
     <form [formGroup]="searchAndSortForm" x-test-tpl-61>
         <mat-toolbar x-test-hook-62>
@@ -27,7 +30,7 @@
     </mat-toolbar>
     </form>
 
-    <div class="left_pane" style="padding: 13px;" x-test-hook-188>
+    <div class="left_pane" [ngClass]="{full_width: !showSuggestions}" style="padding: 13px;" x-test-hook-188>
         <mat-spinner *ngIf="isLoading" x-test-hook-189></mat-spinner>
         <div class="sad_empty_list" *ngIf="wishlistItems.controls.length == 0" x-test-hook-13>
             <h2 x-test-hook-14>😢</h2>
@@ -152,7 +155,7 @@
         </div>
     </form>
     </div>
-    <div class="right_pane" x-test-hook-191>
+    <div *ngIf="showSuggestions" class="right_pane" x-test-hook-191>
         <app-suggestions x-test-hook-192></app-suggestions>
     </div>
 </div>
