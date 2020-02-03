@@ -15,7 +15,6 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-shee
 import { AddNewItemBottomSheet } from '../ui-addnewitem-bottom-sheet/addnewitem-bottom-sheet.component';
 import { FbService } from 'src/app/services/fb.service';
 import { Router } from '@angular/router';
-import { items_categories } from '../../../environments/environment'; // CHECK ho to switch env
 
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../services/message.service';
@@ -93,7 +92,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private messageService: MessageService
     ) { 
    
-      this.categories = items_categories;
+      this.categories = categories;
       this.editingItemIndex = -1;
       this.searchBar = new FormControl('');
       this.sortBy = new FormControl('add_date');

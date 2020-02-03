@@ -8,12 +8,22 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 
+// Disabled auth
+// const routes: Routes = [
+//   { path: '', component: HomeComponent, canActivate: [AppGuard] },
+//   { path: 'home', component: HomeComponent, canActivate: [AppGuard] },
+//   { path: 'about', component: AboutComponent, canActivate: [AppGuard] },
+//   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+//   { path: 'signup', component: SignupComponent , canActivate: [AuthGuard] },
+//   { path: '**', redirectTo: '' }
+// ];
+
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AppGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [AppGuard] },
-  { path: 'about', component: AboutComponent, canActivate: [AppGuard] },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'signup', component: SignupComponent , canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: '' }
 ];
 

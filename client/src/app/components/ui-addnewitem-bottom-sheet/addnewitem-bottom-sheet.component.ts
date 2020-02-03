@@ -5,8 +5,8 @@ import { MatBottomSheetRef } from '@angular/material';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, FormArray } from '@angular/forms';
 import { Item } from 'src/app/models/item';
 import { ApiService } from 'src/app/services/api.service';
+import { categories } from 'src/app/data/categories';
 
-import { items_categories } from '../../../environments/environment'; // CHECK ho to switch env
 
 
 
@@ -34,7 +34,7 @@ import { items_categories } from '../../../environments/environment'; // CHECK h
     constructor(private apiService: ApiService, private formBuilder: FormBuilder, private _bottomSheetRef: MatBottomSheetRef<AddNewItemBottomSheet>) {
          
         this.addNewItemForm = this.formBuilder.group(this.itemFormGroup);
-        this.categories = items_categories;
+        this.categories = categories;
     }
   
     openLink(event: MouseEvent): void {
