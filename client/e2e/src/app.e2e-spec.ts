@@ -2,6 +2,13 @@ import { browser, logging, element, by } from 'protractor';
 
 describe('Basic Add test', () => {
   
+	// it('Should log in', async () => {
+	// 	await browser.get('http://localhost:4200/login');
+	// 	await element(by.xpath("//div/div[3]")).click();
+	// 	await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-209]//*[@x-test-hook-216]")).sendKeys('w0nd3rby@gmail.com');
+	// 	await element(by.xpath("//*[@x-test-tpl-70]//*[@x-test-tpl-209]//*[@x-test-hook-219]")).sendKeys('testme');
+	// 	await element(by.css("button[name='submit'] > span.mat-button-wrapper")).click();
+	// });
 
   it('Add new Item', async () => {
 		await browser.get('http://localhost:4200/home');
@@ -61,4 +68,6 @@ describe('Basic Add test', () => {
     } as logging.Entry));
   });
 });
+
+
 
