@@ -77,7 +77,7 @@ jobs:
 
             - run:
                 name: Deploy to Firebase
-                command: cd client/functions && npm i && cd .. && npm i firebase-functions && ng build --prod && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+                command: cd client/functions && npm i && cd .. && npm i firebase-functions && npm run build -- --prod && ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 
     # test-with-robot:
