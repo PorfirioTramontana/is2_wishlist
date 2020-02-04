@@ -6,7 +6,7 @@ Angular based project for Ingengeria del Software 2 exam, focused on capture&amp
 This project is written in TypeScript on Angular 8 framework.
 
 **This app is automatically deployed on: 
-https://is2-wishlist-project.web.app/home**
+https://is2-wishlist-project.web.app/home** with READ ONLY APIs (so you won't be able to create/update items)
 
 ## How to
 
