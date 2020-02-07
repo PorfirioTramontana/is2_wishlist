@@ -28,13 +28,33 @@
       "id": 5
     },
     {
-      "title": "Macchina per il pane",
-      "description": "Una macchina per il pane",
+      "title": "Air Pods",
+      "description": "Air Pods by Apple",
       "image_url": "https://images-na.ssl-images-amazon.com/images/I/41uJJ6ivY9L._AC_SY480_.jpg",
       "category_id": 8,
-      "shop_url": "https://www.amazon.it/Moulinex-OW210130-Macchina-Programmi-Automatici/dp/B01CHVXNXA?smid=A11IL2PNWYJU7H&pf_rd_p=34030c08-4fc7-42ca-8b10-bc178969977c&pf_rd_r=JN7MQ7FHKAFXYS4WEW1M",
+      "shop_url": "apple.it",
       "add_date": "2020-02-02T19:11:13.503Z",
       "id": 6
+    },
+    {
+      "title": "Sleek Fresh Mouse",
+      "description": "Omnis dolores consequuntur ex ad esse eaque eligendi eveniet sit. Ut soluta quisquam est voluptatem sit sit aut sit.",
+      "price": "676.00",
+      "image_url": "https://source.unsplash.com/800x600/?product",
+      "category_id": 6,
+      "shop_url": "http://test.com/1191",
+      "add_date": "2020-02-07T00:28:35.340Z",
+      "id": 9
+    },
+    {
+      "title": "Sleek Fresh Mouse",
+      "description": "Omnis dolores consequuntur ex ad esse eaque eligendi eveniet sit. Ut soluta quisquam est voluptatem sit sit aut sit.",
+      "price": "676.00",
+      "image_url": "https://source.unsplash.com/800x600/?product",
+      "category_id": 6,
+      "shop_url": "http://test.com/1191",
+      "add_date": "2020-02-07T00:28:52.681Z",
+      "id": 10
     }
   ],
   "suggestions": [
