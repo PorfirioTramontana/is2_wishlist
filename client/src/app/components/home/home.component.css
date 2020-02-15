@@ -8,6 +8,7 @@ mat-card {
     min-width: 270px;
     float: left;    
     margin-right: 30px;
+    margin-bottom: 50px;
 }
 
 .example-full-width {
