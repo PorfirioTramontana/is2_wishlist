@@ -111,4 +111,5 @@ dist
 ## Dir mounted in containers
 ./test-guard
 ./mock-server
+chromedriver.*
 

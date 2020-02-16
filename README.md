@@ -8,6 +8,24 @@ This project is written in TypeScript on Angular 8 framework.
 **This app is automatically deployed on: 
 https://is2-wishlist-project.web.app/home** with READ ONLY APIs (so you won't be able to create/update items)
 
+## Setup application on Windows
+
+1. Clone/download the repository
+
+2. Install Node JS v 12.x
+
+3. Open Node JS Command Prompt application
+
+4. Install module dependencies: 
+```    
+cd client
+npm i
+```
+5. Start mock server: `npm run mock-server`
+6. Open another Node JS Command Prompt and, into client folder, run: `npm start` and allow opening port on Windows firewall (if a dialog pops up).
+
+7. Open your browser on: `http://localhost:4200`
+
 ## How to
 
 To get started, you need:
