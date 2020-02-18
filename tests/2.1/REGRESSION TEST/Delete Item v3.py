@@ -39,13 +39,15 @@ class DeleteItem(unittest.TestCase):
         driver.find_element_by_xpath("//button[3]/span").click()
         driver.find_element_by_xpath("//mat-dialog-container[@id='mat-dialog-0']/app-confirm-dialog/div[2]/button[2]/span").click()
 		
-	def test_delete_abort1(self):
+	
+    def test_delete_abort1(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
         driver.find_element_by_xpath("//div[4]/mat-card/div/button/span").click()
         driver.find_element_by_xpath("//button[2]/span").click()
 		
-	def test_delete_abort2(self):
+	
+    def test_delete_abort2(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
         driver.find_element_by_xpath("//div[4]/mat-card/div/button/span").click()

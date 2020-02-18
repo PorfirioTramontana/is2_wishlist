@@ -26,7 +26,8 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_xpath("//form/button/span").click()
         driver.find_element_by_css_selector("mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color").click()
 		
-	def test_signup_k_o_duplication_error(self):
+	
+    def test_signup_k_o_duplication_error(self):
         driver = self.driver
         driver.get("http://localhost:4200/signup")
         driver.find_element_by_name("email").click()
@@ -36,7 +37,8 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_name("password").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
 		
-	def test_signup_k_o_bad_email(self):
+	
+    def test_signup_k_o_bad_email(self):
         driver = self.driver
         driver.get("http://localhost:4200/signup")
         driver.find_element_by_name("email").click()
@@ -46,7 +48,8 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_name("password").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
 		
-	def test_signup_abort(self):
+	
+    def test_signup_abort(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")
         driver.find_element_by_xpath("//a[contains(text(),'Sign up')]").click()

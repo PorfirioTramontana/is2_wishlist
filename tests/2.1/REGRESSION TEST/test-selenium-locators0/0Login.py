@@ -26,7 +26,8 @@ class Login(unittest.TestCase):
         driver.find_element_by_xpath("//form/button/span").click()
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-112] [x-test-hook-206]").click()
 		
-	def test_authentication_error(self):
+	
+    def test_authentication_error(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-216]").click()
@@ -37,7 +38,8 @@ class Login(unittest.TestCase):
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").send_keys("testtttt")
         driver.find_element_by_xpath("//form/button/span").click()
 		
-	def test_bad_email(self):
+	
+    def test_bad_email(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-216]").click()

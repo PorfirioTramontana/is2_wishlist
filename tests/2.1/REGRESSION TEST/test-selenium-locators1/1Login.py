@@ -26,7 +26,8 @@ class Login(unittest.TestCase):
         driver.find_element_by_xpath("//form/button/span").click()
         driver.find_element_by_xpath("//mat-icon").click()
 		
-	def test_authentication_error(self):
+	
+    def test_authentication_error(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")
         driver.find_element_by_id("mat-input-3").click()
@@ -37,7 +38,8 @@ class Login(unittest.TestCase):
         driver.find_element_by_id("mat-input-4").send_keys("testtttt")
         driver.find_element_by_xpath("//form/button/span").click()
 		
-	def test_bad_email(self):
+	
+    def test_bad_email(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")
         driver.find_element_by_id("mat-input-0").click()

@@ -23,7 +23,8 @@ class SortPath1(unittest.TestCase):
         driver.find_element_by_xpath("//a/span").click()
         driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div/div").click()
     
-	def test_sort_path2(self):
+	
+    def test_sort_path2(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
         driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div").click()

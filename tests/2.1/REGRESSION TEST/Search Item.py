@@ -24,7 +24,8 @@ class SearchByTitle(unittest.TestCase):
         driver.find_element_by_xpath("//*[@x-test-tpl-70]//*[@x-test-hook-79]").click()
         driver.find_element_by_xpath("//mat-icon").click()
 		
-	def test_search_by_description(self):
+	
+    def test_search_by_description(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
         driver.find_element_by_xpath("//mat-icon[2]").click()
@@ -33,7 +34,8 @@ class SearchByTitle(unittest.TestCase):
         driver.find_element_by_xpath("//*[@x-test-tpl-70]//*[@x-test-hook-79]").click()
         driver.find_element_by_xpath("//mat-icon").click()
 		
-	def test_search_abort(self):
+	
+    def test_search_abort(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
         driver.find_element_by_xpath("//mat-icon[2]").click()
