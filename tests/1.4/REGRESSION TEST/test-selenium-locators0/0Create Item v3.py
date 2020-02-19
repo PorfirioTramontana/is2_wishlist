@@ -3,15 +3,20 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
 class CreateItem(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        chrome_options = Options()  
+        #chrome_options.add_argument("--headless")  
+        self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.implicitly_wait(30)
-        self.base_url = "https://www.google.com/"
+        self.driver.set_window_position(0, 0)
+        self.driver.set_window_size(1920, 1280)
+        self.base_url = "http://www.google.com/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
@@ -71,4 +76,4 @@ class CreateItem(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)

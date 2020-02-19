@@ -79,4 +79,4 @@ class EditItem(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
