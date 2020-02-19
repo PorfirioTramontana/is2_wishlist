@@ -31,6 +31,7 @@ class Login(unittest.TestCase):
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-112] [x-test-hook-206]").click()
+        time.sleep(2)
 		
 	
     def test_authentication_error(self):
@@ -43,6 +44,7 @@ class Login(unittest.TestCase):
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").clear()
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").send_keys("testtttt")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
 		
 	
     def test_bad_email(self):
@@ -54,6 +56,7 @@ class Login(unittest.TestCase):
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").clear()
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").send_keys("ssdfdfddf")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

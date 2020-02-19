@@ -9,7 +9,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
-class Logout(unittest.TestCase):
+class SortPath1(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()  
         #chrome_options.add_argument("--headless")  
@@ -21,19 +21,23 @@ class Logout(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_logout(self):
+    def test_sort_path1(self):
         driver = self.driver
-        driver.get("http://localhost:4200/login")
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-216]").click()
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-216]").clear()
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-216]").send_keys("w0nd3rby@gmail.com")
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").clear()
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").send_keys("testme")
-        driver.find_element_by_xpath("//form/button/span").click()
-        time.sleep(2)
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-112] [x-test-hook-206]").click()
-        time.sleep(1)
-        
+        driver.get("http://localhost:4200/home")
+        driver.find_element_by_xpath("//a/span").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div[2]").click()
+        driver.find_element_by_xpath("//a/span").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div/div[2]").click()
+		
+	
+    def test_sort_path2(self):
+        driver = self.driver
+        driver.get("http://localhost:4200/home")
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div[2]").click()
+        driver.find_element_by_xpath("//a/span").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div[2]").click()
+        driver.find_element_by_xpath("//a/span").click()
+    
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException as e: return False

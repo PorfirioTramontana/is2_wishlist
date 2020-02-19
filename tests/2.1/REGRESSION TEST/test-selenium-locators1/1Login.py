@@ -36,13 +36,14 @@ class Login(unittest.TestCase):
     def test_authentication_error(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")
-        driver.find_element_by_id("mat-input-3").click()
-        driver.find_element_by_id("mat-input-3").clear()
-        driver.find_element_by_id("mat-input-3").send_keys("michele@work.it")
-        driver.find_element_by_id("mat-input-4").click()
-        driver.find_element_by_id("mat-input-4").clear()
-        driver.find_element_by_id("mat-input-4").send_keys("testtttt")
+        driver.find_element_by_id("mat-input-0").click()
+        driver.find_element_by_id("mat-input-0").clear()
+        driver.find_element_by_id("mat-input-0").send_keys("michele@work.it")
+        driver.find_element_by_id("mat-input-1").click()
+        driver.find_element_by_id("mat-input-1").clear()
+        driver.find_element_by_id("mat-input-1").send_keys("testtttt")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
 		
 	
     def test_bad_email(self):
@@ -54,6 +55,7 @@ class Login(unittest.TestCase):
         driver.find_element_by_id("mat-input-1").clear()
         driver.find_element_by_id("mat-input-1").send_keys("ssdfdfddf")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

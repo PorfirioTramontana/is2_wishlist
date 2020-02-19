@@ -25,12 +25,13 @@ class AddSuggestionAfterClickOnFab(unittest.TestCase):
         driver.get("http://localhost:4200/")
         driver.find_element_by_xpath("//button[@id='show_suggestions']/span/mat-icon").click()
         driver.find_element_by_xpath("//mat-card-actions/button/span").click()
+        time.sleep(1)
         driver.find_element_by_xpath("//div[5]/mat-card/div/button").click()
         driver.find_element_by_xpath("//button[3]/span").click()
         driver.find_element_by_xpath("//mat-dialog-container[@id='mat-dialog-0']/app-confirm-dialog/div[2]/button[2]/span").click()
         driver.find_element_by_xpath("//button[@id='show_suggestions']/span/mat-icon").click()
-		
-	def test_abort_on_add_suggestion(self):
+        
+    def test_abort_on_add_suggestion(self):
         driver = self.driver
         driver.get("http://localhost:4200/")
         driver.find_element_by_xpath("//button[@id='show_suggestions']/span").click()

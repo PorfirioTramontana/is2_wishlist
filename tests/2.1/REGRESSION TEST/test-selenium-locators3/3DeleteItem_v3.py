@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
-
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
-class CreateItem(unittest.TestCase):
+class DeleteItem(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()  
         #chrome_options.add_argument("--headless")  
@@ -21,7 +19,7 @@ class CreateItem(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_create_item(self):
+    def test_delete_item(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
         driver.find_element_by_xpath("//div/button/span").click()
@@ -32,7 +30,6 @@ class CreateItem(unittest.TestCase):
         Select(driver.find_element_by_xpath("//select")).select_by_visible_text("Electronics")
         driver.find_element_by_xpath("//select").click()
         driver.find_element_by_xpath("//div[3]/mat-form-field/div/div/div[3]/input").click()
-        driver.find_element_by_xpath("//div[3]/mat-form-field/div/div/div[3]/input").clear()
         driver.find_element_by_xpath("//div[3]/mat-form-field/div/div/div[3]/input").send_keys("https://www.tigershop.it/wp-content/uploads/2017/10/cuffie.jpg")
         driver.find_element_by_xpath("//div[4]/mat-form-field/div/div/div[3]/input").click()
         driver.find_element_by_xpath("//div[4]/mat-form-field/div/div/div[3]/input").clear()
@@ -40,17 +37,30 @@ class CreateItem(unittest.TestCase):
         driver.find_element_by_xpath("//div[5]/mat-form-field/div/div/div[3]/input").click()
         driver.find_element_by_xpath("//div[5]/mat-form-field/div/div/div[3]/input").clear()
         driver.find_element_by_xpath("//div[5]/mat-form-field/div/div/div[3]/input").send_keys("apple.it")
-        driver.find_element_by_xpath("//div[@id='cdk-overlay-0']/mat-bottom-sheet-container/addnewitem-bottom-sheet/div/form/button/span").click()
+        time.sleep(1)
+        driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(1)
         driver.find_element_by_xpath("//div[5]/mat-card/div/button/span").click()
+        time.sleep(1)
         driver.find_element_by_xpath("//button[3]/span").click()
+        time.sleep(1)
         driver.find_element_by_xpath("//mat-dialog-container[@id='mat-dialog-0']/app-confirm-dialog/div[2]/button[2]/span").click()
 		
 	
-    def test_create_abort(self):
+    def test_delete_abort1(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
-        driver.find_element_by_xpath("//div/button/span").click()
-        driver.find_element_by_xpath("//div[@id='cdk-overlay-0']/mat-bottom-sheet-container/addnewitem-bottom-sheet/div/button/span").click()
+        driver.find_element_by_xpath("//div[4]/mat-card/div/button/span").click()
+        driver.find_element_by_xpath("//button[2]/span").click()
+		
+	
+    def test_delete_abort2(self):
+        driver = self.driver
+        driver.get("http://localhost:4200/home")
+        driver.find_element_by_xpath("//div[4]/mat-card/div/button/span").click()
+        driver.find_element_by_xpath("//button[3]/span").click()
+        driver.find_element_by_xpath("//mat-dialog-container[@id='mat-dialog-0']/app-confirm-dialog/div[2]/button/span").click()
+        driver.find_element_by_xpath("//button[2]/span").click()
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

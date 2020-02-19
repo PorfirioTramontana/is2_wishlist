@@ -9,7 +9,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
-class SortPath1(unittest.TestCase):
+class EditItem(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()  
         #chrome_options.add_argument("--headless")  
@@ -21,22 +21,15 @@ class SortPath1(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_sort_path1(self):
+    
+    
+    def test_edit_abort(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
-        driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div").click()
-        driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div/div").click()
-		
-	
-    def test_sort_path2(self):
-        driver = self.driver
-        driver.get("http://localhost:4200/home")
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div").click()
-        driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div").click()
-        driver.find_element_by_xpath("//a/span").click()
+        driver.find_element_by_xpath("//div[3]/mat-card/div/button/span").click()
+        driver.find_element_by_xpath("//button[2]/span").click()
+        driver.find_element_by_xpath("//div[4]/mat-card/div/button/span").click()
+        driver.find_element_by_xpath("//button[2]/span").click()
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

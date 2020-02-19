@@ -4,36 +4,39 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
-
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
-class Logout(unittest.TestCase):
+class AddSuggestionAfterClickOnFab(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()  
         #chrome_options.add_argument("--headless")  
         self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.implicitly_wait(30)
         self.driver.set_window_position(0, 0)
-        self.driver.set_window_size(1920, 1080)
+        self.driver.set_window_size(1920, 1280)
         self.base_url = "http://www.google.com/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
-    def test_logout(self):
+    def test_add_suggestion_after_click_on_fab(self):
         driver = self.driver
-        driver.get("http://localhost:4200/login")
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-216]").click()
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-216]").clear()
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-216]").send_keys("w0nd3rby@gmail.com")
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").clear()
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-209] [x-test-hook-219]").send_keys("testme")
-        driver.find_element_by_xpath("//form/button/span").click()
-        time.sleep(2)
-        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-112] [x-test-hook-206]").click()
+        driver.get("http://localhost:4200/")
+        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-11] [x-test-hook-259]").click()
+        driver.find_element_by_xpath("//mat-card-actions/button/span").click()
         time.sleep(1)
+        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-11] [x-test-hook-9]:nth-of-type(5) [x-test-hook-110]").click()
+        driver.find_element_by_xpath("//button[3]/span").click()
+        driver.find_element_by_xpath("//mat-dialog-container[@id='mat-dialog-0']/app-confirm-dialog/div[2]/button[2]/span").click()
+        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-11] [x-test-hook-259]").click()
         
+    def test_abort_on_add_suggestion(self):
+        driver = self.driver
+        driver.get("http://localhost:4200/")
+        driver.find_element_by_xpath("//button[@id='show_suggestions']/span").click()
+        driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-11] [x-test-hook-259]").click()
+    
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException as e: return False

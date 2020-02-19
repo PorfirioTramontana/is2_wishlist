@@ -43,6 +43,7 @@ class Login(unittest.TestCase):
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("testtttt")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
 		
 	
     def test_bad_email(self):
@@ -54,7 +55,8 @@ class Login(unittest.TestCase):
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("ssdfdfddf")
         driver.find_element_by_xpath("//form/button/span").click()
-    
+        time.sleep(2)
+		
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException as e: return False

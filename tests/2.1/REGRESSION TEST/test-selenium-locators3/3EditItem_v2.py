@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -25,15 +24,15 @@ class EditItem(unittest.TestCase):
         driver = self.driver
         driver.get("http://localhost:4200/home")
         driver.find_element_by_xpath("//div[4]/mat-card/div/button/span").click()
-        driver.find_element_by_css_selector("#mat-input-40").click()
-        driver.find_element_by_css_selector("#mat-input-40").clear()
-        driver.find_element_by_css_selector("#mat-input-40").send_keys("Air Pods 2")
-        driver.find_element_by_css_selector("#mat-input-42").click()
-        driver.find_element_by_css_selector("#mat-input-42").clear()
-        driver.find_element_by_css_selector("#mat-input-42").send_keys("Air Pods by Apple, reinvented")
-        driver.find_element_by_css_selector("#mat-input-43").click()
-        driver.find_element_by_css_selector("#mat-input-43").clear()
-        driver.find_element_by_css_selector("#mat-input-43").send_keys("apple.it")
+        driver.find_element_by_xpath("//div[3]/input").click()
+        driver.find_element_by_xpath("//div[3]/input").clear()
+        driver.find_element_by_xpath("//div[3]/input").send_keys("Air Pods 2")
+        driver.find_element_by_xpath("//div[4]/mat-form-field/div/div/div[3]/input").click()
+        driver.find_element_by_xpath("//div[4]/mat-form-field/div/div/div[3]/input").clear()
+        driver.find_element_by_xpath("//div[4]/mat-form-field/div/div/div[3]/input").send_keys("Air Pods by Apple, reinvented")
+        driver.find_element_by_xpath("//div[5]/mat-form-field/div/div/div[3]/input").click()
+        driver.find_element_by_xpath("//div[5]/mat-form-field/div/div/div[3]/input").clear()
+        driver.find_element_by_xpath("//div[5]/mat-form-field/div/div/div[3]/input").send_keys("apple.it")
         driver.find_element_by_xpath("//mat-card-actions/button/span").click()
         driver.find_element_by_xpath("//*[@x-test-tpl-70]//*[@x-test-hook-80]//*[@x-test-tpl-11]//*[@x-test-hook-9][4]//*[@x-test-hook-110]").click()
         driver.find_element_by_xpath("//*[@x-test-tpl-70]//*[@x-test-hook-80]//*[@x-test-tpl-11]//*[@x-test-hook-9][4]//*[@x-test-hook-38]").click()

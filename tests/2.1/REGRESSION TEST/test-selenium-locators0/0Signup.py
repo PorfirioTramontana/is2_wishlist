@@ -42,8 +42,8 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-229] [x-test-hook-239]").clear()
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-229] [x-test-hook-239]").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
-		
-	
+        time.sleep(2)
+        
     def test_signup_k_o_bad_email(self):
         driver = self.driver
         driver.get("http://localhost:4200/signup")
@@ -53,8 +53,8 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-229] [x-test-hook-239]").clear()
         driver.find_element_by_css_selector("[x-test-tpl-70] [x-test-hook-80] [x-test-tpl-229] [x-test-hook-239]").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
-		
-	
+        time.sleep(2)
+        
     def test_signup_abort(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")

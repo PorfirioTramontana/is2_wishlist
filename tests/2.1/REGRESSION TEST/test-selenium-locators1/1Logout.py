@@ -24,13 +24,15 @@ class Logout(unittest.TestCase):
     def test_logout(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")
-        driver.find_element_by_id("mat-input-4").click()
-        driver.find_element_by_id("mat-input-4").clear()
-        driver.find_element_by_id("mat-input-4").send_keys("w0nd3rby@gmail.com")
-        driver.find_element_by_id("mat-input-5").clear()
-        driver.find_element_by_id("mat-input-5").send_keys("testme")
+        driver.find_element_by_id("mat-input-0").click()
+        driver.find_element_by_id("mat-input-0").clear()
+        driver.find_element_by_id("mat-input-0").send_keys("w0nd3rby@gmail.com")
+        driver.find_element_by_id("mat-input-1").clear()
+        driver.find_element_by_id("mat-input-1").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
         driver.find_element_by_xpath("//mat-icon").click()
+        time.sleep(1)
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

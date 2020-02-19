@@ -23,18 +23,19 @@ class AddSuggestionAfterClickOnFab(unittest.TestCase):
     def test_add_suggestion_after_click_on_fab(self):
         driver = self.driver
         driver.get("http://localhost:4200/")
-        driver.find_element_by_xpath("//*[@x-test-tpl-70]//*[@x-test-hook-80]//*[@x-test-tpl-11]//*[@x-test-hook-259]").click()
+        driver.find_element_by_xpath("//button[2]/span/mat-icon").click()
         driver.find_element_by_xpath("//mat-card-actions/button/span").click()
-        driver.find_element_by_xpath("//*[@x-test-tpl-70]//*[@x-test-hook-80]//*[@x-test-tpl-11]//*[@x-test-hook-9][5]//*[@x-test-hook-110]").click()
+        time.sleep(1)
+        driver.find_element_by_css_selector("button.mat-stroked-button.mat-button-base.cdk-focused.cdk-mouse-focused").click()
         driver.find_element_by_xpath("//button[3]/span").click()
         driver.find_element_by_xpath("//mat-dialog-container[@id='mat-dialog-0']/app-confirm-dialog/div[2]/button[2]/span").click()
-        driver.find_element_by_xpath("//*[@x-test-tpl-70]//*[@x-test-hook-80]//*[@x-test-tpl-11]//*[@x-test-hook-259]").click()
-		
-	def test_abort_on_add_suggestion(self):
+        driver.find_element_by_xpath("//button[2]/span/mat-icon").click()
+        
+    def test_abort_on_add_suggestion(self):
         driver = self.driver
         driver.get("http://localhost:4200/")
         driver.find_element_by_xpath("//button[@id='show_suggestions']/span").click()
-        driver.find_element_by_xpath("//*[@x-test-tpl-70]//*[@x-test-hook-80]//*[@x-test-tpl-11]//*[@x-test-hook-259]").click()
+        driver.find_element_by_xpath("//button[2]/span/mat-icon").click()
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

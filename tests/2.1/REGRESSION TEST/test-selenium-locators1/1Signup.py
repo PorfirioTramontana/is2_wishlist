@@ -24,11 +24,11 @@ class SignupOK(unittest.TestCase):
     def test_signup_o_k(self):
         driver = self.driver
         driver.get("http://localhost:4200/signup")
-        driver.find_element_by_id("mat-input-2").click()
-        driver.find_element_by_id("mat-input-2").clear()
-        driver.find_element_by_id("mat-input-2").send_keys("me@antonio.engineer")
-        driver.find_element_by_id("mat-input-3").clear()
-        driver.find_element_by_id("mat-input-3").send_keys("testme")
+        driver.find_element_by_id("mat-input-0").click()
+        driver.find_element_by_id("mat-input-0").clear()
+        driver.find_element_by_id("mat-input-0").send_keys("me@antonio.engineer")
+        driver.find_element_by_id("mat-input-1").clear()
+        driver.find_element_by_id("mat-input-1").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
         driver.find_element_by_xpath("//mat-icon").click()
 		
@@ -42,7 +42,7 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_id("mat-input-1").clear()
         driver.find_element_by_id("mat-input-1").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
-		
+        time.sleep(2)
 	
     def test_signup_k_o_bad_email(self):
         driver = self.driver
@@ -53,13 +53,16 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_id("mat-input-1").clear()
         driver.find_element_by_id("mat-input-1").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
 		
 	
     def test_signup_abort(self):
         driver = self.driver
         driver.get("http://localhost:4200/login")
-        driver.find_element_by_link_text("Sign up").click()
-        driver.find_element_by_link_text("login").click()
+        driver.find_element_by_xpath("//a[contains(@href, '/signup')]").click()
+        time.sleep(1)
+        driver.find_element_by_xpath("//a[contains(@href, '/login')]").click()
+        time.sleep(1)
     
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)

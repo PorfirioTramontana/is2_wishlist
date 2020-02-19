@@ -25,19 +25,19 @@ class SortPath1(unittest.TestCase):
         driver = self.driver
         driver.get("http://localhost:4200/home")
         driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div[2]").click()
         driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div/div").click()
-    
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div/div[2]").click()
+		
 	
     def test_sort_path2(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div[2]").click()
         driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div/div[2]").click()
         driver.find_element_by_xpath("//a/span").click()
-	
+    
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException as e: return False

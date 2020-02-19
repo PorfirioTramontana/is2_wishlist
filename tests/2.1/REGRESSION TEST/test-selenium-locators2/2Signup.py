@@ -42,6 +42,7 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
 		
 	
     def test_signup_k_o_bad_email(self):
@@ -53,6 +54,7 @@ class SignupOK(unittest.TestCase):
         driver.find_element_by_name("password").clear()
         driver.find_element_by_name("password").send_keys("testme")
         driver.find_element_by_xpath("//form/button/span").click()
+        time.sleep(2)
 		
 	
     def test_signup_abort(self):
