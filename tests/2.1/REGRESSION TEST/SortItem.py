@@ -24,18 +24,19 @@ class SortPath1(unittest.TestCase):
     def test_sort_path1(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
+        time.sleep(1)
         driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div[2]").click()
         driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div/div").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div/div[2]").click()
 		
 	
     def test_sort_path2(self):
         driver = self.driver
         driver.get("http://localhost:4200/home")
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-3']/label/div/div[2]").click()
         driver.find_element_by_xpath("//a/span").click()
-        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div").click()
+        driver.find_element_by_xpath("//mat-radio-button[@id='mat-radio-2']/label/div[2]").click()
         driver.find_element_by_xpath("//a/span").click()
     
     def is_element_present(self, how, what):
