@@ -1,0 +1,374 @@
+####### PROCESSO BASE #######
+####### 1AddSuggestion.py ######
+test_add_suggestion (__main__.AddSuggestion) ... ERROR
+
+======================================================================
+ERROR: test_add_suggestion (__main__.AddSuggestion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "1AddSuggestion.py", line 27, in test_add_suggestion
+    driver.find_element_by_xpath("//mat-card-actions/button/span").click()
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//mat-card-actions/button/span"}
+  (Session info: chrome=80.0.3987.116)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 33.773s
+
+FAILED (errors=1)
+####### 1Login.py ######
+test_authentication_error (__main__.Login) ... ok
+test_bad_email (__main__.Login) ... ok
+test_login (__main__.Login) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 19.664s
+
+OK
+####### 1Logout.py ######
+test_logout (__main__.Logout) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 8.089s
+
+OK
+####### 1SearchItem.py ######
+test_search_abort (__main__.SearchByTitle) ... ok
+test_search_by_description (__main__.SearchByTitle) ... ok
+test_search_by_title (__main__.SearchByTitle) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 11.721s
+
+OK
+####### 1Signup.py ######
+test_signup_abort (__main__.SignupOK) ... ok
+test_signup_k_o_bad_email (__main__.SignupOK) ... ok
+test_signup_k_o_duplication_error (__main__.SignupOK) ... ok
+test_signup_o_k (__main__.SignupOK) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 26.780s
+
+OK
+####### 1SortItem.py ######
+test_sort_path1 (__main__.SortPath1) ... ok
+test_sort_path2 (__main__.SortPath1) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 7.861s
+
+OK
+####### 2AddSuggestion.py ######
+test_add_suggestion (__main__.AddSuggestion) ... ERROR
+
+======================================================================
+ERROR: test_add_suggestion (__main__.AddSuggestion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "2AddSuggestion.py", line 27, in test_add_suggestion
+    driver.find_element_by_xpath("//mat-card-actions/button/span").click()
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//mat-card-actions/button/span"}
+  (Session info: chrome=80.0.3987.116)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 33.601s
+
+FAILED (errors=1)
+####### 2Login.py ######
+test_authentication_error (__main__.Login) ... ok
+test_bad_email (__main__.Login) ... ok
+test_login (__main__.Login) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 19.683s
+
+OK
+####### 2Logout.py ######
+test_logout (__main__.Logout) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.327s
+
+OK
+####### 2SearchItem.py ######
+test_search_abort (__main__.SearchByTitle) ... ok
+test_search_by_description (__main__.SearchByTitle) ... ok
+test_search_by_title (__main__.SearchByTitle) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 11.187s
+
+OK
+####### 2Signup.py ######
+test_signup_abort (__main__.SignupOK) ... ok
+test_signup_k_o_bad_email (__main__.SignupOK) ... ok
+test_signup_k_o_duplication_error (__main__.SignupOK) ... ok
+test_signup_o_k (__main__.SignupOK) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 24.983s
+
+OK
+####### 2SortItem.py ######
+test_sort_path1 (__main__.SortPath1) ... ok
+test_sort_path2 (__main__.SortPath1) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 7.855s
+
+OK
+####### 3CreateItem_v3.py ######
+test_create_abort (__main__.CreateItem) ... ok
+test_create_item (__main__.CreateItem) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 12.945s
+
+OK
+####### 3DeleteItem_v3.py ######
+test_delete_abort1 (__main__.DeleteItem) ... ok
+test_delete_abort2 (__main__.DeleteItem) ... ok
+test_delete_item (__main__.DeleteItem) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 17.061s
+
+OK
+####### 3EditItem_v2.py ######
+test_edit_abort (__main__.EditItem) ... ok
+test_edit_item (__main__.EditItem) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 8.736s
+
+OK
+####### 4CreateItem_v3.py ######
+test_create_abort (__main__.CreateItem) ... ok
+test_create_item (__main__.CreateItem) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 13.631s
+
+OK
+####### 4DeleteItem_v3.py ######
+test_delete_abort1 (__main__.DeleteItem) ... ok
+test_delete_abort2 (__main__.DeleteItem) ... ok
+test_delete_item (__main__.DeleteItem) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 16.538s
+
+OK
+####### 4EditItem_v2.py ######
+test_edit_abort (__main__.EditItem) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 3.994s
+
+OK
+####### PROCESSO MIGLIORATO #######
+####### 0AddSuggestion.py ######
+test_add_suggestion (__main__.AddSuggestion) ... ERROR
+
+======================================================================
+ERROR: test_add_suggestion (__main__.AddSuggestion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "0AddSuggestion.py", line 27, in test_add_suggestion
+    driver.find_element_by_xpath("//mat-card-actions/button/span").click()
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//mat-card-actions/button/span"}
+  (Session info: chrome=80.0.3987.116)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 33.613s
+
+FAILED (errors=1)
+####### 0CreateItem_v3.py ######
+test_create_abort (__main__.CreateItem) ... ok
+test_create_item (__main__.CreateItem) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 13.320s
+
+OK
+####### 0DeleteItem_v3.py ######
+test_delete_abort1 (__main__.DeleteItem) ... ok
+test_delete_abort2 (__main__.DeleteItem) ... ok
+test_delete_item (__main__.DeleteItem) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 16.916s
+
+OK
+####### 0EditItem_v2.py ######
+test_edit_abort (__main__.EditItem) ... ok
+test_edit_item (__main__.EditItem) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 8.674s
+
+OK
+####### 0Login.py ######
+test_authentication_error (__main__.Login) ... ok
+test_bad_email (__main__.Login) ... ok
+test_login (__main__.Login) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 21.869s
+
+OK
+####### 0Logout.py ######
+test_logout (__main__.Logout) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 8.493s
+
+OK
+####### 0SearchItem.py ######
+test_search_abort (__main__.SearchByTitle) ... ok
+test_search_by_description (__main__.SearchByTitle) ... ok
+test_search_by_title (__main__.SearchByTitle) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 11.322s
+
+OK
+####### 0Signup.py ######
+test_signup_abort (__main__.SignupOK) ... ok
+test_signup_k_o_bad_email (__main__.SignupOK) ... ok
+test_signup_k_o_duplication_error (__main__.SignupOK) ... ok
+test_signup_o_k (__main__.SignupOK) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 24.031s
+
+OK
+####### 0SortItem.py ######
+test_sort_path1 (__main__.SortPath1) ... ok
+test_sort_path2 (__main__.SortPath1) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 7.759s
+
+OK
+####### AddSuggestion.py ######
+test_add_suggestion (__main__.AddSuggestion) ... ERROR
+
+======================================================================
+ERROR: test_add_suggestion (__main__.AddSuggestion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "AddSuggestion.py", line 27, in test_add_suggestion
+    driver.find_element_by_xpath("//mat-card-actions/button/span").click()
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/antonio/Library/Python/2.7/lib/python/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//mat-card-actions/button/span"}
+  (Session info: chrome=80.0.3987.116)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 33.577s
+
+FAILED (errors=1)
+####### CreateItem_v3.py ######
+test_create_abort (__main__.CreateItem) ... ok
+test_create_item (__main__.CreateItem) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 13.247s
+
+OK
+####### DeleteItem_v3.py ######
+test_delete_abort1 (__main__.DeleteItem) ... ok
+test_delete_abort2 (__main__.DeleteItem) ... ok
+test_delete_item (__main__.DeleteItem) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 16.867s
+
+OK
+####### EditItem_v2.py ######
+test_edit_abort (__main__.EditItem) ... ok
+test_edit_item (__main__.EditItem) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 8.565s
+
+OK
+####### Login.py ######
+test_authentication_error (__main__.Login) ... ok
+test_bad_email (__main__.Login) ... ok
+test_login (__main__.Login) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 16.214s
+
+OK
+####### Logout.py ######
+test_logout (__main__.Logout) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.529s
+
+OK
+####### SearchItem.py ######
+test_search_abort (__main__.SearchByTitle) ... ok
+test_search_by_description (__main__.SearchByTitle) ... ok
+test_search_by_title (__main__.SearchByTitle) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 11.288s
+
+OK
+####### Signup.py ######
+test_signup_abort (__main__.SignupOK) ... ok
+test_signup_k_o_bad_email (__main__.SignupOK) ... ok
+test_signup_k_o_duplication_error (__main__.SignupOK) ... ok
+test_signup_o_k (__main__.SignupOK) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 26.096s
+
+OK
+####### SortItem.py ######
+test_sort_path1 (__main__.SortPath1) ... ok
+test_sort_path2 (__main__.SortPath1) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 8.783s
+
+OK
+
