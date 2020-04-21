@@ -1,6 +1,6 @@
 # Developing on IS2 Project in Angular 8 guidelines
 
-## Creating some stuff
+## Creating some stuff 
 
 Let's create entities to work on, for example a Client, having some properties like:
 
